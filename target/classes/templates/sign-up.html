@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/header :: header('VivetList')"></head>
+<body>
+
+<header th:replace="partials/nav :: nav"></header>
+
+<container>
+    <div class="page-title-wrap">
+        <div class="page-title"><h1>Sign Up</h1></div>
+    </div>
+    <div class="form-wrap">
+        <form action="">
+            <label for="username">Username</label>
+            <input id="username" type="text" placeholder="Please Enter Your Username" />
+            <label for="email">Email</label>
+            <input id="email" type="text" placeholder="Please Enter Your Email" />
+            <label for="email-confirmation">Confirm Email</label>
+            <input id="email-confirmation" type="text" placeholder="Please Enter Your Email to Confirm" />
+            <label for="password">Password</label>
+            <input id="password" type="text" placeholder="Please Enter aStrong Password" />
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+    <div class="epmty-space"></div>
+</container>
+
+<footer th:replace="partials/footer :: footer"></footer>
+</body>
+</html>

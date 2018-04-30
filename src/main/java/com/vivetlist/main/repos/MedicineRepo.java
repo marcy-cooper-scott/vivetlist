@@ -1,4 +1,4 @@
 package com.vivetlist.main.repos;
 
-public class MedicineRepo {
+public interface MedicineRepo {
 }

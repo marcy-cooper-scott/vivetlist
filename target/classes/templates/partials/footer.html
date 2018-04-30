@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:fragment="header(title)">
+    <meta charset="UTF-8"/>
+    <title th:text="${title}"></title>
+    <link rel="stylesheet" href="/css/style.css" type="text/css"/>
+</head>
+<body>
+<footer th:fragment="footer">
+    <div class="footer-nav">
+        <h2>Links:</h2>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">MyList</a></li>
+            <li><a href="#">Groups</a></li>
+            <li><a href="#">Logout</a></li>
+            <li><a href="#">Login</a></li>
+            <li><a href="#">Sign Up</a></li>
+
+        </ul>
+    </div>
+    <div class="footer-logo"><img src="images/logo-footer.png" alt="" /></div>
+    <div class="footer-contact"><h2>Contact</h2><a href="#">info@vivetlist.com</a></div>
+    <div class="footer-copyright">2017 © Site by marcy-cooper-scott</div>
+</footer>
+</body>
+</html>

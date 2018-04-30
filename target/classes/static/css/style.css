@@ -1,0 +1,875 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+    margin: 0;
+    font-family: 'Asap', sans-serif;
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+}
+a:link {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+}
+a:active {
+    text-decoration: none;
+}
+a:visited {
+    text-decoration: none;
+}
+header, container, footer {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto;
+}
+header{
+    grid-template-areas:
+            ". . logo logo logo nav-bar nav-bar nav-bar nav-bar nav-bar . .";
+    background-color: #fff;
+    position: fixed;
+    width: 100%;
+    box-shadow: 0px 1px 20px 1px #666;
+    z-index: 1000;
+}
+container {
+    grid-gap: 1em;
+}
+footer {
+    background-color: #144575;
+    border-top: #0d3151 solid .1em;
+}
+nav ul {
+    float: right;
+    padding: 0;
+}
+nav li {
+    font-size: 1em;
+    font-weight: 400;
+    float: left;
+    list-style: none;
+    padding-left: 1em;
+    color: #144575;
+}
+nav li a:link {
+    color: #144575;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+nav li a:active {
+    color: #144575;
+    text-decoration: none;
+}
+nav li a:visited {
+    color: #144575;
+    text-decoration: none;
+}
+nav li a:hover {
+    color: #8cc63f;
+    text-decoration: none;
+}
+.logo {
+    background-color: #fff;
+    grid-area: logo;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    z-index: 100;
+}
+.nav-bar {
+    background-color: #fff;
+    /*	grid-column: 4/6;*/
+    grid-area: nav-bar;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding-top: .2em;
+    z-index: 100;
+}
+nav .hamburger{
+    display: none;
+}
+.page-title-wrap {
+    background-color: #8cc63f;
+    grid-column: 1/13;
+    margin-top: 5.5em;
+    height: 5em;
+}
+.page-title {
+    background-color: #125fad;
+    width: 80%;
+    height: 5em;
+    margin-top: -2em;
+}
+.page-title h1 {
+    color: #8cc63f;
+    font-size: 3em;
+    padding-left: 21%;
+    padding-top: .25em;
+}
+form {
+    grid-column: 4/10;
+}
+input {
+    border-radius: .5em;
+    padding: .5em;
+    width: 100%;
+}
+.form-wrap {
+    grid-column: 4/10;
+    margin-top: 3em;
+    margin-bottom: 3em;
+    animation: fadein-up 1s ease-out .2s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+.form-wrap input {
+    border-radius: .5em;
+    padding: .5em;
+    width: 100%;
+    margin-bottom: 2em;
+    box-sizing: border-box
+}
+.form-wrap label {
+    color: #8cc63f;
+    font-weight: 700;
+    font-size: 1.5em;
+    width: 100%;
+}
+.form-wrap button {
+    font-family: 'Asap', sans-serif;
+    font-weight: 700;
+    background-color: #144575;
+    color: #8cc63f;
+    border-radius: .5em;
+    font-size: 1.5em;
+    padding: .25em .5em;
+    width: 100%;
+    float: left;
+    background: linear-gradient(#1660ad, #144675, #1660ad);
+    cursor: pointer;
+}
+.epmty-space {
+    grid-column: 1/13;
+    height: 200px;
+}
+/* ################# Banner Elements ################# */
+.banner-wrap {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto;
+    grid-column: 1/13;
+    margin-top: 5.5em;
+    background-image: url("../images/banner-bg.jpg");
+    background-size: cover;
+    background-color: #8cc63f;
+    border-bottom: #144575 solid .1em;
+}
+.banner-signup {
+    grid-column: 8/12;
+    box-shadow: 7px 1px 20px 1px #666;
+    background-color: #fff;
+    margin-top: 7em;
+    margin-bottom: 7em;
+    border-radius: 1em;
+    animation: fadein-right 1s ease-out .2s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+.banner-signup h2 {
+    color: #aeb6b5;
+    font-size: 4em;
+    text-align: center;
+    margin-top: .25em;
+    margin-bottom: .25em;
+}
+.button-wrap {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    margin-bottom: 1.5em;
+    height: 4em;
+}
+.banner-signup button {
+    font-family: 'Asap', sans-serif;
+    font-weight: 700;
+    background-color: #144575;
+    color: #8cc63f;
+    border-radius: .5em;
+    font-size: 2em;
+    padding: .25em .5em;
+    width: 40%;
+    float: left;
+    background: linear-gradient(#1660ad, #144675, #1660ad);
+    cursor: pointer;
+}
+.large-text{
+    font-family: 'Asap', sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    color: #aeb6b5;
+    font-size: 2.5em;
+    margin-bottom: .5em;
+    padding-left: .5em;
+    padding-right: .5em;
+    width: 20%;
+    float: left;
+    text-align: center;
+    box-sizing: border-box;
+}
+/* ################# MyList Page Elements ################# */
+.mylist-banner-wrap {
+    grid-column: 1/13;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto;
+    background-color: #125fad;
+    margin-top: 5.5em;
+    border-bottom: #0d3151 solid .1em;
+}
+.mylist-banner-user {
+    grid-column: 1/9;
+    background-color: #125fad;
+    overflow: hidden;
+}
+.mylist-banner-add {
+    grid-column: 9/13;
+    background-color: #8cc63f;
+    overflow: hidden;
+}
+.mylist-user-pic {
+    width: 12em;
+    height: 12em;
+    border: #0d3151 solid .2em;
+    margin: 2em 2em 2em 25%;
+    border-radius: 1em;
+    overflow: hidden;
+    float: left;
+    animation: fadein-up 1s ease-out .2s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+.mylist-user-pic img {
+    width: 100%;
+}
+.user-info {
+    color: #8cc63f;
+    float: left;
+    margin-top: 2em;
+    animation: fadein-up 1s ease-out .2s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+.user-info h2 {
+    color: #8cc63f;
+    font-size: 2.5em;
+    margin: .75em 0 0 0;
+}
+.user-info button {
+    font-family: 'Asap', sans-serif;
+    font-weight: 700;
+    background-color: #144575;
+    color: #8cc63f;
+    border-radius: .5em;
+    font-size: 1em;
+    padding: .25em .5em;
+    background: linear-gradient(#1660ad, #144675, #1660ad);
+    cursor: pointer;
+    margin-top: 1.5em;
+}
+.mylist-banner-add button {
+    font-family: 'Asap', sans-serif;
+    font-weight: 700;
+    background-color: #144575;
+    color: #8cc63f;
+    border-radius: .5em;
+    font-size: 1.6em;
+    background: linear-gradient(#1660ad, #144675, #1660ad);
+    cursor: pointer;
+    margin: 1.8em 20% 0 20%;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    width: 60%;
+    animation: fadein-up-button 1s ease-out .2s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+.prescription-list-wrap {
+    grid-column: 3/6;
+}
+.prescription-list-wrap h2 {
+    color: #125fad;
+    padding-bottom: .25em;
+    border-bottom: #125fad solid .1em;
+}
+.prescription-list-wrap ul {
+    margin: 0;
+    padding: 0;
+}
+.prescription-list-wrap li {
+    font-size: 1.15em;
+    font-weight: 700;
+    list-style: none;
+    padding: 0 0 1em 0;
+    margin: 0;
+    color: #8cc63f;
+}
+.prescription-list-wrap li a:link{
+    color: #8cc63f;
+    transition: color 0.3s ease;
+}
+.prescription-list-wrap li a:active{
+    color: #8cc63f;
+}
+.prescription-list-wrap li a:visited{
+    color: #8cc63f;
+}
+.prescription-list-wrap li a:hover{
+    color: #125fad;
+}
+.calendar-wrap {
+    grid-column: 6/12;
+}
+.calendar-wrap img {
+    width: 100%;
+}
+.calendar-wrap h2 {
+    color: #125fad;
+    padding-bottom: .25em;
+    margin-left: 1em;
+    border-bottom: #125fad solid .1em;
+}
+/* ################# Groups ################# */
+.groups-wrap {
+    grid-column: 3/11;
+    padding-bottom: 2em;
+}
+.group {
+    margin: 2em 2% 0 2%;
+    width: 29.3%;
+    float: left;
+    height: 15em;
+    border-radius: 1em;
+}
+.group h2 {
+    color: #8cc63f;
+    font-size: 1.5em;
+    margin: .25em .5em 0 .5em;
+    border-bottom: #8cc63f solid .1em;
+}
+.group p {
+    color: #0d3151;
+    font-size: 1em;
+    margin: 1em .5em 0 .5em;
+}
+.group button {
+    font-family: 'Asap', sans-serif;
+    font-weight: 700;
+    background-color: #144575;
+    color: #8cc63f;
+    border-radius: .5em;
+    font-size: 1em;
+    padding: .25em .5em;
+    width: 60%;
+    margin: 1em .5em 0 .5em;
+    background: linear-gradient(#1660ad, #144675, #1660ad);
+    cursor: pointer;
+}
+/* ################# Single Group ################# */
+.single-group-wrap {
+    grid-column: 3/11;
+    padding-bottom: 2em;
+}
+.single-group {
+    width: 100%;
+    margin-bottom: 2.5em;
+}
+.single-group h2 {
+    color: #125fad;
+    font-size: 1.5em;
+    margin: .25em .5em 0 .5em;
+    padding-bottom: .3em;
+    border-bottom: #8cc63f solid .1em;
+}
+.single-group p {
+    color: #0d3151;
+    font-size: 1em;
+    margin: 1em .5em 0 .5em;
+}
+.single-group button {
+    font-family: 'Asap', sans-serif;
+    font-weight: 700;
+    background-color: #144575;
+    color: #8cc63f;
+    border-radius: .5em;
+    font-size: 1em;
+    padding: .25em .5em;
+    width: 60%;
+    margin: 1em .5em 0 .5em;
+    background: linear-gradient(#1660ad, #144675, #1660ad);
+    cursor: pointer;
+}
+/* ################# Modules ################# */
+.module-left {
+    grid-column: 3/5;
+    margin: 1em 0 1em 0;
+}
+.module-left img {
+    width: 100%;
+    margin-bottom: .25em;
+    animation: fadein-up 1s ease-out .2s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+.module-center {
+    grid-column: 6/8;
+    margin: 1em 0 1em 0;
+}
+.module-center img {
+    width: 100%;
+    margin-bottom: .25em;
+    animation: fadein-up 1s ease-out .2s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+.module-right {
+    grid-column: 9/11;
+    margin: 1em 0 1em 0;
+}
+.module-right img {
+    width: 100%;
+    margin-bottom: .25em;
+    animation: fadein-up 1s ease-out .2s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+/* ################# Footer Elements ################# */
+.footer-nav {
+    grid-column: 3/5;
+    text-align: left;
+}
+.footer-logo {
+    grid-column: 5/9;
+    margin-top: 1em;
+}
+.footer-logo img {
+    width: 100%;
+}
+.footer-contact {
+    grid-column: 10/12;
+    padding-left: 1em;
+    text-align: left;
+}
+.footer-copyright {
+    grid-column: 1/13;
+    background-color: #0a3151;
+    padding: 1em 0 1em 0;
+    color: #8cc63f;
+    font-size: .75em;
+    text-align: center
+}
+.footer-nav ul {
+    padding: 0;
+}
+.footer-nav li {
+    font-size: 1em;
+    font-weight: 400;
+    list-style: none;
+    color: #8cc63f;margin-bottom: 1em;
+}
+.footer-nav li a:link {
+    color: #8cc63f;
+}
+.footer-nav li a:hover {
+    color: #5e9a42;
+}
+.footer-nav li a:active {
+    color: #8cc63f;
+}
+.footer-nav li a:visited {
+    color: #8cc63f;
+}
+.footer-contact a:link {
+    color: #8cc63f;
+}
+.footer-contact a:hover {
+    color: #5e9a42;
+}
+.footer-contact a:active {
+    color: #8cc63f;
+}
+.footer-contact a:visited {
+    color: #8cc63f;
+}
+.footer-nav h2 {
+    color: #8cc63f;
+    margin: 1em 0 1em 0;
+}
+.footer-contact h2 {
+    color: #8cc63f;
+    margin: 1em 0 1em 0;
+}
+/* ################# Animations ################# */
+@keyframes fadein-right {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+    from { opacity: 0; }
+    to   { opacity: 1; }
+    from { transform: translatex(100%); }
+    to   { transform: translatex(0); }
+}
+@keyframes fadein-up {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+    from { transform: translateY(100%); }
+    to   { transform: translateY(0); }
+}
+@keyframes fadein-up-button {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+    from { transform: translateY(200%); }
+    to   { transform: translateY(0); }
+}
+/* ################# Reponsive break points ################# */
+@media only screen and (max-width: 1200px) {
+    nav li {
+        font-size: 1em;
+    }
+    .banner-signup button {
+        font-size: 1.25em;
+    }
+    .banner-signup h2 {
+        font-size: 3.5em;
+    }
+    .large-text{
+        font-size: 2em;
+    }
+    .button-wrap {
+        height: 2.5em;
+    }
+    .mylist-user-pic {
+        margin: 2em 1.5em 2em 20%;
+        border-radius: 1em;
+        overflow: hidden;
+        float: left;
+    }
+    .user-info h2 {
+        color: #8cc63f;
+        font-size: 2em;
+        margin: .75em 0 0 0;
+    }
+    .mylist-banner-add button {
+        font-size: 1.4em;
+        margin: 2.2em 15% 0 15%;
+        padding-top: .5em;
+        padding-bottom: .5em;
+        width: 70%;
+        box-sizing: border-box;
+    }
+    .group {
+        height: 19em;
+    }
+    .group h2 {
+        font-size: 1.5em;
+    }
+
+}
+
+@media only screen and (max-width: 1000px) {
+    .nav-pad {
+        padding-right: 2em;
+    }
+    header{
+        grid-template-areas:
+                "logo logo logo logo logo logo nav-bar nav-bar nav-bar nav-bar nav-bar nav-bar";
+    }
+    .logo {
+        padding-left: 2em;
+    }
+    .banner-signup {
+        margin-top: 5em;
+        margin-bottom: 5em;
+    }
+    .banner-signup h2 {
+        font-size: 3em;
+    }
+    .mylist-user-pic {
+        margin: 2em 1.5em 2em 5%;
+    }
+    .group {
+        margin: 2em 4% 0 4%;
+        width: 42%;
+        height: 15em;
+    }
+}
+@media only screen and (max-width: 907px) {
+    nav li {
+        font-size: .85em;
+    }
+    .banner-signup h2 {
+        font-size: 2.5em;
+    }
+    .large-text{
+        font-size: 1.5em;
+    }
+    .banner-signup button {
+        font-size: 1.15em;
+    }
+    .button-wrap {
+        height: 2em;
+    }
+    .mylist-banner-add button {
+        font-size: 1.2em;
+        margin: 2.7em 15% 0 15%;
+        padding-top: .7em;
+        padding-bottom: .7em;
+    }
+    .user-info h2 {
+        font-size: 1.7em;
+        margin: .75em 0 0 0;
+    }
+    .group {
+        height: 22em;
+    }
+    .group h2 {
+        font-size: 1.2em;
+    }
+    .group button {
+        font-size: 1em;
+        width: 80%;
+    }
+
+}
+@media only screen and (max-width: 800px) {
+    nav .hamburger{
+        float: right;
+        padding-right: 2em;
+        padding-top: .5em;
+        display: block;
+    }
+    .menu-bar {
+        display: none;
+    }
+    .banner-signup h2 {
+        font-size: 2.25em;
+    }
+    .large-text{
+        font-size: 1.25em;
+    }
+    .banner-signup button {
+        font-size: 1em;
+    }
+    .banner-signup {
+        margin-top: 3.5em;
+        margin-bottom: 3.5em;
+        grid-column: 3/11;
+    }
+    .button-wrap {
+        margin-bottom: 2em;
+    }
+    .button-wrap {
+        height: 1.5em;
+    }
+    .module-left {
+        grid-column: 3/11;
+    }
+    .module-center {
+        grid-column: 3/11;
+    }
+    .module-right {
+        grid-column: 3/11;
+    }
+    .footer-logo {
+        grid-column: 2/12;
+        margin-top: .25em;
+    }
+    .footer-contact {
+        grid-column: 2/12;
+        padding-left: 1em;
+        text-align: center;
+        margin-bottom: 1em;
+    }
+    .footer-nav {
+        grid-column: 2/12;
+        text-align: center;
+    }
+    .mylist-banner-user {
+        grid-column: 1/13;
+        background-color: #125fad;
+    }
+    .mylist-banner-add {
+        grid-column: 1/13;
+        background-color: #8cc63f;
+        padding-bottom: 2.5em;
+    }
+    .mylist-user-pic {
+        width: 15%;
+        height: 15%;
+        border: #0d3151 solid .2em;
+        margin: 2em 42.5% 0 42.5%;
+        border-radius: 1em;
+        overflow: hidden;
+        float: none;
+    }
+    .user-info {
+        color: #8cc63f;
+        float: left;
+        margin-top: .1em;
+        width: 100%;
+        text-align: center;
+    }
+    .user-info h2 {
+        width: 100%;
+        font-size: 2em;
+        margin: .25em 0 0 0;
+        text-align: center;
+    }
+    .user-info button {
+        font-size: 1em;
+        padding: .25em .5em;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+    .mylist-banner-add button {
+        font-size: 1.6em;
+        margin: 1.8em 15% 0 15%;
+        padding-top: .5em;
+        padding-bottom: .5em;
+        width: 70%;
+    }
+    .group {
+        margin: 2em 0 0 0;
+        width: 100%;
+        height: 15em;
+    }
+    .epmty-space {
+        height: 20px;
+    }
+
+}
+@media only screen and (max-width: 600px) {
+    header{
+        grid-template-areas:
+                "logo logo logo logo logo logo logo nav-bar nav-bar nav-bar nav-bar nav-bar";
+    }
+    nav .hamburger{
+        float: right;
+        padding-right: .5em;
+        padding-top: .2em;
+        display: block;
+    }
+    .logo {
+        padding-left: .5em;
+        padding-top: .2em;
+        margin-top: .9em;
+        margin-bottom: 1em;
+    }
+    .logo img {
+        width: 12em;
+    }
+}/* ################# MOBILE MENU ################# */
+
+#menuToggle {
+    display: block;
+    position: relative;
+    top: 10px;
+    z-index: 1;
+    -webkit-user-select: none;
+    user-select: none;
+}
+#menuToggle input {
+    display: block;
+    width: 40px;
+    height: 32px;
+    position: absolute;
+    top: -7px;
+    left: -5px;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 2;
+    -webkit-touch-callout: none;
+}
+#menuToggle span{
+    display: block;
+    width: 33px;
+    height: 4px;
+    margin-bottom: 5px;
+    position: relative;
+    background: #474648;
+    border-radius: 3px;
+    z-index: 1;
+    transform-origin: 4px 0px;
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+    background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+    opacity 0.55s ease;
+}
+#menuToggle span:first-child {
+    transform-origin: 0% 0%;
+}
+#menuToggle span:nth-last-child(2) {
+    transform-origin: 0% 100%;
+}
+#menuToggle input:checked ~ span {
+    opacity: 1;
+    transform: rotate(45deg) translate(-2px, -1px);
+    background: #fff;
+}
+#menuToggle input:checked ~ span:nth-last-child(3) {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2);
+}
+#menuToggle input:checked ~ span:nth-last-child(2) {
+    transform: rotate(-45deg) translate(0, -1px);
+}
+#menu{
+    position: absolute;
+    width: 400px;
+    margin: -100px 0 0 80px;
+    padding-top: 125px;
+    background: #144575;
+    list-style-type: none;
+    box-shadow: 0px 1px 20px 1px #000;
+    border-radius: 1em;
+    -webkit-font-smoothing: antialiased;
+    transform: none;
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+    overflow: hidden;
+}
+#menu li{
+    padding: 10px 0 10px 1em;
+    font-size: 1.2em;
+    font-weight: 400;
+    float: none;
+    list-style: none;
+    text-decoration: none !important;
+    color: #8cc63f;
+    background-color: #125fad;
+    margin-bottom: .25em;
+}
+#menu li a{
+    text-decoration: none !important;
+    color: #8cc63f;
+}
+#menu li a:link{
+    text-decoration: none !important;
+    color: #8cc63f;
+}
+#menu li a:hover{
+    text-decoration: none !important;
+    color: #8cc63f;
+}
+#menu li a:visited{
+    text-decoration: none !important;
+    color: #8cc63f;
+}
+#menu li a:active{
+    text-decoration: none !important;
+    color: #8cc63f;
+}
+#menuToggle input:checked ~ ul
+{
+    transform-origin: 0% 0%;
+    transform: translate(-100%, 0);
+}

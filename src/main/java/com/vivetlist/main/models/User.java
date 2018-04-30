@@ -59,6 +59,7 @@ public class User {
         this.posts = posts;
     }
 
+
     public User(String username, String password, String email, String phone_number, String time_zone, boolean isAdmin, List<Appointment>appointments, List<Medicine>medicines, List<Group> groups, List<Post> posts){
         this.username = username;
         this.password = password;
