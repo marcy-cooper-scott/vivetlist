@@ -4,10 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class SandboxController {
+public class MylistController {
 
-    @GetMapping("/sandbox")
-    public String standupSandbox() {
-        return "sandbox";
-    }
+    @GetMapping("/mylist")
+    public String myList() { return "mylist"; }
 }
