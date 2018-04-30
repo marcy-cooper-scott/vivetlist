@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/header :: header('VivetList')"></head>
+<body>
+
+<header th:replace="partials/nav :: nav"></header>
+
+<container>
+    <div class="banner-wrap">
+        <div class="banner-signup">
+            <h2>Connect &<br />Take Control</h2>
+            <div class="button-wrap">
+                <a href="#"><button>Register</button></a><span class="large-text">or</span><a href="#"><button>Login</button></a>
+            </div>
+        </div>
+    </div>
+    <div class="module-left">
+        <img src="images/refill-module.jpg" alt="">
+        <p>Find information regarding your prescription such as drug interactions. Receive reminders for your refills via email and/or text</p>
+    </div>
+    <div class="module-center">
+        <img src="images/appointment-module.jpg" alt="">
+        <p>Track your doctors appointments with our in app calendar. Receive reminders for your doctors appointments via email and/or text</p>
+    </div>
+    <div class="module-right">
+        <img src="images/support-module.jpg" alt="">
+        <p>Find support groups dedicated to specific health related problems and connect with other users.</p>
+    </div>
+
+</container>
+
+<footer th:replace="partials/footer :: footer"></footer>
+</body>
+</html>
