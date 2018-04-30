@@ -8,6 +8,6 @@ public class SandboxController {
 
     @GetMapping("/sandbox")
     public String standupSandbox() {
-        return "single-group";
+        return "sandbox";
     }
 }
