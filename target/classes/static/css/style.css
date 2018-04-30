@@ -121,6 +121,9 @@ input {
     grid-column: 4/10;
     margin-top: 3em;
     margin-bottom: 3em;
+    animation: fadein-up 1s ease-out .2s;
+    opacity: 0;
+    animation-fill-mode: forwards;
 }
 .form-wrap input {
     border-radius: .5em;
@@ -171,7 +174,7 @@ input {
     margin-top: 7em;
     margin-bottom: 7em;
     border-radius: 1em;
-    animation: fadein-right .7s ease-out .2s;
+    animation: fadein-right 1s ease-out .2s;
     opacity: 0;
     animation-fill-mode: forwards;
 }
@@ -229,10 +232,12 @@ input {
 .mylist-banner-user {
     grid-column: 1/9;
     background-color: #125fad;
+    overflow: hidden;
 }
 .mylist-banner-add {
     grid-column: 9/13;
     background-color: #8cc63f;
+    overflow: hidden;
 }
 .mylist-user-pic {
     width: 12em;
@@ -241,7 +246,10 @@ input {
     margin: 2em 2em 2em 25%;
     border-radius: 1em;
     overflow: hidden;
-    float: left
+    float: left;
+    animation: fadein-up 1s ease-out .2s;
+    opacity: 0;
+    animation-fill-mode: forwards;
 }
 .mylist-user-pic img {
     width: 100%;
@@ -250,6 +258,9 @@ input {
     color: #8cc63f;
     float: left;
     margin-top: 2em;
+    animation: fadein-up 1s ease-out .2s;
+    opacity: 0;
+    animation-fill-mode: forwards;
 }
 .user-info h2 {
     color: #8cc63f;
@@ -281,6 +292,9 @@ input {
     padding-top: .5em;
     padding-bottom: .5em;
     width: 60%;
+    animation: fadein-up-button 1s ease-out .2s;
+    opacity: 0;
+    animation-fill-mode: forwards;
 }
 .prescription-list-wrap {
     grid-column: 3/6;
@@ -405,7 +419,7 @@ input {
 .module-left img {
     width: 100%;
     margin-bottom: .25em;
-    animation: fadein-up .7s ease-out .2s;
+    animation: fadein-up 1s ease-out .2s;
     opacity: 0;
     animation-fill-mode: forwards;
 }
@@ -416,7 +430,7 @@ input {
 .module-center img {
     width: 100%;
     margin-bottom: .25em;
-    animation: fadein-up .7s ease-out .2s;
+    animation: fadein-up 1s ease-out .2s;
     opacity: 0;
     animation-fill-mode: forwards;
 }
@@ -427,7 +441,7 @@ input {
 .module-right img {
     width: 100%;
     margin-bottom: .25em;
-    animation: fadein-up .7s ease-out .2s;
+    animation: fadein-up 1s ease-out .2s;
     opacity: 0;
     animation-fill-mode: forwards;
 }
@@ -508,8 +522,14 @@ input {
 }
 @keyframes fadein-up {
     from { opacity: 0; }
-    to   { opacity: .9; }
+    to   { opacity: 1; }
     from { transform: translateY(100%); }
+    to   { transform: translateY(0); }
+}
+@keyframes fadein-up-button {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+    from { transform: translateY(200%); }
     to   { transform: translateY(0); }
 }
 /* ################# Reponsive break points ################# */
@@ -533,7 +553,7 @@ input {
         margin: 2em 1.5em 2em 20%;
         border-radius: 1em;
         overflow: hidden;
-        float: left
+        float: left;
     }
     .user-info h2 {
         color: #8cc63f;
