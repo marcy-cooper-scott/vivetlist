@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header th:fragment="nav">
+    <div class="logo"><a href="index.html"><img src="images/logo.png" alt=""></a></div>
+
+    <!--Desktop Nav-->
+    <div class="nav-bar">
+        <nav>
+            <ul class="menu-bar nav-pad">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">MyList</a></li>
+                <li><a href="#">Groups</a></li>
+                <li><a href="#">Logout</a></li>
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Sign Up</a></li>
+
+            </ul>
+
+            <!--Mobile Nav-->
+
+            <div class="hamburger">
+
+                <div id="menuToggle">
+
+                    <input type="checkbox" />
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                    <ul id="menu">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">MyList</a></li>
+                        <li><a href="#">Groups</a></li>
+                        <li><a href="#">Logout</a></li>
+                        <li><a href="#">Login</a></li>
+                        <li><a href="#">Sign Up</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+</body>
+</html>
