@@ -1,11 +1,9 @@
 package com.vivetlist.main.models;
 
-
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-import static javax.persistence.TemporalType.DATE;
 
 @Entity
 @Table(name = "medicines")
@@ -18,8 +16,8 @@ public class Medicine {
     @Column(nullable = false)
     private String medicine_name;
 
-    @Temporal(TemporalType.DATE)
-    private java.util.Date refill_date;
+    @Column
+    private Date refill_date;
 
     @Column(length = 500)
     private String notes;
@@ -28,7 +26,7 @@ public class Medicine {
     @JoinColumn(name = "user_id")
     private List<User> users;
 
-    public Medicine(long id, String medicine_name, java.sql.Date refill_date, String notes, List<User> users){
+    public Medicine(long id, String medicine_name, Date refill_date, String notes, List<User> users){
         this.id = id;
         this.medicine_name = medicine_name;
         this.refill_date = refill_date;
@@ -36,7 +34,7 @@ public class Medicine {
         this.users = users;
     }
 
-    public Medicine(String medicine_name, java.sql.Date refill_date, String notes, List<User> users){
+    public Medicine(String medicine_name, Date refill_date, String notes, List<User> users){
         this.medicine_name = medicine_name;
         this.refill_date = refill_date;
         this.notes = notes;

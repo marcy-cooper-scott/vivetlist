@@ -31,15 +31,23 @@ public class User {
     @Type(type = "org.hibernate.type.NumericBooleanType")
     private boolean isAdmin;
 
-    @OneToMany
-    @JoinColumn(name = "appointment_id")
-    private List<Appointment> appointments;
+//    @OneToMany(mappedBy = "user")
+//    private List<Appointment> appointments;
 
     @ManyToMany
     @JoinColumn(name = "medicine_id")
     private List<Medicine> medicines;
 
-    public User(long id, String username, String password, String email, String phone_number, String time_zone, boolean isAdmin, List<Appointment>appointments, List<Medicine>medicines){
+    @ManyToMany
+    @JoinColumn(name = "group_id")
+    private List<Group> groups;
+
+    @OneToMany(mappedBy = "user")
+    private List<Post> posts;
+
+    public User(long id, String username, String password, String email, String phone_number, String time_zone, boolean isAdmin,
+//                List<Appointment>appointments,
+                List<Medicine>medicines, List<Group> groups, List<Post> posts){
         this.id = id;
         this.username = username;
         this.password = password;
@@ -47,19 +55,25 @@ public class User {
         this.phone_number = phone_number;
         this.time_zone = time_zone;
         this.isAdmin = isAdmin;
-        this.appointments = appointments;
+//        this.appointments = appointments;
         this.medicines = medicines;
+        this.groups = groups;
+        this.posts = posts;
     }
 
-    public User(String username, String password, String email, String phone_number, String time_zone, boolean isAdmin, List<Appointment>appointments, List<Medicine>medicines){
+    public User(String username, String password, String email, String phone_number, String time_zone, boolean isAdmin,
+//                List<Appointment>appointments,
+                List<Medicine>medicines, List<Group> groups, List<Post> posts){
         this.username = username;
         this.password = password;
         this.email = email;
         this.phone_number = phone_number;
         this.time_zone = time_zone;
         this.isAdmin = isAdmin;
-        this.appointments = appointments;
+//        this.appointments = appointments;
         this.medicines = medicines;
+        this.groups = groups;
+        this.posts = posts;
     }
 
     public User(){}

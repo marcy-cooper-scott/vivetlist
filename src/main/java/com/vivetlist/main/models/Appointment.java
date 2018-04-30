@@ -1,6 +1,8 @@
 package com.vivetlist.main.models;
 
 import javax.persistence.*;
+import java.util.Date;
+
 
 @Entity
 @Table(name = "appointments")
@@ -16,20 +18,25 @@ public class Appointment {
     @Column(nullable = false)
     private String location;
 
+    @Column
+    private Date date_time;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Appointment(long id, String doctor_name, String location, User user){
+    public Appointment(long id, String doctor_name, String location, Date date_time, User user){
         this.id = id;
         this.doctor_name = doctor_name;
         this.location = location;
+        this.date_time = date_time;
         this.user = user;
     }
 
-    public Appointment(String doctor_name, String location, User user){
+    public Appointment(String doctor_name, String location, Date date_time, User user){
         this.doctor_name = doctor_name;
         this.location = location;
+        this.date_time = date_time;
         this.user = user;
     }
 
@@ -66,5 +73,13 @@ public class Appointment {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Date getDate_time() {
+        return date_time;
+    }
+
+    public void setDate_time(Date date_time) {
+        this.date_time = date_time;
     }
 }
