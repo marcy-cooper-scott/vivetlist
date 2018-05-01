@@ -20,6 +20,7 @@ public class LoginController {
 
     @PostMapping("/login")
     public String userLoggedIn(){
+
         return "redirect:/mylist";
     }
 
