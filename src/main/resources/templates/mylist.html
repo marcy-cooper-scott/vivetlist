@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials/header :: header('VivetList')"></head>
+<head th:include="partials/header :: header('VivetList')">
+</head>
 <body>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css' />
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.print.css" />-->
 
 <header th:replace="partials/nav :: nav"></header>
 
@@ -43,10 +46,35 @@
         </ul>
 
     </div>
-    <div class="calendar-wrap"><h2>My Appointments</h2><img src="images/calendar-placeholder.jpg" alt="" /></div>
+    <div class="calendar-wrap">
+        <h2>My Appointments</h2>
+        <div id="calendar"></div>
+    </div>
 
 </container>
-
 <footer th:replace="partials/footer :: footer"></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
+<script>
+    $(document).ready(function(){
+        var events = [{
+            title: 'doctor',
+            start: moment().startOf('week'),
+            end: moment().startOf('week').add(60, 'minutes'),
+            color: 'green'
+        },
+            {
+                title: 'doctor',
+                start: moment().startOf('week'),
+                end: moment().startOf('week').add(60, 'minutes'),
+                color: '#999'
+            }];
+        $('#calendar').fullCalendar({
+            events: events,
+            schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source'
+        });
+    })
+</script>
 </body>
 </html>

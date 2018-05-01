@@ -329,8 +329,10 @@ input {
 .prescription-list-wrap li a:hover{
     color: #125fad;
 }
+/* ################# Calendar ################# */
 .calendar-wrap {
     grid-column: 6/12;
+    padding-left: 1em;
 }
 .calendar-wrap img {
     width: 100%;
@@ -338,8 +340,14 @@ input {
 .calendar-wrap h2 {
     color: #125fad;
     padding-bottom: .25em;
-    margin-left: 1em;
     border-bottom: #125fad solid .1em;
+}
+#calendar h2{
+    border-bottom: 0;
+}
+#calendar {
+    width: 100%;
+    display: block;
 }
 /* ################# Groups ################# */
 .groups-wrap {
