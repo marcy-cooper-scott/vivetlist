@@ -10,7 +10,7 @@
         <div class="page-title"><h1>Sign Up</h1></div>
     </div>
     <div class="form-wrap">
-        <form action="">
+        <form th:action="@{/sign-up}" method="post" th:object="${user}">
             <label for="username">Username</label>
             <input id="username" type="text" placeholder="Please Enter Your Username" />
             <label for="email">Email</label>

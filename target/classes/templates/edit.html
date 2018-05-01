@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/header :: header('VivetList')"></head>
+<body>
+    <header th:replace="partials/nav :: nav"></header>
+
+    <container>
+        <form th:action="@{'/edit/' + ${user.id}}" th:method="post" th:object="${user}">
+            Email:
+            <input th:field="*{title}" />
+            <br/>
+            Username:
+            <input th:field="*{username}" />
+            Password:
+            <input th:field="*{password}" />
+            <br />
+            Phone Number:
+            <input th:field="*{phone_number}" />
+            <br />
+            <input type="hidden" th:field="*{id}" />
+            <input type="submit" />
+
+        </form>
+    </container>
+
+</body>
+</html>
