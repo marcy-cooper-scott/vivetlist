@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:fragment="header(title)">
-    <meta charset="UTF-8"/>
-    <title th:text="${title}"></title>
-    <link rel="stylesheet" href="/css/style.css" type="text/css"/>
-</head>
 <body>
 <footer th:fragment="footer">
     <div class="footer-nav">
         <h2>Links:</h2>
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">MyList</a></li>
-            <li><a href="#">Groups</a></li>
-            <li><a href="#">Logout</a></li>
-            <li><a href="#">Login</a></li>
-            <li><a href="#">Sign Up</a></li>
+            <li><a href="/">Home</a></li>
+            <li sec:authorize="isAuthenticated()"><a href="/mylist">MyList</a></li>
+            <li sec:authorize="isAuthenticated()"><a href="/groups">Groups</a></li>
+            <li sec:authorize="isAuthenticated()">
+                <form class="logout_form" th:action="@{/logout}" th:method="post" style="margin-top: 12px; text-decoration: none;">
+                    <a href="javascript:{}" onclick="document.getElementById('logout_form').submit(); return false;">Logout</a>
+                </form>
+            </li>
+            <li sec:authorize="!isAuthenticated()"><a href="/login">Login</a></li>
+            <li sec:authorize="!isAuthenticated()"><a href="/sign-up">Sign Up</a></li>
 
         </ul>
     </div>
