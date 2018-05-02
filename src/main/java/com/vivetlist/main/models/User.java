@@ -1,11 +1,15 @@
 package com.vivetlist.main.models;
 
+import com.fasterxml.jackson.annotation.*;
 import org.hibernate.annotations.Type;
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "users")
+//@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE, getterVisibility=JsonAutoDetect.Visibility.NONE)
+//@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreType
 public class User {
 
     @Id
@@ -32,6 +36,7 @@ public class User {
     private boolean isAdmin;
 
     @OneToMany(mappedBy = "user")
+    @JsonBackReference
     private List<Appointment> appointments;
 
     @ManyToMany
@@ -137,5 +142,9 @@ public class User {
 
     public void setAdmin(boolean admin) {
         isAdmin = admin;
+    }
+
+    public List<Appointment> getAppointments() {
+        return appointments;
     }
 }

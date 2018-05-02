@@ -11,7 +11,7 @@ public class Reminder {
     @GeneratedValue
     private long id;
 
-    @Column
+    @Column(nullable = false)
     private Date scheduled_time;
 
     @OneToOne
@@ -24,9 +24,9 @@ public class Reminder {
     private Medicine med;
 
     @OneToOne
-    private Notification_Time_Unit unit;
+    private Notification_Type unit;
 
-    public Reminder(long id, Date scheduled_time, User user, Appointment appt, Medicine med, Notification_Time_Unit unit){
+    public Reminder(long id, Date scheduled_time, User user, Appointment appt, Medicine med, Notification_Type unit){
         this.id = id;
         this.scheduled_time = scheduled_time;
         this.user = user;
@@ -35,7 +35,7 @@ public class Reminder {
         this.unit = unit;
     }
 
-    public Reminder(Date scheduled_time, User user, Appointment appt, Medicine med, Notification_Time_Unit unit){
+    public Reminder(Date scheduled_time, User user, Appointment appt, Medicine med, Notification_Type unit){
         this.scheduled_time = scheduled_time;
         this.user = user;
         this.appt = appt;
@@ -86,11 +86,11 @@ public class Reminder {
         this.med = med;
     }
 
-    public Notification_Time_Unit getUnit() {
+    public Notification_Type getUnit() {
         return unit;
     }
 
-    public void setUnit(Notification_Time_Unit unit) {
+    public void setUnit(Notification_Type unit) {
         this.unit = unit;
     }
 }

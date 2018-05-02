@@ -1,5 +1,10 @@
 package com.vivetlist.main.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreType;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -10,6 +15,7 @@ public class Appointment {
 
     @Id
     @GeneratedValue
+    @JsonIgnore
     private long id;
 
     @Column(nullable = false)
@@ -19,10 +25,14 @@ public class Appointment {
     private String location;
 
     @Column
+    @JsonFormat(
+            shape = JsonFormat.Shape.STRING,
+            pattern = "dd-MM-yyyy hh:mm:ss")
     private Date date_time;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonManagedReference
     private User user;
 
     public Appointment(long id, String doctor_name, String location, Date date_time, User user){
