@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/header :: header('VivetList')"></head>
+<body>
+    <header th:replace="partials/nav :: nav"></header>
+
+    <div>
+        <h1>Create Post</h1>
+
+        <form th:action="@{/posts/create}" th:method="post" th:object="${post}">
+            <div>
+                <label for="title">Post Title</label>
+                <input id="title" class="form-control" placeholder="Enter a title" type="text" th:field="*{title}" />
+                <label for="body">Post Body</label>
+                <textarea id="body" class="form-control" placeholder="Enter text" th:field="*{body}"></textarea>
+            </div>
+
+            <button>Create Post</button>
+
+        </form>
+
+    </div>
+</body>
+</html>
