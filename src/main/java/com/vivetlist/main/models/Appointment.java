@@ -1,17 +1,22 @@
 package com.vivetlist.main.models;
 
+import com.fasterxml.jackson.annotation.*;
+
 import javax.persistence.*;
 import java.util.Date;
 
 
 @Entity
 @Table(name = "appointments")
+@JsonPropertyOrder({"name", "start", "location"})
 public class Appointment {
 
     @Id
     @GeneratedValue
+    @JsonIgnore
     private long id;
 
+    @JsonProperty("name")
     @Column(nullable = false)
     private String doctor_name;
 
@@ -19,10 +24,15 @@ public class Appointment {
     private String location;
 
     @Column
+    @JsonProperty("start")
+//    @JsonFormat(
+//            shape = JsonFormat.Shape.STRING,
+//            pattern = "dd-MM-yyyy")
     private Date date_time;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonManagedReference
     private User user;
 
     public Appointment(long id, String doctor_name, String location, Date date_time, User user){

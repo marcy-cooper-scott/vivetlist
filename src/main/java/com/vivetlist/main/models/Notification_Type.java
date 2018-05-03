@@ -1,28 +1,31 @@
 package com.vivetlist.main.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.aspectj.weaver.ast.Not;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "notification_time_unit")
-public class Notification_Time_Unit {
+@Table(name = "notification_type")
+public class Notification_Type {
 
     @Id
     @GeneratedValue
+    @JsonBackReference
     private long id;
 
-    @Column(length = 3)
+    @Column(length = 5)
     private String name;
 
-    public Notification_Time_Unit(){}
+    public Notification_Type(){}
 
-    public Notification_Time_Unit(long id, String name){
+    public Notification_Type(long id, String name){
         this.id = id;
         this.name = name;
     }
 
-    public Notification_Time_Unit(String name){
+    public Notification_Type(String name){
         this.name = name;
     }
 
