@@ -5,7 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface GroupRepo extends CrudRepository<Group, Long>{
 
-    public Group findAllById(long id);
     public Group findById(long id);
 
 }
