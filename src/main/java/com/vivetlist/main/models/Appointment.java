@@ -1,9 +1,6 @@
 package com.vivetlist.main.models;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreType;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -11,6 +8,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "appointments")
+@JsonPropertyOrder({"name", "start", "location"})
 public class Appointment {
 
     @Id
@@ -18,6 +16,7 @@ public class Appointment {
     @JsonIgnore
     private long id;
 
+    @JsonProperty("name")
     @Column(nullable = false)
     private String doctor_name;
 
@@ -25,9 +24,10 @@ public class Appointment {
     private String location;
 
     @Column
-    @JsonFormat(
-            shape = JsonFormat.Shape.STRING,
-            pattern = "dd-MM-yyyy hh:mm:ss")
+    @JsonProperty("start")
+//    @JsonFormat(
+//            shape = JsonFormat.Shape.STRING,
+//            pattern = "dd-MM-yyyy")
     private Date date_time;
 
     @ManyToOne

@@ -40,6 +40,7 @@ public class User {
     private List<Appointment> appointments;
 
     @ManyToMany
+    @JsonBackReference
     @JoinColumn(name = "medicine_id")
     private List<Medicine> medicines;
 

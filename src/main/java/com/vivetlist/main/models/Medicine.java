@@ -1,5 +1,7 @@
 package com.vivetlist.main.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -11,9 +13,11 @@ public class Medicine {
 
     @Id
     @GeneratedValue
+    @JsonIgnore
     private long id;
 
     @Column(nullable = false)
+
     private String medicine_name;
 
     @Column

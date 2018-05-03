@@ -1,5 +1,8 @@
 package com.vivetlist.main.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -9,21 +12,26 @@ public class Reminder {
 
     @Id
     @GeneratedValue
+    @JsonIgnore
     private long id;
 
     @Column(nullable = false)
     private Date scheduled_time;
 
     @OneToOne
+    @JsonManagedReference
     private User user;
 
     @OneToOne
+    @JsonManagedReference
     private Appointment appt;
 
     @OneToOne
+    @JsonManagedReference
     private Medicine med;
 
     @OneToOne
+    @JsonManagedReference
     private Notification_Type unit;
 
     public Reminder(long id, Date scheduled_time, User user, Appointment appt, Medicine med, Notification_Type unit){

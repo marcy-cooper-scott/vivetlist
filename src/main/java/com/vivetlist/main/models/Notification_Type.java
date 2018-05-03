@@ -1,5 +1,7 @@
 package com.vivetlist.main.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.aspectj.weaver.ast.Not;
 
 import javax.persistence.*;
@@ -10,9 +12,10 @@ public class Notification_Type {
 
     @Id
     @GeneratedValue
+    @JsonBackReference
     private long id;
 
-    @Column(length = 3)
+    @Column(length = 5)
     private String name;
 
     public Notification_Type(){}
