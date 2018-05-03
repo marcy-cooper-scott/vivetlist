@@ -3,8 +3,8 @@
 ### Priority
 ##### Create Sign Up Page
 - [ ] User ability to create profile page
-- [ ] Being able to login as a user 
-- [ ] Being able to logout as a user 
+- [x] Being able to login as a user 
+- [x] Being able to logout as a user 
 - [ ] User Authentication
 ##### Landing Page
 - [x] Landing Page 
