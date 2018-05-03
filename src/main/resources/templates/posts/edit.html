@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/header :: header('VivetList')"></head>
+<body>
+    <header th:replace="partials/nav :: nav"></header>
+
+    <h1>Edit Post</h1>
+
+    <main>
+        <form th:action="@{'/group/' + ${group.id} + '/posts/' + ${post.id} + '/edit'}" th:method="post" th:object="${post}">
+            Title:
+            <input th:field="*{title}" />
+            <br />
+            Body:
+            <input th:field="*{body}" />
+            <br />
+            <input type="hidden" th:field="*{id}" />
+            <input type="submit" />
+        </form>
+
+        <form th:action="@{/group/{id}/posts/delete(id=${group.id})}" th:method="post" th:object="${post}">
+            <input type="hidden" th:field="*{id}" />
+            <button>Delete</button>
+        </form>
+    </main>
+    <footer th:replace="partials/footer :: footer"></footer>
+</body>
+</html>

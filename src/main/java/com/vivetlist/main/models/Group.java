@@ -17,6 +17,9 @@ public class Group {
     @Column
     private String name;
 
+    @Column(length = 500)
+    private String description;
+
     @ManyToMany
     @JoinColumn(name = "user_id")
     private List<User> users;
@@ -24,15 +27,17 @@ public class Group {
     @OneToMany(mappedBy = "group")
     private List<Post> posts;
 
-    public Group(long id, String name, List<User> users, List<Post> posts){
+    public Group(long id, String name, String description, List<User> users, List<Post> posts){
         this.id = id;
         this.name = name;
+        this.description = description;
         this.users = users;
         this.posts = posts;
     }
 
-    public Group(String name, List<User> users, List<Post> posts){
+    public Group(String name, String description, List<User> users, List<Post> posts){
         this.name = name;
+        this.description = description;
         this.users = users;
         this.posts = posts;
     }
@@ -55,4 +60,11 @@ public class Group {
         this.name = name;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

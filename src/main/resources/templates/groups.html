@@ -13,36 +13,15 @@
         <input type="text" placeholder="Search Groups" />
     </form>
     <div class="groups-wrap">
-        <div class="group">
-            <h2>Diabetes</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <button>View Group</button>
+        <div class="group" th:each="group : ${groups}">
+            <h2><span th:text="${group.name}"></span></h2>
+            <p><span th:text="${group.description}"></span></p>
+            <a th:href="@{/group/{id}(id=${group.id})}">
+                <button>View Group</button>
+            </a>
+
         </div>
-        <div class="group">
-            <h2>Diabetes</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <button>View Group</button>
-        </div>
-        <div class="group">
-            <h2>Diabetes</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <button>View Group</button>
-        </div>
-        <div class="group">
-            <h2>Diabetes</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <button>View Group</button>
-        </div>
-        <div class="group">
-            <h2>Diabetes</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <button>View Group</button>
-        </div>
-        <div class="group">
-            <h2>Diabetes</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <button>View Group</button>
-        </div>
+
     </div>
 </container>
 

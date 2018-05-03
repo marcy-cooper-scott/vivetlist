@@ -1,4 +1,10 @@
 package com.vivetlist.main.repos;
 
-public interface GroupRepo {
+import com.vivetlist.main.models.Group;
+import org.springframework.data.repository.CrudRepository;
+
+public interface GroupRepo extends CrudRepository<Group, Long>{
+
+    public Group findById(long id);
+
 }
