@@ -8,12 +8,7 @@
         <div class="page-title-wrap">
             <div class="page-title"><h1>Create Post</h1></div>
         </div>
-        <div th:if="${param.error}">
-            Invalid Username and Password.
-        </div>
-        <div th:if="${param.logout}">
-            You have been logged out.
-        </div>
+
         <div class="form-wrap">
             <form th:action="@{/group/{id}/posts/create(id=${group.id})}" th:method="post" th:object="${post}">
                 <input th:type="hidden" type="hidden" th:field="*{group}" />
