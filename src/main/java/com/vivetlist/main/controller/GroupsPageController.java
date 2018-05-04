@@ -26,10 +26,10 @@ public class GroupsPageController {
         return "groups"; }
 
 //  **************Show All Posts In A Group********************
-    @GetMapping("/group/{id}")
-    public String viewPosts(Model model, @PathVariable long id){
-        model.addAttribute("group", groupDao.findById(id));
-        model.addAttribute("posts", postDao.findAllByGroup_Id(id));
+    @GetMapping("/group/{gid}")
+    public String viewPosts(Model model, @PathVariable long gid){
+        model.addAttribute("group", groupDao.findById(gid));
+        model.addAttribute("posts", postDao.findAllByGroup_Id(gid));
         return "single-group";
     }
 }

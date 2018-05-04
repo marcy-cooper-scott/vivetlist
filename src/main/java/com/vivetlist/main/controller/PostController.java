@@ -50,52 +50,47 @@ public class PostController {
 
     @PostMapping("/group/{gid}/posts/{id}/edit")
     public String handleEdit(@PathVariable long gid, @PathVariable long id, Model model, @ModelAttribute Post post){
+        System.out.println(gid);
         User user = userService.loggedInUser();
         Post originalPost = postDao.findById(id);
+        originalPost.setId(id);
+        originalPost.setTitle(post.getTitle());
+        originalPost.setBody(post.getBody());
+        originalPost.setUser(user);
+        originalPost.setGroup(groupDao.findById(gid));
+        postDao.save(originalPost);
+
         model.addAttribute("group", groupDao.findById(gid));
         model.addAttribute("isOwnedBy", userService.isOwnedBy(originalPost.getUser()));
         model.addAttribute("isLoggedIn", userService.isLoggedIn());
-        originalPost.setTitle(post.getTitle());
-        originalPost.setBody(post.getBody());
-        originalPost.setGroup(post.getGroup());
-        postDao.save(originalPost);
 //        RedirectView rv = new RedirectView();
 //        rv.setContextRelative(true);
 //        rv.setUrl("/group/{id}/single-group");
 //        return rv;
-        return "redirect:/groups";
+        return "redirect:/group/{gid}";
     }
 
-    @GetMapping("/group/{id}/posts/create")
-    public String createPost(@PathVariable long id, Model model){
-        model.addAttribute("group", groupDao.findById(id));
+    @GetMapping("/group/{gid}/posts/create")
+    public String createPost(@PathVariable long gid, Model model){
+        model.addAttribute("group", groupDao.findById(gid));
         model.addAttribute("post", new Post());
         return "posts/create";
     }
 
-    @PostMapping("/group/{id}/posts/create")
-    public String insertPost(@PathVariable long id, @ModelAttribute Post post){
+    @PostMapping("/group/{gid}/posts/create")
+    public String insertPost(@PathVariable long gid, @ModelAttribute Post post){
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        post.setGroup(groupDao.findById(id));
+        post.setGroup(groupDao.findById(gid));
         post.setUser(loggedInUser);
         postDao.save(post);
-//        RedirectView rv = new RedirectView();
-//        rv.setContextRelative(true);
-//        rv.setUrl("/group/{id}/single-group");
-//        return rv;
-        return "redirect:/groups";
+        return "redirect:/group/{gid}";
     }
 
-    @PostMapping("/group/{id}/posts/delete")
-    public String deletePost(@PathVariable long id, @ModelAttribute Post post, Model model){
-        model.addAttribute("group", groupDao.findById(id));
+    @PostMapping("/group/{gid}/posts/delete")
+    public String deletePost(@PathVariable long gid, @ModelAttribute Post post, Model model){
         postDao.delete(post);
-        // added for the redirect
-//        RedirectView rv = new RedirectView();
-//        rv.setContextRelative(true);
-//        rv.setUrl("/group/{id}/single-group");
-//        return rv;
-        return "redirect:/groups";
+        model.addAttribute("group", groupDao.findById(gid));
+        return "redirect:/group/{gid}";
     }
 
 
