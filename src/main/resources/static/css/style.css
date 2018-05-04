@@ -620,8 +620,10 @@ input {
 
 .modal-content{
     background-color:#f4f4f4;
-    margin: 10% auto;
+    margin: 5% auto;
     width:70%;
+    border-radius: .5em;
+    overflow: hidden;
     box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
     animation-name:modalopen;
     animation-duration:1s;
@@ -632,27 +634,26 @@ input {
 }
 
 .modal-header{
-    background:coral;
+    background:#125fad;
     padding:15px;
     color:#fff;
 }
 
 .modal-body{
     padding:10px 20px;
-    /*height: 400px;*/
-    /*overflow: hidden;*/
-    /*overflow-y: scroll;*/
+    height: 45em;
+    overflow: hidden;
+    overflow-y: scroll;
 }
 
 .modal-footer{
-    background:coral;
+    background:#125fad;
     padding:10px;
     color:#fff;
     text-align: center;
 }
 
 .closeBtn{
-    color:#ccc;
     float: right;
     font-size:30px;
     color:#fff;
