@@ -27,8 +27,9 @@ public class MedicineController {
     }
 
     @PostMapping("/medicines/create")
-    public String insertMed(@ModelAttribute Medicine med, Model model){
+    public String insertMed(@ModelAttribute Medicine med){
        medicineRepo.save(med);
+       return "redirect:/mylist";
     }
 
     @GetMapping("/medicines/{id}/edit")
