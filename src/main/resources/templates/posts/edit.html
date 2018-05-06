@@ -18,7 +18,7 @@
             <input type="submit" />
         </form>
 
-        <form th:action="@{/group/{id}/posts/delete(id=${group.id})}" th:method="post" th:object="${post}">
+        <form th:action="@{/group/{gid}/posts/delete(gid=${group.id})}" th:method="post" th:object="${post}">
             <input type="hidden" th:field="*{id}" />
             <button>Delete</button>
         </form>

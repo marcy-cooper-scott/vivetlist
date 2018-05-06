@@ -51,7 +51,10 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Post> posts;
 
-    public User(long id, String username, String password, String email, String phone_number, String time_zone, boolean isAdmin, List<Appointment>appointments, List<Medicine>medicines, List<Group> groups, List<Post> posts){
+    @OneToMany(mappedBy = "user")
+    private List<Comment> comments;
+
+    public User(long id, String username, String password, String email, String phone_number, String time_zone, boolean isAdmin, List<Appointment>appointments, List<Medicine>medicines, List<Group> groups, List<Post> posts, List<Comment> comments){
         this.id = id;
         this.username = username;
         this.password = password;
@@ -63,10 +66,11 @@ public class User {
         this.medicines = medicines;
         this.groups = groups;
         this.posts = posts;
+        this.comments = comments;
     }
 
 
-    public User(String username, String password, String email, String phone_number, String time_zone, boolean isAdmin, List<Appointment>appointments, List<Medicine>medicines, List<Group> groups, List<Post> posts){
+    public User(String username, String password, String email, String phone_number, String time_zone, boolean isAdmin, List<Appointment>appointments, List<Medicine>medicines, List<Group> groups, List<Post> posts, List<Comment> comments){
         this.username = username;
         this.password = password;
         this.email = email;
@@ -77,6 +81,7 @@ public class User {
         this.medicines = medicines;
         this.groups = groups;
         this.posts = posts;
+        this.comments = comments;
     }
 
     public User(){}

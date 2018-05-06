@@ -6,7 +6,9 @@ import com.vivetlist.main.repos.PostRepo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 
@@ -31,5 +33,11 @@ public class GroupsPageController {
         model.addAttribute("group", groupDao.findById(gid));
         model.addAttribute("posts", postDao.findAllByGroup_Id(gid));
         return "single-group";
+    }
+
+    @GetMapping("/groups/search")
+    public String searchGroups(@RequestParam String search, Model model){
+        model.addAttribute("groups", groupDao.findAllByNameContaining(search));
+        return "search";
     }
 }

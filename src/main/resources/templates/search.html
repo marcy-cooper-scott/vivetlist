@@ -9,9 +9,7 @@
     <div class="page-title-wrap">
         <div class="page-title"><h1>Groups</h1></div>
     </div>
-    <form th:action="@{/groups/search}" method="get">
-        <input type="text" placeholder="Search Groups" name="search" />
-    </form>
+
     <div class="groups-wrap">
         <div class="group" th:each="group : ${groups}">
             <h2><span th:text="${group.name}"></span></h2>
