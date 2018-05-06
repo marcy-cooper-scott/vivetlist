@@ -3,19 +3,18 @@
 <head th:replace="partials/header :: header('VivetList')"></head>
 <body>
 <header th:replace="partials/nav :: nav"></header>
-
 <container>
     <div class="page-title-wrap">
         <div class="page-title"><h1>New Medication</h1></div>
     </div>
     <div class="form-wrap">
         <form th:action="@{/medicines/create}" th:method="post" th:object="${medicine}">
-            <label for="time">Name of Medication</label>
-            <input id="time" placeholder="Enter medication name" type="text" th:field="*{medicine_name}" />
-            <label for="doctor">Personal Notes</label>
-            <input id="doctor" placeholder="Enter personal notes" th:field="*{notes}" />
-            <label for="location">Medication Refill Date</label>
-            <input id="location" placeholder="Enter medication refill date" th:field="*{refill_date}" />
+            <label for="medicine_name">Name of Medication</label>
+            <input id="medicine_name" placeholder="Enter medication name" type="text" th:field="*{medicine_name}" />
+            <label for="notes">Personal Notes</label>
+            <input id="notes" placeholder="Enter personal notes" th:field="*{notes}" />
+            <label for="refill_date">Medication Refill Date</label>
+            <input id="refill_date" placeholder="Enter medication refill date" type="date" th:field="*{refill_date}" />
 
             <button>Create Post</button>
 
