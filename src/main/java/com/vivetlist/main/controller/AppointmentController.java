@@ -3,13 +3,10 @@ package com.vivetlist.main.controller;
 import com.vivetlist.main.models.Appointment;
 import com.vivetlist.main.models.User;
 import com.vivetlist.main.repos.AppointmentRepo;
-import org.joda.time.DateTime;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -36,10 +33,9 @@ public class AppointmentController {
     }
 
     @PostMapping("/appointments/create")
-    public String insertAppt(@ModelAttribute Appointment appt, Model model){
+    public String insertAppt(@ModelAttribute Appointment appt){
         User loggedInUser = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         appt.setUser(loggedInUser);
-        appt.setDate_time(convertDate(appt.getDate_time())); // we will manually set a timezone difference for now
         apptRepo.save(appt);
         return "redirect:/mylist";
     }
@@ -64,10 +60,5 @@ public class AppointmentController {
     public String deleteAppt(@ModelAttribute Appointment appt){
         apptRepo.delete(appt);
         return "redirect:/mylist";
-    }
-
-    private Date convertDate(Date date) {
-        DateTime joda = new DateTime(date);
-        return joda.minusHours(5).toDate();
     }
 }
