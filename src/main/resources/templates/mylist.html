@@ -3,7 +3,6 @@
 <head th:replace="partials/header :: header('VivetList')"></head>
 <body>
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css' />
-<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.print.css" />-->
 <header th:replace="partials/nav :: nav"></header>
 <div id="modal" class="modal">
     <div class="modal-content">
@@ -122,23 +121,25 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
 <script>
     $(document).ready(function(){
-        var events = [{
-            title: 'doctor',
-            start: moment().startOf('week'),
-            end: moment().startOf('week').add(60, 'minutes'),
-            color: 'green'
-        },
-            {
-                title: 'doctor',
-                start: moment().startOf('week'),
-                end: moment().startOf('week').add(60, 'minutes'),
-                color: '#999'
-            }];
-        $('#calendar').fullCalendar({
-            events: events,
-            schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source'
-        });
-    })
+        function renderCalendar() {
+            $('#calendar').fullCalendar();
+            var appointments = []; // clear all the events
+            var request = $.ajax({'url': '/appointments.json'}); // make a request from the controller to fetch events in JSON format
+            request.done(function (appts) {	// when done, we will move through each element in the array in order to grab the appointment object
+                appts.forEach(function (appt) {
+                    var obj = {
+                        title: appt.name,
+                        start: appt.start,
+                        description: appt.location,
+                        allDay: false
+                    };
+                    appointments.push(obj);
+                });
+                $('#calendar').fullCalendar('renderEvents', appointments, stick = true);
+            });
+        }
+        renderCalendar();
+    });
 </script>
 <script>
     function onClick(element) {
@@ -147,7 +148,7 @@
     var modal = document.getElementById('modal');
     var closeModal = document.getElementById('ModalcloseBtn');
     window.onclick = function(event) {
-        if (event.target == modal || event.target == closeModal) {
+        if (event.target === modal || event.target === closeModal) {
             modal.style.display = "none";
         }
     }
