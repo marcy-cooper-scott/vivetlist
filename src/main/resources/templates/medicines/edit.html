@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/header :: header('VivetList')"></head>
+<body>
+<header th:replace="partials/nav :: nav"></header>
+
+<container>
+    <div class="page-title-wrap">
+        <div class="page-title"><h1>Edit Medication</h1></div>
+    </div>
+    <div class="form-wrap">
+        <form th:action="@{'/medicines/' + ${medicine.id} + '/edit'}" th:method="post" th:object="${medicine}">
+            Appointment Date &amp; Time:
+            <input th:field="*{medicine_name}" />
+            <br />
+            Name of Doctor:
+            <input th:field="*{notes}" />
+            <br />
+            Location of Appointment:
+            <input th:field="*{refill_date}" />
+            <br />
+            <input type="hidden" th:field="*{id}" />
+            <input type="submit" />
+        </form>
+
+        <form th:action="@{/medicines/delete}" th:method="post" th:object="${medicine}">
+            <input type="hidden" th:field="*{id}" />
+            <button>Delete</button>
+        </form>
+    </div>
+
+
+    <div class="epmty-space"></div>
+</container>
+
+<footer th:replace="partials/footer :: footer"></footer>
+
+</body>
+</html>
