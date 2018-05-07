@@ -8,7 +8,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <span id="ModalcloseBtn" class="closeBtn">&times;</span>
-            <h2>Modal Header</h2>
+            <h2 id="med-modal-header">Modal Header</h2>
         </div>
         <div class="modal-body">
             <p>Hello...I am a modal</p>
@@ -55,10 +55,10 @@
         <h2>My Prescriptions <small>(Click to view Info)</small></h2>
         <ul th:each="med: ${meds}">
             <!--<button class="trigger">Trigger Modal</button>-->
-            <li th:id="${med.medicine_name}" th:attr="data-name=${med.medicine_name}">
+            <li>
                 <div class="prescription-list-edit"><img src="/images/edit-icon.png" alt="" /></div>
                 <div class="prescription-list-delete"><img src="/images/delete-icon.png" alt="" /></div>
-                <span class="prescription-list-title" onclick="onClick(this)" th:text="${med.medicine_name}">Metoprolol</span>
+                <span th:id="${med.medicine_name}" class="prescription-list-title" onclick="onClick(this)" th:text="${med.medicine_name}">Metoprolol</span>
             </li>
         </ul>
 
@@ -74,7 +74,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
-<script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
     $(document).ready(function(){
         function renderCalendar() {
             $('#calendar').fullCalendar({timezone:'local'});
@@ -95,11 +96,33 @@
         }
         renderCalendar();
     });
-</script>
-<script>
+    var openfda = function(search) { // brings back two things: meta and results
+        var request = $.ajax({
+            'url': 'https://api.fda.gov/drug/label.json?api_key=jhZsAyS9joDLO09BgKoNHnJS2GgKZxc3BEbQRiwZ&search=' +
+            search});
+        request.done(function (results) { // results is an object
+            console.table(results);
+            console.log("typeof: " + typeof(results));
+            console.table(results["results"]); // interesting part here are the actual results
+            console.log("keys: " + Object.keys(results["results"])); // grab the keys to the interesting things as well
+            console.log("keys: " + Object.keys(results["results"][0])); // grab the keys to the interesting things as well
+            // testing out more access features
+            var keys = Object.keys(results.results[0]); // get the keys
+            var values = Object.values(results.results[0]); // get what the keys have inside
+            for (var i = 0; i < keys.length; i++) {
+                if (keys[i] === "drug_abuse_and_dependence") {
+                    alert("controlled substance");
+                }
+                console.log(keys[i] + ": " + values[i]);
+            }
+        });
+    };
     function onClick(element) {
         document.getElementById("modal").style.display = "block";
         // here, we will push out a request for openfda to give us the medicine
+        console.log(element.id); // got the medicine
+        $('#med-modal-header').text(element.id);
+        console.log(openfda(element.id));
     }
     var modal = document.getElementById('modal');
     var closeModal = document.getElementById('ModalcloseBtn');
@@ -108,6 +131,8 @@
             modal.style.display = "none";
         }
     }
+/*]]>*/
+
 </script>
 </body>
 </html>
