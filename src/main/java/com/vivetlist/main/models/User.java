@@ -30,7 +30,7 @@ public class User {
     @Column(nullable = false)
     @NotNull(message = "Password can not be null")
     @NotEmpty(message = "Password can not be blank")
-    @Size(min = 8, message = "Password must be 8 or more characters")
+    @Size(min = 8, message = "Password must be 8 characters or more")
     private String password;
 
     @Column(nullable = false, unique = true)

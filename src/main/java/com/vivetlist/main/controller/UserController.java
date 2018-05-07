@@ -2,6 +2,7 @@ package com.vivetlist.main.controller;
 
 import com.vivetlist.main.models.User;
 import com.vivetlist.main.repos.UserRepo;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,6 +47,14 @@ public class UserController {
     public String editUser(@PathVariable long id, Model model){
         model.addAttribute("user", userDao.findById(id));
         return "/edit";
+    }
+
+    @PostMapping("edit/{id}")
+    public String editUser(@PathVariable long id, User user){
+        String hash = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hash);
+        userDao.save(user);
+        return "redirect:/mylist";
     }
 
 }
