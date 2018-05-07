@@ -9,15 +9,13 @@
     <div class="page-title-wrap">
         <div class="page-title"><h1><span th:text="${group.name}"></span></h1></div>
     </div>
-    <form action="">
-        <input type="text" placeholder="Search This Group" />
-    </form>
-    <a th:href="@{/group/{id}/posts/create(id=${group.id})}">
+
+    <a th:href="@{/group/{gid}/posts/create(gid=${group.id})}">
         <button>New Post</button>
     </a>
     <div class="single-group-wrap">
         <div class="single-group" th:each="post : ${posts}">
-            <a th:href="@{/group/{gid}/posts/{id}(gid=${group.id}, id=${post.id})}">
+            <a th:href="@{/group/{gid}/posts/{pid}(gid=${group.id}, pid=${post.id})}">
                 <h2><span th:text="${post.title}"></span></h2>
                 <p><span th:text="${post.body}"></span></p>
             </a>

@@ -1,6 +1,7 @@
 package com.vivetlist.main.models;
 
 import com.fasterxml.jackson.annotation.JacksonInject;
+import groovy.transform.Field;
 
 import javax.persistence.*;
 import java.util.List;

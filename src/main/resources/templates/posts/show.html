@@ -4,18 +4,37 @@
 <body>
     <header th:replace="partials/nav :: nav"></header>
 
-    <h1>Post</h1>
+    <container>
+        <h1>Post</h1>
 
-    <main>
-        <h3><span th:text="${post.title}"></span></h3>
-        <p><span th:text="${post.body}"></span></p>
+        <main>
+            <h3><span th:text="${post.title}"></span></h3>
+            <p><span th:text="${post.body}"></span></p>
+            <p><span th:text="${'Author: ' + post.user.username}"></span> </p>
+            <div th:if="${#authentication.principal.id == post.user.id}">
+                <a th:href="@{/group/{gid}/posts/{pid}/edit(gid=${group.id}, pid=${post.id})}">
+                    <button>Edit</button>
+                </a>
+            </div>
 
-        <div th:if="${#authentication.principal.id == post.user.id}">
-            <a th:href="@{/group/{gid}/posts/{id}/edit(gid=${group.id}, id=${post.id})}">
-                <button>Edit</button>
+            <a th:href="@{/group/{gid}/posts/{pid}/comments/create(gid=${group.id}, pid=${post.id})}">
+                <button>Comment</button>
             </a>
-        </div>
-    </main>
 
+
+
+            <div class="single-group" th:each="comment : ${comments}">
+                <a th:href="@{/group/{gid}/posts/{pid}/comments/{cid}(gid=${group.id}, pid=${post.id}, cid=${comment.id})}">
+                    <p><span th:text="${comment.body}"></span></p>
+                    <p><span th:text="${'Author: ' + comment.user.username}"></span></p>
+                </a>
+            </div>
+
+
+        </main>
+    </container>
+
+
+    <footer th:replace="partials/footer :: footer"></footer>
 </body>
 </html>

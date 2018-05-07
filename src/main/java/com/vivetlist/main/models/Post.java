@@ -1,6 +1,7 @@
 package com.vivetlist.main.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "posts")
@@ -24,19 +25,25 @@ public class Post {
     @JoinColumn(name = "group_id")
     private Group group;
 
-    public Post(long id, String title, String body, User user, Group group){
+    @OneToMany(mappedBy = "post")
+    List<Comment> comments;
+
+
+    public Post(long id, String title, String body, User user, Group group, List<Comment> comments){
         this.id = id;
         this.title = title;
         this.body = body;
         this.user = user;
         this.group = group;
+        this.comments = comments;
     }
 
-    public Post(String title, String body, User user, Group group){
+    public Post(String title, String body, User user, Group group, List<Comment> comments){
         this.title = title;
         this.body = body;
         this.user = user;
         this.group = group;
+        this.comments = comments;
     }
 
     public Post(){}

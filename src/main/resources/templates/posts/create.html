@@ -10,7 +10,7 @@
         </div>
 
         <div class="form-wrap">
-            <form th:action="@{/group/{id}/posts/create(id=${group.id})}" th:method="post" th:object="${post}">
+            <form th:action="@{/group/{gid}/posts/create(gid=${group.id})}" th:method="post" th:object="${post}">
                 <input th:type="hidden" type="hidden" th:field="*{group}" />
                 <label for="title">Post Title</label>
                 <input id="title" placeholder="Enter a title" type="text" th:field="*{title}" />
