@@ -12,7 +12,7 @@ public interface PostRepo extends CrudRepository<Post, Long>{
     Post findById(long id);
     void delete(Post post);
     List<Post> findAllByGroup_Id(long id);
-
+    List<Post> findAllByTitleContaining(String search);
 
 
 
