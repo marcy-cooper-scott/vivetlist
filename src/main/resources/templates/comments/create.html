@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/header :: header('VivetList')"></head>
+<body>
+<header th:replace="partials/nav :: nav"></header>
+
+<container>
+    <div class="page-title-wrap">
+        <div class="page-title"><h1>Create Comment</h1></div>
+    </div>
+
+    <div class="form-wrap">
+        <form th:action="@{/group/{gid}/posts/{pid}/comments/create(gid=${group.id}, pid=${post.id})}" th:method="post" th:object="${comment}">
+
+            <input th:type="hidden" type="hidden" th:field="*{post}" />
+            <label for="body">Comment</label>
+            <textarea id="body" placeholder="Enter text" th:field="*{body}"></textarea>
+
+            <button>Create Comment</button>
+
+        </form>
+    </div>
+    <div class="epmty-space"></div>
+</container>
+<footer th:replace="partials/footer :: footer"></footer>
+</body>
+</html>

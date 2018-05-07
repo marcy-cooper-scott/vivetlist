@@ -4,6 +4,7 @@ import com.vivetlist.main.Services.UserService;
 import com.vivetlist.main.models.Group;
 import com.vivetlist.main.models.Post;
 import com.vivetlist.main.models.User;
+import com.vivetlist.main.repos.CommentRepo;
 import com.vivetlist.main.repos.GroupRepo;
 import com.vivetlist.main.repos.PostRepo;
 import com.vivetlist.main.repos.UserRepo;
@@ -25,48 +26,45 @@ public class PostController {
     PostRepo postDao;
     GroupRepo groupDao;
     UserService userService;
+    CommentRepo commentRepo;
 
-    public PostController(UserRepo userDao, PostRepo postDao, GroupRepo groupDao, UserService userService){
+    public PostController(UserRepo userDao, PostRepo postDao, GroupRepo groupDao, UserService userService, CommentRepo commentRepo){
         this.userDao = userDao;
         this.postDao = postDao;
         this.groupDao = groupDao;
         this.userService = userService;
+        this.commentRepo = commentRepo;
     }
 
 
-    @GetMapping("/group/{gid}/posts/{id}")
-    public String showAPost(@PathVariable long gid, @PathVariable long id, Model model){
+    @GetMapping("/group/{gid}/posts/{pid}")
+    public String showAPost(@PathVariable long gid, @PathVariable long pid, Model model){
         model.addAttribute("group", groupDao.findById(gid));
-        model.addAttribute("post", postDao.findById(id));
+        model.addAttribute("post", postDao.findById(pid));
+        model.addAttribute("comments", commentRepo.findAllByPostId(pid));
         return "posts/show";
     }
 
-    @GetMapping("/group/{gid}/posts/{id}/edit")
-    public String editPost(@PathVariable long gid, @PathVariable long id, Model model){
+    @GetMapping("/group/{gid}/posts/{pid}/edit")
+    public String editPost(@PathVariable long gid, @PathVariable long pid, Model model){
         model.addAttribute("group", groupDao.findById(gid));
-        model.addAttribute("post", postDao.findById(id));
+        model.addAttribute("post", postDao.findById(pid));
         return "posts/edit";
     }
 
-    @PostMapping("/group/{gid}/posts/{id}/edit")
-    public String handleEdit(@PathVariable long gid, @PathVariable long id, Model model, @ModelAttribute Post post){
-        System.out.println(gid);
+    @PostMapping("/group/{gid}/posts/{pid}/edit")
+    public String handleEdit(@PathVariable long gid, @PathVariable long pid, Model model, @ModelAttribute Post post){
         User user = userService.loggedInUser();
-        Post originalPost = postDao.findById(id);
-        originalPost.setId(id);
+        Post originalPost = postDao.findById(pid);
+        originalPost.setId(pid);
         originalPost.setTitle(post.getTitle());
         originalPost.setBody(post.getBody());
         originalPost.setUser(user);
         originalPost.setGroup(groupDao.findById(gid));
         postDao.save(originalPost);
-
         model.addAttribute("group", groupDao.findById(gid));
         model.addAttribute("isOwnedBy", userService.isOwnedBy(originalPost.getUser()));
         model.addAttribute("isLoggedIn", userService.isLoggedIn());
-//        RedirectView rv = new RedirectView();
-//        rv.setContextRelative(true);
-//        rv.setUrl("/group/{id}/single-group");
-//        return rv;
         return "redirect:/group/{gid}";
     }
 
