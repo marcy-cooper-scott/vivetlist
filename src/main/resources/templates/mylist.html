@@ -53,57 +53,12 @@
 
     <div class="prescription-list-wrap">
         <h2>My Prescriptions <small>(Click to view Info)</small></h2>
-        <ul>
+        <ul th:each="med: ${meds}">
             <!--<button class="trigger">Trigger Modal</button>-->
-            <li>
+            <li th:id="${med.medicine_name}" th:attr="data-name=${med.medicine_name}">
                 <div class="prescription-list-edit"><img src="/images/edit-icon.png" alt="" /></div>
                 <div class="prescription-list-delete"><img src="/images/delete-icon.png" alt="" /></div>
-                <span class="prescription-list-title" onclick="onClick(this)">Dimethylamidophenyldimethylpyrazolone</span>
-            </li>
-            <li>
-                <div class="prescription-list-edit"><img src="/images/edit-icon.png" alt="" /></div>
-                <div class="prescription-list-delete"><img src="/images/delete-icon.png" alt="" /></div>
-                <span class="prescription-list-title" onclick="onClick(this)">Metoprolol</span>
-            </li>
-            <li>
-                <div class="prescription-list-edit"><img src="/images/edit-icon.png" alt="" /></div>
-                <div class="prescription-list-delete"><img src="/images/delete-icon.png" alt="" /></div>
-                <span class="prescription-list-title" onclick="onClick(this)">Talimogene Laherparepvec</span>
-            </li>
-            <li>
-                <div class="prescription-list-edit"><img src="/images/edit-icon.png" alt="" /></div>
-                <div class="prescription-list-delete"><img src="/images/delete-icon.png" alt="" /></div>
-                <span class="prescription-list-title" onclick="onClick(this)">Levetiracetam</span>
-            </li>
-            <li>
-                <div class="prescription-list-edit"><img src="/images/edit-icon.png" alt="" /></div>
-                <div class="prescription-list-delete"><img src="/images/delete-icon.png" alt="" /></div>
-                <span class="prescription-list-title" onclick="onClick(this)">Isavuconazonium</span>
-            </li>
-            <li>
-                <div class="prescription-list-edit"><img src="/images/edit-icon.png" alt="" /></div>
-                <div class="prescription-list-delete"><img src="/images/delete-icon.png" alt="" /></div>
-                <span class="prescription-list-title" onclick="onClick(this)">Dimethylamidophenyldimethylpyrazolone</span>
-            </li>
-            <li>
-                <div class="prescription-list-edit"><img src="/images/edit-icon.png" alt="" /></div>
-                <div class="prescription-list-delete"><img src="/images/delete-icon.png" alt="" /></div>
-                <span class="prescription-list-title" onclick="onClick(this)">Metoprolol</span>
-            </li>
-            <li>
-                <div class="prescription-list-edit"><img src="/images/edit-icon.png" alt="" /></div>
-                <div class="prescription-list-delete"><img src="/images/delete-icon.png" alt="" /></div>
-                <span class="prescription-list-title" onclick="onClick(this)">Talimogene Laherparepvec</span>
-            </li>
-            <li>
-                <div class="prescription-list-edit"><img src="/images/edit-icon.png" alt="" /></div>
-                <div class="prescription-list-delete"><img src="/images/delete-icon.png" alt="" /></div>
-                <span class="prescription-list-title" onclick="onClick(this)">Levetiracetam</span>
-            </li>
-            <li>
-                <div class="prescription-list-edit"><img src="/images/edit-icon.png" alt="" /></div>
-                <div class="prescription-list-delete"><img src="/images/delete-icon.png" alt="" /></div>
-                <span class="prescription-list-title" onclick="onClick(this)">Isavuconazonium</span>
+                <span class="prescription-list-title" onclick="onClick(this)" th:text="${med.medicine_name}">Metoprolol</span>
             </li>
         </ul>
 
@@ -144,6 +99,7 @@
 <script>
     function onClick(element) {
         document.getElementById("modal").style.display = "block";
+        // here, we will push out a request for openfda to give us the medicine
     }
     var modal = document.getElementById('modal');
     var closeModal = document.getElementById('ModalcloseBtn');
