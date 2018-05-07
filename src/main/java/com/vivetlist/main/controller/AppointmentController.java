@@ -46,7 +46,7 @@ public class AppointmentController {
         return "appointments/edit";
     }
 
-    @PostMapping("/appointents/{id}/edit")
+    @PostMapping("/appointments/{id}/edit")
     public String handleEdit(@PathVariable long id, @ModelAttribute Appointment appt){
         Appointment origAppt = apptRepo.findOne(id);
         origAppt.setDate_time(appt.getDate_time());
