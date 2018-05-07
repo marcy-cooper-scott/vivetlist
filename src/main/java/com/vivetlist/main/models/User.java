@@ -2,7 +2,12 @@ package com.vivetlist.main.models;
 
 import com.fasterxml.jackson.annotation.*;
 import org.hibernate.annotations.Type;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -17,12 +22,21 @@ public class User {
     private long id;
 
     @Column(nullable = false, unique = true)
+    @NotNull(message = "Username can not be null")
+    @NotEmpty(message = "Username can not be blank")
+    @Size(min = 6, max = 30, message = "Username must be between 6 and 30 characters")
     private String username;
 
     @Column(nullable = false)
+    @NotNull(message = "Password can not be null")
+    @NotEmpty(message = "Password can not be blank")
+    @Size(min = 8, max = 30, message = "Password must be between 8 and 30 characters")
     private String password;
 
     @Column(nullable = false, unique = true)
+    @Email
+    @NotNull(message = "Email can not be null")
+    @NotEmpty(message = "Email can not be blank")
     private String email;
 
     @Column(length = 100)
