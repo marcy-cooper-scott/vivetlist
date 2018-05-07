@@ -7,7 +7,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @Controller
@@ -34,7 +33,7 @@ public class AppointmentController {
     }
 
     @PostMapping("/appointments/create")
-    public String insertAppt(@ModelAttribute Appointment appt, Model model){
+    public String insertAppt(@ModelAttribute Appointment appt){
         User loggedInUser = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         appt.setUser(loggedInUser);
         apptRepo.save(appt);
@@ -44,7 +43,7 @@ public class AppointmentController {
     @GetMapping("/appointments/{id}/edit")
     public String editAppt(@PathVariable long id, Model model){
         model.addAttribute("appointment", apptRepo.findOne(id));
-        return"appointments/edit";
+        return "appointments/edit";
     }
 
     @PostMapping("/appointents/{id}/edit")

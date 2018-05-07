@@ -29,7 +29,7 @@ public class User {
     private String phone_number;
 
     @Column(length = 100, nullable = false)
-    private String time_zone;
+    private Long time_zone; // changed to a long in order to only have to use numbers in our application
 
     @Column
     @Type(type = "org.hibernate.type.NumericBooleanType")
@@ -68,7 +68,6 @@ public class User {
         this.posts = posts;
         this.comments = comments;
     }
-
 
     public User(String username, String password, String email, String phone_number, String time_zone, boolean isAdmin, List<Appointment>appointments, List<Medicine>medicines, List<Group> groups, List<Post> posts, List<Comment> comments){
         this.username = username;
@@ -134,11 +133,11 @@ public class User {
         this.phone_number = phone_number;
     }
 
-    public String getTime_zone() {
+    public Long getTime_zone() {
         return time_zone;
     }
 
-    public void setTime_zone(String time_zone) {
+    public void setTime_zone(Long time_zone) {
         this.time_zone = time_zone;
     }
 

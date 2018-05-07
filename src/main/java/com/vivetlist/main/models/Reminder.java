@@ -2,6 +2,8 @@ package com.vivetlist.main.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -36,7 +38,7 @@ public class Reminder {
 
     public Reminder(long id, Date scheduled_time, User user, Appointment appt, Medicine med, Notification_Type unit){
         this.id = id;
-        this.scheduled_time = scheduled_time;
+        this.scheduled_time = convertDate(scheduled_time);
         this.user = user;
         this.appt = appt;
         this.med = med;
@@ -44,7 +46,7 @@ public class Reminder {
     }
 
     public Reminder(Date scheduled_time, User user, Appointment appt, Medicine med, Notification_Type unit){
-        this.scheduled_time = scheduled_time;
+        this.scheduled_time = convertDate(scheduled_time);
         this.user = user;
         this.appt = appt;
         this.med = med;
@@ -100,5 +102,10 @@ public class Reminder {
 
     public void setUnit(Notification_Type unit) {
         this.unit = unit;
+    }
+
+    private Date convertDate(Date date) {
+        DateTime joda = new DateTime(date);
+        return joda.minusHours(5).toDate(); // get timezone offset here, fixes the issue
     }
 }
