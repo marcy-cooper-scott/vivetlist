@@ -9,7 +9,7 @@
 <main>
     <p><span th:text="${comment.body}"></span></p>
 
-    <div th:if="${#authentication.principal.id == post.user.id}">
+    <div th:if="${#authentication.principal.id == comment.user.id}">
         <a th:href="@{/group/{gid}/posts/{pid}/comments/{cid}/edit(gid=${group.id}, pid=${post.id}, cid=${comment.id})}">
             <button>Edit</button>
         </a>
