@@ -158,6 +158,16 @@ input {
 small {
     font-size: .4em;
 }
+.error-wrap {
+    grid-column: 4/10;
+    width: 100%;
+    background-color: pink;
+    color: red;
+    border-radius: .5em;
+    text-align: center;
+    font-size: 1em;
+    padding: .5em 0;
+}
 /* ################# Banner Elements ################# */
 .banner-wrap {
     display: grid;
@@ -165,7 +175,7 @@ small {
     grid-template-rows: auto;
     grid-column: 1/13;
     margin-top: 5.5em;
-    background-image: url("../images/banner-bg.jpg");
+    background-image: url("../images/home-banner-bg.jpg");
     background-size: cover;
     background-color: #8cc63f;
     border-bottom: #144575 solid .1em;
@@ -392,7 +402,7 @@ small {
 
 .modal-body{
     padding:10px 20px;
-    height: 45em;
+    height: 65vh;
     overflow: hidden;
     overflow-y: scroll;
 }
@@ -878,7 +888,7 @@ small {
 @media only screen and (max-width: 600px) {
     header{
         grid-template-areas:
-                "logo logo logo logo logo logo logo nav-bar nav-bar nav-bar nav-bar nav-bar";
+                "logo logo logo logo logo logo logo logo nav-bar nav-bar nav-bar nav-bar";
     }
     nav .hamburger{
         float: right;
@@ -900,6 +910,9 @@ small {
     }
     #calendar h2 {
         font-size: 1.3em;
+    }
+    .banner-signup {
+        grid-column: 2/12;
     }
 }/* ################# MOBILE MENU ################# */
 
@@ -957,7 +970,7 @@ small {
 }
 #menu{
     position: absolute;
-    width: 400px;
+    width: 300px;
     margin: -100px 0 0 80px;
     padding-top: 125px;
     background: #144575;
