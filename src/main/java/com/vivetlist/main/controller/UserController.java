@@ -5,10 +5,13 @@ import com.vivetlist.main.repos.UserRepo;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
 
 
 @Controller
@@ -28,7 +31,11 @@ public class UserController {
     }
 
     @PostMapping("/sign-up")
-    public String registerUser(@ModelAttribute User user){
+    public String registerUser(@Valid User user, Errors validation, Model model){
+        if (validation.hasErrors()){
+            model.addAttribute("user", user);
+            return "sign-up";
+        }
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userDao.save(user);
