@@ -12,10 +12,7 @@ import org.springframework.security.access.method.P;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
@@ -91,7 +88,12 @@ public class PostController {
         return "redirect:/group/{gid}";
     }
 
-
+    @GetMapping("/group/{gid}/posts/search")
+    public String searchGroups(@PathVariable long gid, @RequestParam String search, Model model){
+        model.addAttribute("group", groupDao.findById(gid));
+        model.addAttribute("posts", postDao.findAllByTitleContaining(search));
+        return "posts/search";
+    }
 
 
 }

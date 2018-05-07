@@ -6,13 +6,18 @@
 <header th:replace="partials/nav :: nav"></header>
 
 <container>
+
     <div class="page-title-wrap">
         <div class="page-title"><h1><span th:text="${group.name}"></span></h1></div>
     </div>
-
-    <a th:href="@{/group/{gid}/posts/create(gid=${group.id})}">
-        <button>New Post</button>
-    </a>
+    <form th:action="@{/group/{gid}/posts/search(gid=${group.id})}" method="get" class="search-wrap">
+        <input type="text" placeholder="Search posts in this group" name="search" />
+    </form>
+    <div class="new-post-wrap">
+        <a th:href="@{/group/{gid}/posts/create(gid=${group.id})}">
+            <button>New Post</button>
+        </a>
+    </div>
     <div class="single-group-wrap">
         <div class="single-group" th:each="post : ${posts}">
             <a th:href="@{/group/{gid}/posts/{pid}(gid=${group.id}, pid=${post.id})}">
