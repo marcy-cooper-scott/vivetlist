@@ -29,7 +29,7 @@ public class MylistController {
     public String myList(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", user);
-        model.addAttribute("meds", repo.findByUserID(user.getId()));
+        model.addAttribute("meds", repo.findAllByUserId(user.getId()));
         return "mylist";
     }
 

@@ -8,6 +8,5 @@ import java.util.List;
 
 public interface MedicineRepo extends CrudRepository<Medicine, Long> {
 
-    @Query(nativeQuery = true, value = "SELECT * from medicines as m JOIN medicines_users AS mu WHERE mu.users_id = ?")
-    List<Medicine> findByUserID(Long id);
+    List<Medicine> findAllByUserId (long id);
 }

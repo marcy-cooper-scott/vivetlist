@@ -17,10 +17,19 @@
                 <label for="location">Location of Appointment</label>
                 <input id="location" placeholder="Enter appointment location" th:field="*{location}" />
 
-                <button>Create Post</button>
+            Set Reminder?<input type="checkbox" id="reminder" onclick="reminder()" />
+                <button>Create Appointment</button>
+
+             <!--<div class="reminderForm">-->
+                 <!--<Label for="scheduled_time">Reminder Time</Label>-->
+                 <!--<input id="scheduled_time" placeholder="Enter reminder time" th:field="*{scheduled_time}" />-->
+             <!--</div>-->
+
 
             </form>
         </div>
+
+
 
 
         <div class="epmty-space"></div>
@@ -37,6 +46,18 @@
                 sideBySide: true
             });
         });
+    </script>
+    <script>
+        function reminder(){
+            let reminder = document.getElementById("reminder");
+            let form = document.getElementById("reminderForm");
+            if (reminder.checked == true){
+                form.style.display = "block";
+            }
+            else{
+                form.style.display = "none";
+            }
+        }
     </script>
 </body>
 </html>
