@@ -39,7 +39,8 @@ public class User {
     @NotEmpty(message = "Email can not be blank")
     private String email;
 
-    @Column(length = 100)
+    @Column
+    @Size(min = 10, max = 100, message = "Please enter a valid phone number including area code")
     private String phone_number;
 
     @Column(length = 100, nullable = false)

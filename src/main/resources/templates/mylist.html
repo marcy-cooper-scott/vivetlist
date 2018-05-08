@@ -23,8 +23,9 @@
         <div class="mylist-banner-user">
             <div class="mylist-user-pic"><img src="/images/default-user.jpg" alt="" /></div>
             <div class="user-info">
-                <h2 th:text="'Welcome , ' + ${user.username} + '!'">Welcome Username</h2>
-                <p th:text="${user.email}">username@username.com</p>
+                <h2 th:text="'Welcome , ' + ${user.username} + '!'"></h2>
+                <p th:text="${user.email}"></p>
+                <p th:text="${user.phone_number}"></p>
                 <a th:href="@{/edit/{id}(id=${user.id})}"><button>Edit Profile</button></a>
             </div>
         </div>
