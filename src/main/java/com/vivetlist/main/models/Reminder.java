@@ -38,7 +38,7 @@ public class Reminder {
 
     public Reminder(long id, Date scheduled_time, User user, Appointment appt, Medicine med, Notification_Type unit){
         this.id = id;
-        this.scheduled_time = convertDate(scheduled_time);
+        this.scheduled_time = convertDate(scheduled_time, user);
         this.user = user;
         this.appt = appt;
         this.med = med;
@@ -46,7 +46,7 @@ public class Reminder {
     }
 
     public Reminder(Date scheduled_time, User user, Appointment appt, Medicine med, Notification_Type unit){
-        this.scheduled_time = convertDate(scheduled_time);
+        this.scheduled_time = convertDate(scheduled_time, user);
         this.user = user;
         this.appt = appt;
         this.med = med;
@@ -104,8 +104,8 @@ public class Reminder {
         this.unit = unit;
     }
 
-    private Date convertDate(Date date) {
+    private Date convertDate(Date date, User user) {
         DateTime joda = new DateTime(date);
-        return joda.minusHours(5).toDate(); // get timezone offset here, fixes the issue
+        return joda.minusHours(user.getTime_zone().intValue()).toDate(); // get timezone offset here, fixes the issue
     }
 }

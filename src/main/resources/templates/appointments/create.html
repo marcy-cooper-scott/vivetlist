@@ -17,16 +17,19 @@
                 <label for="location">Location of Appointment</label>
                 <input id="location" placeholder="Enter appointment location" th:field="*{location}" />
 
-            Set Reminder?<input type="checkbox" id="reminder" onclick="reminder()" />
-                <button>Create Appointment</button>
-
-             <!--<div class="reminderForm">-->
-                 <!--<Label for="scheduled_time">Reminder Time</Label>-->
-                 <!--<input id="scheduled_time" placeholder="Enter reminder time" th:field="*{scheduled_time}" />-->
-             <!--</div>-->
-
-
+            Set Reminder?<input type="checkbox" id="reminder"/>
             </form>
+
+            <form th:action="@{/reminders/create}" th:method="post">
+            <div class="reminderForm" style="display:none">
+                    <Label for="scheduled_time">Reminder Time</Label>
+                    <input id="scheduled_time" placeholder="Enter reminder time" th:field="*{reminder.scheduled_time}" />
+
+            </div>
+                <button>Create Appointment</button>
+            </form>
+
+
         </div>
 
 
@@ -48,16 +51,14 @@
         });
     </script>
     <script>
-        function reminder(){
-            let reminder = document.getElementById("reminder");
-            let form = document.getElementById("reminderForm");
-            if (reminder.checked == true){
-                form.style.display = "block";
-            }
-            else{
-                form.style.display = "none";
-            }
-        }
+        $(document).ready(function() {
+            $(":checkbox").click(function() {
+                if ($(this).is(":checked"))
+                    $(".reminderForm").show();
+                else
+                    $(".reminderForm").hide();
+            });
+        })
     </script>
 </body>
 </html>

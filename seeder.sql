@@ -2,12 +2,12 @@ create DATABASE if not exists vivetlist_db;
 use vivetlist_db;
 
 insert into appointments(date_time, doctor_name, location, user_id)
-    VALUES(2018-05-21 15:00:00, 'Hawkeye', 'Mobile Clinic', 1),
-      (2018-06-01 09:30:00, 'Howser', 'Memorial', 2),
-      (2018-05-18 11:45:00, 'Welby', 'Baptist', 3),
-      (2018-12-17 14:00:00, 'Grey', 'Medical Dr', 4),
-      (2018-08-13 16:15:00, 'Shepherd', 'Mercy Clinic', 5),
-      (2018-10-01 15:15:00, 'Hunnicutt', 'Military Dr', 6);
+    VALUES('2018-05-21 15:00:00', 'Hawkeye', 'Mobile Clinic', 1),
+      ('2018-06-01 09:30:00', 'Howser', 'Memorial', 2),
+      ('2018-05-18 11:45:00', 'Welby', 'Baptist', 3),
+      ('2018-12-17 14:00:00', 'Grey', 'Medical Dr', 4),
+      ('2018-08-13 16:15:00', 'Shepherd', 'Mercy Clinic', 5),
+      ('2018-10-01 15:15:00', 'Hunnicutt', 'Military Dr', 6);
 
 insert into groups(name, description)
     values('Diabetes','Diabetes is a number of diseases that involve problems with the hormone insulin. This group is intended to help those suffering with diabetes to communicate and help each other.'),
@@ -18,12 +18,12 @@ insert into groups(name, description)
     ('ADHD', 'This group is for those with Attention Deficit Hyperactivity Disorder (ADHD), a highly genetic, brain-based syndrome that has to do with the regulation of a particular set of brain functions and related behaviors.');
 
 insert into medicines(medicine_name, refill_date, user_id)
-    VALUES ('insulin', 2018-06-02 10:00:00, 1),
-      ('insulin', 2018-08-01 12:00:00, 2),
-      ('codeine', 2018-07-10 09:00:00, 3),
-      ('avonex', 2018-05-25 15:00:00, 4),
-      ('atenolol', 2018-06-30 10:00:00, 5),
-      ('adderall', 2018-11-18 17:00:00, 6);
+    VALUES ('insulin', '2018-06-02 10:00:00', 1),
+      ('insulin', '2018-08-01 12:00:00', 2),
+      ('codeine', '2018-07-10 09:00:00', 3),
+      ('avonex', '2018-05-25 15:00:00', 4),
+      ('atenolol', '2018-06-30 10:00:00', 5),
+      ('adderall', '2018-11-18 17:00:00', 6);
 
 insert into posts(title, body, group_id, user_id)
     values('Diabetic for 5 years', 'Hi, I was diagnosed 5 years ago. It''s nice to be able to connect with others who have the disease.', 1, 1),

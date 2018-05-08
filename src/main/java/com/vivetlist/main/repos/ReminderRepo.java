@@ -12,4 +12,6 @@ public interface ReminderRepo extends CrudRepository<Reminder, Long> {
 
     @Query(nativeQuery = true, value = "select * from reminders as r where r.user_id = ?")
     List<Reminder> findByUserID(Long id);
+
+
 }
