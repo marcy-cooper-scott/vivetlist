@@ -26,23 +26,23 @@ public class Medicine {
     @Column(length = 500)
     private String notes;
 
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name = "user_id")
-    private List<User> users;
+    private User user;
 
-    public Medicine(long id, String medicine_name, Date refill_date, String notes, List<User> users){
+    public Medicine(long id, String medicine_name, Date refill_date, String notes, User user){
         this.id = id;
         this.medicine_name = medicine_name;
         this.refill_date = refill_date;
         this.notes = notes;
-        this.users = users;
+        this.user = user;
     }
 
-    public Medicine(String medicine_name, Date refill_date, String notes, List<User> users){
+    public Medicine(String medicine_name, Date refill_date, String notes, User users){
         this.medicine_name = medicine_name;
         this.refill_date = refill_date;
         this.notes = notes;
-        this.users = users;
+        this.user = user;
     }
 
     public Medicine(){}
