@@ -393,6 +393,74 @@ small {
 .prescription-list-edit img, .prescription-list-delete img{
     width: 100%;
 }
+/* ################# About Page Elements ################# */
+.about {
+    grid-column: 3/11;
+    font-size: 1.25em;
+    color: #125fad;
+}
+.about-title {
+    grid-column: 3/11;
+    border-bottom: #8cc63f solid .05em;
+}
+.about-title h2{
+    color: #8cc63f;
+    font-size: 2.5em;
+}
+.developer-wrap {
+    grid-column: 3/11;
+
+}
+.developer-pic {
+    width: 15em;
+    height: 15em;
+    background-color: #8cc63f;
+    border-radius: 1em;
+    overflow: hidden;
+    float: left;
+    margin-right: 2em;
+    border: #125fad solid .1em;
+}
+.developer-pic img{
+    width: 100%;
+}
+.developer-info-wrap {
+    float: left;
+}
+.developer-info-wrap h3{
+    font-size: 2em;
+    color: #125fad;
+}
+.about-line {
+    grid-column: 3/11;
+    height: .05em;
+    background-color: #8cc63f;
+}
+.social {
+    width: 2.5em;
+    height: 2.5em;
+    float: left;
+    margin-left: .2em;
+    margin-top: -.5em;
+    box-sizing: border-box;
+    background-color: #fff;
+    cursor: pointer;
+    border-radius: 3em;
+    text-align: center;
+    vertical-align: middle;
+    align-content: center;
+    transition: background .3s ease-in, transform .3s ease-in;
+
+}
+.social:hover {
+    transform: rotate(360deg);
+    background-color: #125fad;
+}
+.social img {
+    width: 100%;
+    padding-top: .5em;
+    margin-left: 0;
+}
 /* ################# Modal ################# */
 .button{
     background:coral;
@@ -952,7 +1020,20 @@ small {
     .banner-signup {
         grid-column: 2/12;
     }
-}/* ################# MOBILE MENU ################# */
+    .page-title {
+        height: 5em;
+        margin-top: -1.4em;
+    }
+    .page-title h1 {
+        font-size: 2em;
+        padding-left: 21%;
+        padding-top: .75em;
+    }
+    .about-title h2{
+        font-size: 2em;
+    }
+}
+/* ################# MOBILE MENU ################# */
 
 #menuToggle {
     display: block;

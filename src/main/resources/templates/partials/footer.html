@@ -6,8 +6,9 @@
         <h2>Links:</h2>
         <ul>
             <li><a href="/">Home</a></li>
-            <li sec:authorize="isAuthenticated()"><a href="/mylist">MyList</a></li>
+            <li sec:authorize="isAuthenticated()"><a href="/mylist">My VivetList</a></li>
             <li sec:authorize="isAuthenticated()"><a href="/groups">Groups</a></li>
+            <li><a href="/about">About</a></li>
             <li sec:authorize="isAuthenticated()">
                 <form class="logout_form" th:action="@{/logout}" th:method="post" style="margin-top: 12px; text-decoration: none;">
                     <a href="javascript:{}" onclick="document.getElementById('logout_form').submit(); return false;">Logout</a>
