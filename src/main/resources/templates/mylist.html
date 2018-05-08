@@ -81,22 +81,18 @@
         renderCalendar();
     });
     var openfda = function(search) { // brings back two things: meta and results
-        $('#medicine_info').empty(); // clear results
+        var medinfo = $('#medicine_info');
+        medinfo.empty(); // clear results
         var request = $.ajax({
             'url': 'https://api.fda.gov/drug/label.json?api_key=jhZsAyS9joDLO09BgKoNHnJS2GgKZxc3BEbQRiwZ&search=' +
-            search});
+            search
+        });
         request.done(function (results) { // results is an object
-            console.table(results);
-            console.log("typeof: " + typeof(results));
-            console.table(results["results"]); // interesting part here are the actual results
-            console.log("keys: " + Object.keys(results["results"])); // grab the keys to the interesting things as well
-            console.log("keys: " + Object.keys(results["results"][0])); // grab the keys to the interesting things as well
-            // testing out more access features
-            var keys = Object.keys(results.results[0]); // get the keys
-            var values = Object.values(results.results[0]); // get what the keys have inside
-            for (var i = 0; i < keys.length; i++) {
-                console.log(keys[i] + ": " + values[i]);
-                $('#medicine_info').append('<p>' + values[i] + '</p>');
+            var data = results.results[0]; // gather those results, prepare for filter and map
+            console.table(data);
+            var values = Object.values(data);
+            for (var i = 0; i < values.length; i++) {
+                medinfo.append('<a name="' + values[i] + '"><p>' + values[i] + '</p>');
             }
         });
     };
@@ -105,7 +101,7 @@
         // here, we will push out a request for openfda to give us the medicine
         console.log(element.id); // got the medicine
         $('#med-modal-header').text(element.id);
-        console.log(openfda(element.id));
+        openfda(element.id);
     }
     var modal = document.getElementById('modal');
     var closeModal = document.getElementById('ModalcloseBtn');
@@ -114,6 +110,7 @@
             modal.style.display = "none";
         }
     }
+
 /*]]>*/
 
 </script>
