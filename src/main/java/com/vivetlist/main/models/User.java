@@ -54,9 +54,8 @@ public class User {
     @JsonBackReference
     private List<Appointment> appointments;
 
-    @ManyToMany
+    @OneToMany(mappedBy = "user")
     @JsonBackReference
-    @JoinColumn(name = "medicine_id")
     private List<Medicine> medicines;
 
     @ManyToMany
