@@ -38,7 +38,7 @@ public class Medicine {
         this.user = user;
     }
 
-    public Medicine(String medicine_name, Date refill_date, String notes, User users){
+    public Medicine(String medicine_name, Date refill_date, String notes, User user){
         this.medicine_name = medicine_name;
         this.refill_date = refill_date;
         this.notes = notes;
