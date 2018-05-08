@@ -1,8 +1,10 @@
 package com.vivetlist.main.controller;
 
 import com.vivetlist.main.models.Appointment;
+import com.vivetlist.main.models.Reminder;
 import com.vivetlist.main.models.User;
 import com.vivetlist.main.repos.AppointmentRepo;
+import com.vivetlist.main.repos.ReminderRepo;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,9 +15,11 @@ import java.util.List;
 public class AppointmentController {
 
     AppointmentRepo apptRepo;
+    ReminderRepo reminderRepo;
 
-    AppointmentController(AppointmentRepo apptRepo) {
+    AppointmentController(AppointmentRepo apptRepo, ReminderRepo reminderRepo) {
         this.apptRepo = apptRepo;
+        this.reminderRepo = reminderRepo;
     }
 
     @GetMapping("/appointments.json")
@@ -28,12 +32,13 @@ public class AppointmentController {
     @GetMapping("/appointments/create")
     public String createAppt(Model model){
         model.addAttribute("appointment", new Appointment());
+        model.addAttribute("reminder", new Reminder());
         return "appointments/create";
 
     }
 
     @PostMapping("/appointments/create")
-    public String insertAppt(@ModelAttribute Appointment appt){
+    public String insertAppt(@ModelAttribute Appointment appt, @RequestParam String reminder){
         User loggedInUser = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         appt.setUser(loggedInUser);
         apptRepo.save(appt);

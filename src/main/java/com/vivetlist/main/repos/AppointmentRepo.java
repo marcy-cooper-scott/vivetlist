@@ -12,4 +12,5 @@ public interface AppointmentRepo extends CrudRepository<Appointment, Long> {
 
     @Query(nativeQuery = true, value = "SELECT * from appointments as a WHERE a.user_id = ?")
     List<Appointment> findByUserID(Long id);
+
 }
