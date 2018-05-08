@@ -81,6 +81,7 @@
         renderCalendar();
     });
     var openfda = function(search) { // brings back two things: meta and results
+        $('#medicine_info').empty(); // clear results
         var request = $.ajax({
             'url': 'https://api.fda.gov/drug/label.json?api_key=jhZsAyS9joDLO09BgKoNHnJS2GgKZxc3BEbQRiwZ&search=' +
             search});
