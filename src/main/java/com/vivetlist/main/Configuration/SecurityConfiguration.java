@@ -52,7 +52,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                             "/posts/create",
                             "/medicines/create",
                             "/comments/create",
-                            "/appointments/create"
+                            "/appointments/create",
+                            "/medicines/edit",
+                            "/appointments/edit",
+                            "/posts/edit",
+                            "/comments/edit"
+
                     )
                     .authenticated();
     }

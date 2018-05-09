@@ -1,16 +1,14 @@
 package com.vivetlist.main.controller;
 
 import com.vivetlist.main.models.*;
-import com.vivetlist.main.repos.ReminderRepo;
+import com.vivetlist.main.repos.*;
 import org.joda.time.DateTime;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.List;
 
@@ -18,9 +16,18 @@ import java.util.List;
 public class ReminderController {
 
     ReminderRepo repo;
+    AppointmentRepo apptRepo;
+    MedicineRepo medRepo;
+    NotificationsRepo nRepo;
+    UserRepo uRepo;
 
-    ReminderController(ReminderRepo repo){
+    ReminderController(ReminderRepo repo, AppointmentRepo apptRepo, MedicineRepo medRepo, NotificationsRepo nRepo,
+                       UserRepo uRepo){
         this.repo = repo;
+        this.apptRepo = apptRepo;
+        this.medRepo = medRepo;
+        this.nRepo = nRepo;
+        this.uRepo = uRepo;
     }
 
     @GetMapping("/reminders.json")
@@ -32,22 +39,28 @@ public class ReminderController {
 
     @GetMapping("/reminders/create")
     public String createReminder(Model model){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("appointments", apptRepo.findByUserID(user.getId()));
+        model.addAttribute("medicines", medRepo.findAllByUserId(user.getId()));
         model.addAttribute("reminder", new Reminder());
-        return "reminders/create";
+        model.addAttribute("notifications", nRepo.findAll());
+        return "/reminders/create";
     }
 
     @PostMapping("/reminders/create")
-    public String setReminder(@ModelAttribute Reminder reminder, @ModelAttribute Appointment appt, @ModelAttribute Medicine med){
+    public String setReminder(@ModelAttribute Reminder reminder){
         User loggedInUser = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         reminder.setUser(loggedInUser);
-        reminder.setAppt(appt);
-        reminder.setMed(med);
+        reminder.setScheduled_time(convertDate(reminder));
         repo.save(reminder);
         return "redirect:/mylist";
     }
-//
-//    private Date convertDate(Date date) {
-//        DateTime joda = new DateTime(date);
-//        return joda.minusHours(5).toDate(); // get timezone offset here, fixes the issue
-//    }
+
+    private Date convertDate(Reminder reminder) { // grab a user, get their timezone, send that back to the db in order
+        DateTime joda = new DateTime(reminder.getScheduled_time());
+        Long userId = reminder.getUser().getId();
+        int diff = uRepo.findById(userId).getTime_zone().intValue();
+        joda = joda.minusHours(diff);
+        return joda.toDate();
+    }
 }

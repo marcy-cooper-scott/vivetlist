@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/header :: header('Create Reminder')"></head>
+<body>
+<header th:replace="partials/nav :: nav"></header>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css" />
+<container>
+    <div class="page-title-wrap">
+        <div class="page-title"><h1>Create Reminder</h1></div>
+    </div>
+    <div class="form-wrap">
+        <form th:action="@{/reminders/create}" th:method="post" th:object="${reminder}">
+            <label for="time">Reminder Date &amp; Time</label>
+            <input id="time" placeholder="Enter date and time of notification" type="text" th:field="*{scheduled_time}" />
+            <label for="appointment">For appointment:</label>
+            <select id="appointment" name="appointment" th:field="*{appt}">
+                <th:block>
+                    <option th:value="null"></option>
+                    <option th:text="${appt.date_time + ' ' + appt.doctor_name}" th:each="appt : ${appointments}" th:value="${appt.id}" ></option>
+                </th:block>
+            </select>
+            <label for="medicine">For medicine:</label>
+            <select name="medicine" id="medicine" th:field="*{med}">
+                <option th:value="null"></option>
+                <option th:text="${med.medicine_name + ' ' + med.refill_date}" th:each="med : ${medicines}" th:field="*{med}" th:value="${med.id}" ></option>
+            </select>
+            <select name="method" id="method" th:field="*{unit}">
+                <option value="1">Text</option>
+                <option value="2">Email</option>
+                <option value="3">Both</option>
+            </select>
+            <input type="submit" />
+        </form>
+    </div>
+    <div class="epmty-space"></div>
+</container>
+
+<footer th:replace="partials/footer :: footer"></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+<script>
+    $(function () {
+        $('#time').datetimepicker({
+            inline: true,
+            sideBySide: true
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $(":checkbox").click(function() {
+            if ($(this).is(":checked"))
+                $(".reminderForm").show();
+            else
+                $(".reminderForm").hide();
+        });
+    })
+</script>
+</body>
+</html>
