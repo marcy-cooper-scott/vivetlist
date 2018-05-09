@@ -9,16 +9,22 @@
         <div class="page-title"><h1>Create Reminder</h1></div>
     </div>
     <div class="form-wrap">
-        <!--/*@thymesVar id="reminder" type="com.vivetlist.main.models.Reminder"*/-->
         <form th:action="@{/reminders/create}" th:method="post" th:object="${reminder}">
             <label for="time">Reminder Date &amp; Time</label>
             <input id="time" placeholder="Enter date and time of notification" type="text" th:field="*{scheduled_time}" />
             <label for="appointment">For appointment:</label>
             <select id="appointment" name="appointment" th:field="*{appt}">
-                <option th:each="appt : ${appointments}"
-                    th:value="${appt}" th:utext="${appt.date_time}" ></option>
+                <th:block>
+                    <option th:value="null"></option>
+                    <option th:text="${appt.date_time + ' ' + appt.doctor_name}" th:each="appt : ${appointments}" th:value="${appt.id}" ></option>
+                </th:block>
             </select>
-            <select name="method" id="method" th:field="*{unit_id}">
+            <label for="medicine">For medicine:</label>
+            <select name="medicine" id="medicine" th:field="*{med}">
+                <option th:value="null"></option>
+                <option th:text="${med.medicine_name + ' ' + med.refill_date}" th:each="med : ${medicines}" th:field="*{med}" th:value="${med.id}" ></option>
+            </select>
+            <select name="method" id="method" th:field="*{unit}">
                 <option value="1">Text</option>
                 <option value="2">Email</option>
                 <option value="3">Both</option>

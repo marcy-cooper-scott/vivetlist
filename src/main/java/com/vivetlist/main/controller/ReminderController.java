@@ -1,8 +1,7 @@
 package com.vivetlist.main.controller;
 
 import com.vivetlist.main.models.*;
-import com.vivetlist.main.repos.AppointmentRepo;
-import com.vivetlist.main.repos.ReminderRepo;
+import com.vivetlist.main.repos.*;
 import org.joda.time.DateTime;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -18,10 +17,17 @@ public class ReminderController {
 
     ReminderRepo repo;
     AppointmentRepo apptRepo;
+    MedicineRepo medRepo;
+    NotificationsRepo nRepo;
+    UserRepo uRepo;
 
-    ReminderController(ReminderRepo repo, AppointmentRepo apptRepo){
+    ReminderController(ReminderRepo repo, AppointmentRepo apptRepo, MedicineRepo medRepo, NotificationsRepo nRepo,
+                       UserRepo uRepo){
         this.repo = repo;
         this.apptRepo = apptRepo;
+        this.medRepo = medRepo;
+        this.nRepo = nRepo;
+        this.uRepo = uRepo;
     }
 
     @GetMapping("/reminders.json")
@@ -35,23 +41,26 @@ public class ReminderController {
     public String createReminder(Model model){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("appointments", apptRepo.findByUserID(user.getId()));
+        model.addAttribute("medicines", medRepo.findAllByUserId(user.getId()));
         model.addAttribute("reminder", new Reminder());
+        model.addAttribute("notifications", nRepo.findAll());
         return "/reminders/create";
     }
 
     @PostMapping("/reminders/create")
-    public String setReminder(@ModelAttribute Reminder reminder, @ModelAttribute Appointment appt, @ModelAttribute Medicine med){
+    public String setReminder(@ModelAttribute Reminder reminder){
         User loggedInUser = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         reminder.setUser(loggedInUser);
-        reminder.setAppt(appt);
-        reminder.setMed(med);
+        reminder.setScheduled_time(convertDate(reminder));
         repo.save(reminder);
         return "redirect:/mylist";
     }
 
-//    private Date convertDate(Date date, User user) { // grab a user, get their timezone, send that back to the db in order
-//        // for the server to only need to track it's own time.
-//        DateTime joda = new DateTime(date);
-//        return joda.minusHours(user.getTime_zone().intValue()).toDate();
-//    }
+    private Date convertDate(Reminder reminder) { // grab a user, get their timezone, send that back to the db in order
+        DateTime joda = new DateTime(reminder.getScheduled_time());
+        Long userId = reminder.getUser().getId();
+        int diff = uRepo.findById(userId).getTime_zone().intValue();
+        joda = joda.minusHours(diff);
+        return joda.toDate();
+    }
 }
