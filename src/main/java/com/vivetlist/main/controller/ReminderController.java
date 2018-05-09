@@ -1,16 +1,15 @@
 package com.vivetlist.main.controller;
 
 import com.vivetlist.main.models.*;
+import com.vivetlist.main.repos.AppointmentRepo;
 import com.vivetlist.main.repos.ReminderRepo;
 import org.joda.time.DateTime;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.List;
 
@@ -18,9 +17,11 @@ import java.util.List;
 public class ReminderController {
 
     ReminderRepo repo;
+    AppointmentRepo apptRepo;
 
-    ReminderController(ReminderRepo repo){
+    ReminderController(ReminderRepo repo, AppointmentRepo apptRepo){
         this.repo = repo;
+        this.apptRepo = apptRepo;
     }
 
     @GetMapping("/reminders.json")
@@ -32,8 +33,10 @@ public class ReminderController {
 
     @GetMapping("/reminders/create")
     public String createReminder(Model model){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("appointments", apptRepo.findByUserID(user.getId()));
         model.addAttribute("reminder", new Reminder());
-        return "reminders/create";
+        return "/reminders/create";
     }
 
     @PostMapping("/reminders/create")

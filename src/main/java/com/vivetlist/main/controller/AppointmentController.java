@@ -9,6 +9,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -32,16 +34,19 @@ public class AppointmentController {
     @GetMapping("/appointments/create")
     public String createAppt(Model model){
         model.addAttribute("appointment", new Appointment());
-        model.addAttribute("reminder", new Reminder());
         return "appointments/create";
-
     }
 
     @PostMapping("/appointments/create")
-    public String insertAppt(@ModelAttribute Appointment appt, @RequestParam String reminder){
+    public String insertAppt(@ModelAttribute Appointment appt, HttpServletRequest request, Model model){
         User loggedInUser = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         appt.setUser(loggedInUser);
         apptRepo.save(appt);
+        // now, let's see what the value of which submit it was
+        String choice = request.getParameter("choice");
+        if (choice.contains("reminder")) {
+            return "redirect:/reminders/create";
+        }
         return "redirect:/mylist";
     }
 

@@ -9,7 +9,7 @@
             <div class="page-title"><h1>Create Appointment</h1></div>
         </div>
         <div class="form-wrap">
-            <form th:action="@{/appointments/create}" th:method="post" th:object="${appointment}">
+            <form th:object="${appointment}" th:method="post" th:action="@{/appointments/create}">
                 <label for="time">Appointment Date &amp; Time</label>
                 <input id="time" placeholder="Enter date and time of appointment" type="text" th:field="*{date_time}" />
                 <label for="doctor">Name of Doctor</label>
@@ -17,24 +17,10 @@
                 <label for="location">Location of Appointment</label>
                 <input id="location" placeholder="Enter appointment location" th:field="*{location}" />
 
-            Set Reminder?<input type="checkbox" id="reminder"/>
+                <button id="appt_only" type="submit" name="choice" th:value="appt_only">Create Appointment Only</button>
+                <button id="create_reminder" type="submit" name="choice" th:value="reminder">Create Reminder Too</button>
             </form>
-
-            <form th:action="@{/reminders/create}" th:method="post">
-            <div class="reminderForm" style="display:none">
-                    <Label for="scheduled_time">Reminder Time</Label>
-                    <input id="scheduled_time" placeholder="Enter reminder time" th:field="*{reminder.scheduled_time}" />
-
-            </div>
-                <button>Create Appointment</button>
-            </form>
-
-
         </div>
-
-
-
-
         <div class="epmty-space"></div>
     </container>
 
@@ -49,16 +35,6 @@
                 sideBySide: true
             });
         });
-    </script>
-    <script>
-        $(document).ready(function() {
-            $(":checkbox").click(function() {
-                if ($(this).is(":checked"))
-                    $(".reminderForm").show();
-                else
-                    $(".reminderForm").hide();
-            });
-        })
     </script>
 </body>
 </html>

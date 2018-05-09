@@ -106,6 +106,6 @@ public class Reminder {
 
     private Date convertDate(Date date, User user) {
         DateTime joda = new DateTime(date);
-        return joda.minusHours(user.getTime_zone().intValue()).toDate(); // get timezone offset here, fixes the issue
+        return joda.minusHours(user.getTime_zone().intValue()).toDate(); // get timezone  offset here, fixes the issue
     }
 }
