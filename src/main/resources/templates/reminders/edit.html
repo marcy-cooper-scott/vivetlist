@@ -6,19 +6,23 @@
 
 <container>
     <div class="page-title-wrap">
-        <div class="page-title"><h1>Edit Medication</h1></div>
+        <div class="page-title"><h1>Edit Reminder</h1></div>
     </div>
     <div class="form-wrap">
-        <form th:action="@{'/medicines/' + ${medicine.id} + '/edit'}" th:method="post" th:object="${medicine}">
-            Name of Medicine:
-            <input th:field="*{medicine_name}" />
+        <form th:action="@{'/reminders/' + ${reminder.id} + '/edit'}" th:method="post" th:object="${reminder}">
+            Reminder Time:
+            <input th:field="*{scheduled_time}" />
             <br />
-            Refill Date:
-            <input th:field="*{refill_date}" />
+            Reminder Event:
+            <input th:if="${appt.id} != null" th:field="*{appt.date_time + ' ' + appt.doctor_name}" />
+            <input th:if="${med.id} != null" th:field="*{med.medicine_name + ' ' + med.refill_date}" />
             <br />
-            Notes:
-            <input th:field="*{notes}" />
-            <br />
+            Reminder Type:
+            <select name="method" id="method" th:field="*{unit}">
+                <option value="1">Text</option>
+                <option value="2">Email</option>
+                <option value="3">Both</option>
+            </select>
             <input type="hidden" th:field="*{id}" />
             <input type="submit" value="Update Medicine" />
         </form>
