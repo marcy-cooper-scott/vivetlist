@@ -11,13 +11,13 @@
             <h3><span th:text="${post.title}"></span></h3>
             <p><span th:text="${post.body}"></span></p>
             <p><span th:text="${'Author: ' + post.user.username}"></span> </p>
-            <div th:if="${#authentication.principal.id == post.user.id}">
+            <div sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == post.user.id}">
                 <a th:href="@{/group/{gid}/posts/{pid}/edit(gid=${group.id}, pid=${post.id})}">
                     <button>Edit</button>
                 </a>
             </div>
 
-            <a th:href="@{/group/{gid}/posts/{pid}/comments/create(gid=${group.id}, pid=${post.id})}">
+            <a sec:authorize="isAuthenticated()" th:href="@{/group/{gid}/posts/{pid}/comments/create(gid=${group.id}, pid=${post.id})}">
                 <button>Comment</button>
             </a>
 

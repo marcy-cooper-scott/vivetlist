@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -14,7 +14,7 @@
             <ul class="menu-bar nav-pad">
                 <li><a href="/">Home</a></li>
                 <li sec:authorize="isAuthenticated()"><a href="/mylist">My VivetList</a></li>
-                <li sec:authorize="isAuthenticated()"><a href="/groups">Groups</a></li>
+                <li><a href="/groups">Groups</a></li>
                 <li><a href="/about">About</a></li>
                 <li sec:authorize="isAuthenticated()">
                     <form class="logout_form" th:action="@{/logout}" th:method="post">
@@ -28,7 +28,7 @@
             <!--Mobile Nav-->
 
             <div class="hamburger">
-
+/'
                 <div id="menuToggle">
 
                     <input type="checkbox" />
@@ -40,7 +40,7 @@
                     <ul id="menu">
                         <li><a href="/index">Home</a></li>
                         <li sec:authorize="isAuthenticated()"><a href="/mylist">My VivetList</a></li>
-                        <li sec:authorize="isAuthenticated()"><a href="/groups">Groups</a></li>
+                        <li><a href="/groups">Groups</a></li>
                         <li><a href="/about">About</a></li>
                         <li sec:authorize="isAuthenticated()">
                             <form id="logout_form" th:action="@{/logout}" th:method="post">

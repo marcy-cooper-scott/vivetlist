@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:replace="partials/header :: header('VivetList')"></head>
 <body>
 
@@ -14,7 +14,7 @@
         <input type="text" placeholder="Search posts in this group" name="search" />
     </form>
     <div class="new-post-wrap">
-        <a th:href="@{/group/{gid}/posts/create(gid=${group.id})}">
+        <a sec:authorize="isAuthenticated()" th:href="@{/group/{gid}/posts/create(gid=${group.id})}">
             <button>New Post</button>
         </a>
     </div>
