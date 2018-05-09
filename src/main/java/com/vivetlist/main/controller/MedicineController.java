@@ -30,6 +30,8 @@ public class MedicineController {
 
     @PostMapping("/medicines/create")
     public String insertMed(@ModelAttribute Medicine med){
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        med.setUser(loggedInUser);
        medicineRepo.save(med);
        return "redirect:/mylist";
     }

@@ -49,8 +49,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                     .authorizeRequests()
                     .antMatchers(
                             "/edit/{id}",
-                            "/groups",
-                            "/single-group"
+                            "/posts/create",
+                            "/medicines/create",
+                            "/comments/create",
+                            "/appointments/create"
                     )
                     .authenticated();
     }
