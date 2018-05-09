@@ -63,4 +63,27 @@ public class ReminderController {
         joda = joda.minusHours(diff);
         return joda.toDate();
     }
+
+    @PostMapping("/reminders/delete")
+    public String deleteReminder(@ModelAttribute Reminder reminder){
+        repo.delete(reminder);
+        return "redirect:/mylist";
+    }
+
+    @GetMapping("/reminders/{id}/edit")
+    public String editMed(@PathVariable long id, Model model){
+        model.addAttribute("reminder", repo.findOne(id));
+        return"medicines/edit";
+    }
+
+    @PostMapping("/reminders/{id}/edit")
+    public String handleEdit(@PathVariable long id, @ModelAttribute Reminder reminder){
+        Reminder originalReminder = repo.findOne(id);
+        originalReminder.setScheduled_time(reminder.getScheduled_time());
+        originalReminder.setAppt(reminder.getAppt());
+        originalReminder.setMed(reminder.getMed());
+        originalReminder.setUnit(reminder.getUnit());
+        repo.save(originalReminder);
+        return "redirect:/mylist";
+    }
 }

@@ -41,13 +41,15 @@
         <ul th:each="med: ${meds}">
             <!--<button class="trigger">Trigger Modal</button>-->
             <li>
-                <div class="prescription-list-edit"><img src="/images/edit-icon.png" alt="" /></div>
-                <div class="prescription-list-delete"><img src="/images/delete-icon.png" alt="" /></div>
-                <span th:id="${med.medicine_name}" class="prescription-list-title" onclick="onClick(this)" th:text="${med.medicine_name}">Metoprolol</span>
+                <div class="prescription-list-edit"><a th:href="@{/medicines/{id}/edit(id=${med.id})}"><img src="/images/edit-icon.png" alt="" /></a></div>
+                <div class="prescription-list-delete"><a th:href="@{/medicines/delete}"><img src="/images/delete-icon.png" alt="" /></a></div>
+                <span th:id="${med.medicine_name}" class="prescription-list-title" onclick="onClick(this)" th:text="${med.medicine_name}"></span>
             </li>
         </ul>
 
     </div>
+    <a href="/reminders/create"><button>Create A Reminder</button></a>
+    <!--<a th:href="/reminders/{id}/edit(id=${reminder.id})}"><button>Edit Reminder</button></a>-->
     <div class="calendar-wrap">
         <h2>My Appointments</h2>
         <div id="calendar"></div>

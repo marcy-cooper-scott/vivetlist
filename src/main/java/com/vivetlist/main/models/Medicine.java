@@ -1,8 +1,11 @@
 package com.vivetlist.main.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
 
@@ -17,13 +20,15 @@ public class Medicine {
     private long id;
 
     @Column(nullable = false)
-
+    @NotBlank(message = "You must enter a medicine name")
     private String medicine_name;
 
     @Column
+    @NotEmpty(message = "You must enter a date")
     private Date refill_date;
 
     @Column(length = 500)
+    @NotBlank(message = "You must enter a note")
     private String notes;
 
     @ManyToOne
