@@ -45,9 +45,10 @@ public class ReminderController {
         repo.save(reminder);
         return "redirect:/mylist";
     }
-//
-//    private Date convertDate(Date date) {
+
+//    private Date convertDate(Date date, User user) { // grab a user, get their timezone, send that back to the db in order
+//        // for the server to only need to track it's own time.
 //        DateTime joda = new DateTime(date);
-//        return joda.minusHours(5).toDate(); // get timezone offset here, fixes the issue
+//        return joda.minusHours(user.getTime_zone().intValue()).toDate();
 //    }
 }
