@@ -1,17 +1,13 @@
 package com.vivetlist.main.jobs;
 
 import com.vivetlist.main.Services.EmailService;
-import com.vivetlist.main.models.Notification_Type;
 import com.vivetlist.main.models.Reminder;
-import com.vivetlist.main.models.User;
 import com.vivetlist.main.repos.ReminderRepo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-
-import java.util.Date;
-import java.util.List;
+import com.vivetlist.main.Services.SMSrunner;
 
 import org.joda.time.DateTime;
 
@@ -19,10 +15,12 @@ import org.joda.time.DateTime;
 public class ScheduledTasks {
     private ReminderRepo reminderRepo;
     private EmailService service;
+    private SMSrunner runner;
 
-    ScheduledTasks(ReminderRepo reminderRepo, EmailService service) {
+    ScheduledTasks(ReminderRepo reminderRepo, EmailService service,  SMSrunner runner) {
         this.reminderRepo = reminderRepo;
         this.service = service;
+        this.runner = runner;
     }
 
     private static final Logger log = LoggerFactory.getLogger(ScheduledTasks.class);
@@ -57,17 +55,15 @@ public class ScheduledTasks {
                 } else if (type.intValue() == 1) {
                     // now, this is a text, so we need to be more precise: day of year, hour of day, minute of hour
                     if (dayOfToday == reminderTime.getDayOfYear() && hourOfDay == reminderTime.getHourOfDay() && minuteOfHour == reminderTime.getMinuteOfHour()) {
-                        String phone = reminder.getUser().getPhone_number();
-                        log.error("Would have sent a text to: " + phone);
+                        sendSMS(reminder);
                         reminderRepo.delete(reminder.getId());
                         log.info("Deleted reminder " + id.intValue() + " from DB > sms sent");
                     }
                 } else if (type.intValue() == 3) {
                     if (dayOfToday == reminderTime.getDayOfYear() && hourOfDay == reminderTime.getHourOfDay() && minuteOfHour == reminderTime.getMinuteOfHour()) {
                         String email = reminder.getUser().getEmail();
-                        String phone = reminder.getUser().getPhone_number();
                         service.sendEmail(email);
-                        log.error("Would have sent a text to: " + phone);
+                        sendSMS(reminder);
                         reminderRepo.delete(reminder.getId());
                         log.info("Deleted reminder " + id.intValue() + " from DB > email & sms sent");
                     }
@@ -77,5 +73,13 @@ public class ScheduledTasks {
                 }
             }
         }
+    }
+
+    public void sendSMS(Reminder reminder) {
+        log.info("Sending text to " + reminder.getUser().getPhone_number());
+        // declare the variables, then assign them
+        runner.runner(reminder);
+        // try a test message when the server comes up
+       log.info("SMS success!!!!");
     }
 }
