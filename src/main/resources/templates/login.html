@@ -9,10 +9,10 @@
     <div class="page-title-wrap">
         <div class="page-title"><h1>Login</h1></div>
     </div>
-    <div th:if="${param.error}">
+    <div class="error-wrap" th:if="${param.error}">
         Invalid Username and Password.
     </div>
-    <div th:if="${param.logout}">
+    <div class="error-wrap" th:if="${param.logout}">
         You have been logged out.
     </div>
     <div class="form-wrap">

@@ -11,7 +11,7 @@
     </div>
     <div class="form-wrap">
         <form th:action="@{/sign-up}" method="post" th:object="${user}">
-            <div class="form-error" th:each="error : ${errors}" th:text="${error}"></div>
+                 <div class="form-error" th:each="error : ${errors}" th:text="${error}"></div>
 
             <div class="form-error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
             <label for="username">Username</label>
@@ -28,7 +28,7 @@
             <label for="phone-number">Phone Number</label>
             <input id="phone-number" type="text" placeholder="Please Enter Your Phone Number" th:field="*{phone_number}" />
             <label for="time-zone">Your Time Zone</label>
-            <select id="time-zone" th:field="*{time_zone}" >
+            <select class="form-feilds" id="time-zone" th:field="*{time_zone}" >
                 <option value="" selected="selected">select your timezone</option>
                 <option value="-10">(GMT -10:00) Hawaii</option>
                 <option value="-9">(GMT -9:00) Alaska</option>

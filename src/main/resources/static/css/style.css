@@ -121,13 +121,29 @@ input {
     grid-column: 4/10;
     margin-top: 3em;
     margin-bottom: 3em;
-    animation: fadein-up 1s ease-out .2s;
+    animation: fadein-up .5s ease-out .2s;
     opacity: 0;
     animation-fill-mode: forwards;
 }
 .form-wrap input {
+     border-radius: .5em;
+     padding: .5em;
+     width: 100%;
+     margin-bottom: 2em;
+     box-sizing: border-box
+ }
+.form-feilds {
+    border-radius: .5em;
+    border: 0;
+    padding: 1em 0em 1em .5em;
+    font-size: .7em;
+    width: 15em;
+    margin-right: 1em;
+}
+.form-wrap select {
     border-radius: .5em;
     padding: .5em;
+    height: 2em;
     width: 100%;
     margin-bottom: 2em;
     box-sizing: border-box
@@ -155,7 +171,7 @@ input {
     grid-column: 4/10;
     margin-top: 3em;
     margin-bottom: 3em;
-    animation: fadein-up 1s ease-out .2s;
+    animation: fadein-up .5s ease-out .2s;
     opacity: 0;
     animation-fill-mode: forwards;
     position: relative;
@@ -226,7 +242,7 @@ input {
     grid-column: 3/7;
     margin-top: 3em;
     margin-bottom: 3em;
-    animation: fadein-up 1s ease-out .2s;
+    animation: fadein-up .5s ease-out .2s;
     opacity: 0;
     animation-fill-mode: forwards;
 }
@@ -234,7 +250,7 @@ input {
     grid-column: 9/11;
     margin-top: 3em;
     margin-bottom: 3em;
-    animation: fadein-up 1s ease-out .2s;
+    animation: fadein-up .5s ease-out .2s;
     opacity: 0;
     animation-fill-mode: forwards;
 }
@@ -268,7 +284,7 @@ small {
     font-size: 1em;
     padding: .5em 0;
 }
-.error-wrap {
+.form-error {
     width: 100%;
     background-color: pink;
     color: red;
@@ -296,7 +312,7 @@ small {
     margin-top: 7em;
     margin-bottom: 7em;
     border-radius: 1em;
-    animation: fadein-right 1s ease-out .2s;
+    animation: fadein-right .5s ease-out .2s;
     opacity: 0;
     animation-fill-mode: forwards;
 }
@@ -353,7 +369,7 @@ small {
 }
 .mylist-banner-user {
     grid-column: 1/9;
-    background-color: #125fad;
+    background: #125fad url("../images/user-bg.png") center left no-repeat;
     overflow: hidden;
 }
 .mylist-banner-add {
@@ -369,7 +385,7 @@ small {
     border-radius: 1em;
     overflow: hidden;
     float: left;
-    animation: fadein-up 1s ease-out .2s;
+    animation: fadein-up .5s ease-out .2s;
     opacity: 0;
     animation-fill-mode: forwards;
 }
@@ -379,14 +395,14 @@ small {
 .user-info {
     color: #8cc63f;
     float: left;
-    margin-top: 2em;
-    animation: fadein-up 1s ease-out .2s;
+    margin: 0 2em 2em 25%;
+    animation: fadein-up .5s ease-out .2s;
     opacity: 0;
     animation-fill-mode: forwards;
 }
 .user-info h2 {
     color: #8cc63f;
-    font-size: 2.5em;
+    font-size: 3.5em;
     margin: .75em 0 0 0;
 }
 .user-info button {
@@ -414,7 +430,7 @@ small {
     padding-top: .5em;
     padding-bottom: .5em;
     width: 60%;
-    animation: fadein-up-button 1s ease-out .2s;
+    animation: fadein-up-button .5s ease-out .2s;
     opacity: 0;
     animation-fill-mode: forwards;
 }
@@ -564,7 +580,7 @@ small {
     overflow: hidden;
     box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
     animation-name:modalopen;
-    animation-duration:1s;
+    animation-duration:.5s;
 }
 
 .modal-header h2, .modal-footer h3{
@@ -701,6 +717,72 @@ small {
     background: linear-gradient(#1660ad, #144675, #1660ad);
     cursor: pointer;
 }
+/* ################# Single post ################# */
+.single-post-wrap {
+    grid-column: 3/11;
+}
+.single-post {
+    width: 100%;
+    margin-bottom: 2.5em;
+}
+.single-post h2 {
+    color: #125fad;
+    font-size: 1.5em;
+    margin: .25em .5em 0 .5em;
+    padding-bottom: .3em;
+    border-bottom: #8cc63f solid .1em;
+}
+.single-post p {
+    color: #0d3151;
+    font-size: 1em;
+    margin: 1em .5em 0 .5em;
+}
+.single-post button {
+    font-family: 'Asap', sans-serif;
+    font-weight: 700;
+    background-color: #144575;
+    color: #8cc63f;
+    border-radius: .5em;
+    font-size: 1em;
+    padding: .25em .5em;
+    width: 60%;
+    margin: 1em .5em 0 .5em;
+    background: linear-gradient(#1660ad, #144675, #1660ad);
+    cursor: pointer;
+}
+.comment-wrap {
+    grid-column: 3/11;
+    padding-left: 3%;
+}
+.comment {
+    width: 100%;
+    margin-bottom: 2.5em;
+}
+.comment h2 {
+    color: #125fad;
+    font-size: 1.5em;
+    margin: .25em .5em 0 .5em;
+    padding-bottom: .3em;
+    border-bottom: #8cc63f solid .1em;
+}
+.comment p {
+    color: #0d3151;
+    font-size: 1em;
+    margin: 1em .5em 0 .5em;
+}
+.comment-wrap button {
+    font-family: 'Asap', sans-serif;
+    font-weight: 700;
+    /*background-color: #144575;*/
+    color: #8cc63f;
+    border-radius: .5em;
+    font-size: 1em;
+    padding: .25em .5em;
+    width: 25%;
+    margin: 0 .5em 0 .5em;
+    background: linear-gradient(#1660ad, #144675, #1660ad);
+    cursor: pointer;
+}
 /* ################# Modules ################# */
 .module-left {
     grid-column: 3/5;
@@ -709,7 +791,7 @@ small {
 .module-left img {
     width: 100%;
     margin-bottom: .25em;
-    animation: fadein-up 1s ease-out .2s;
+    animation: fadein-up .5s ease-out .2s;
     opacity: 0;
     animation-fill-mode: forwards;
 }
@@ -720,7 +802,7 @@ small {
 .module-center img {
     width: 100%;
     margin-bottom: .25em;
-    animation: fadein-up 1s ease-out .2s;
+    animation: fadein-up .5s ease-out .2s;
     opacity: 0;
     animation-fill-mode: forwards;
 }
@@ -731,7 +813,7 @@ small {
 .module-right img {
     width: 100%;
     margin-bottom: .25em;
-    animation: fadein-up 1s ease-out .2s;
+    animation: fadein-up .5s ease-out .2s;
     opacity: 0;
     animation-fill-mode: forwards;
 }
@@ -807,7 +889,7 @@ small {
     100% { opacity: 1; }
     from { opacity: 0; }
     to   { opacity: 1; }
-    from { transform: translatex(100%); }
+    from { transform: translatex(40%); }
     to   { transform: translatex(0); }
 }
 @keyframes fadein-up {
@@ -847,12 +929,12 @@ small {
     }
     .user-info h2 {
         color: #8cc63f;
-        font-size: 2em;
-        margin: .75em 0 0 0;
+        font-size: 2.5em;
+        margin: .5em 0 0 0;
     }
     .mylist-banner-add button {
         font-size: 1.4em;
-        margin: 2.2em 15% 0 15%;
+        margin: 1em 15% 0 15%;
         padding-top: .5em;
         padding-bottom: .5em;
         width: 70%;
@@ -935,12 +1017,12 @@ small {
     }
     .mylist-banner-add button {
         font-size: 1.2em;
-        margin: 2.7em 15% 0 15%;
+        margin: 1.7em 15% 0 15%;
         padding-top: .7em;
         padding-bottom: .7em;
     }
     .user-info h2 {
-        font-size: 1.7em;
+        font-size: 2.2em;
         margin: .75em 0 0 0;
     }
     .group {
@@ -1017,19 +1099,10 @@ small {
         background-color: #8cc63f;
         padding-bottom: 2.5em;
     }
-    .mylist-user-pic {
-        width: 15%;
-        height: 15%;
-        border: #0d3151 solid .2em;
-        margin: 2em 42.5% 0 42.5%;
-        border-radius: 1em;
-        overflow: hidden;
-        float: none;
-    }
     .user-info {
         color: #8cc63f;
-        float: left;
-        margin-top: .1em;
+        margin: 1em 0 1em 0;
+        padding: 0;
         width: 100%;
         text-align: center;
     }
@@ -1042,8 +1115,7 @@ small {
     .user-info button {
         font-size: 1em;
         padding: .25em .5em;
-        margin-top: 1em;
-        margin-bottom: 1em;
+        margin: 1em 0 1em 0;
     }
     .mylist-banner-add button {
         font-size: 1.6em;
@@ -1108,6 +1180,9 @@ small {
     }
     .form-wrap-picker {
         grid-column: 2/12;
+    }
+    .user-info h2 {
+        font-size: 1.2em;
     }
 }
 /* ################# MOBILE MENU ################# */
