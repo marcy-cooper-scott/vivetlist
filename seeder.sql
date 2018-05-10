@@ -1,6 +1,8 @@
 create DATABASE if not exists vivetlist_db;
 use vivetlist_db;
 
+INSERT INTO notification_type(name) VALUES ('TEXT'), ('EMAIL'), ('BOTH');
+
 insert into appointments(date_time, doctor_name, location, user_id)
     VALUES('2018-05-21 15:00:00', 'Hawkeye', 'Mobile Clinic', 1),
       ('2018-06-01 09:30:00', 'Howser', 'Memorial', 2),
