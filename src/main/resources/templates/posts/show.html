@@ -5,33 +5,40 @@
     <header th:replace="partials/nav :: nav"></header>
 
     <container>
-        <h1>Post</h1>
+        <div class="page-title-wrap">
+            <div class="page-title"><h1>Post</h1></div>
+        </div>
 
-        <main>
-            <h3><span th:text="${post.title}"></span></h3>
-            <p><span th:text="${post.body}"></span></p>
-            <p><span th:text="${'Author: ' + post.user.username}"></span> </p>
+
+            <div class="single-group-wrap">
+                <div class="single-group">
+                    <h2><span th:text="${post.title}"></span></h2>
+                    <p><span th:text="${post.body}"></span></p>
+                    <p><span th:text="${'Author: ' + post.user.username}"></span> </p>
+                </div>
+            </div>
+
             <div sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == post.user.id}">
                 <a th:href="@{/group/{gid}/posts/{pid}/edit(gid=${group.id}, pid=${post.id})}">
                     <button>Edit</button>
                 </a>
             </div>
-
+        <div class="comment-wrap">
             <a sec:authorize="isAuthenticated()" th:href="@{/group/{gid}/posts/{pid}/comments/create(gid=${group.id}, pid=${post.id})}">
                 <button>Comment</button>
             </a>
 
 
 
-            <div class="single-group" th:each="comment : ${comments}">
-                <a th:href="@{/group/{gid}/posts/{pid}/comments/{cid}(gid=${group.id}, pid=${post.id}, cid=${comment.id})}">
-                    <p><span th:text="${comment.body}"></span></p>
-                    <p><span th:text="${'Author: ' + comment.user.username}"></span></p>
-                </a>
+            <div class="comment" th:each="comment : ${comments}">
+                <!--<a th:href="@{/group/{gid}/posts/{pid}/comments/{cid}(gid=${group.id}, pid=${post.id}, cid=${comment.id})}">-->
+                    <p><span th:text="${comment.user.username}"></span> - <span th:text="${comment.body}"></span></p>
+                    <!--<p><span th:text="${'Author: ' + comment.user.username}"></span></p>-->
+                <!--</a>-->
             </div>
+        </div>
 
 
-        </main>
     </container>
 
 

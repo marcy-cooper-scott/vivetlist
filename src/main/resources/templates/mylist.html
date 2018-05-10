@@ -21,7 +21,7 @@
 <container>
     <div class="mylist-banner-wrap">
         <div class="mylist-banner-user">
-            <div class="mylist-user-pic"><img src="/images/default-user.jpg" alt="" /></div>
+            <!--<div class="mylist-user-pic"><img src="/images/default-user.jpg" alt="" /></div>-->
             <div class="user-info">
                 <h2 th:text="'Welcome , ' + ${user.username} + '!'"></h2>
                 <p th:text="${user.email}"></p>
@@ -41,7 +41,7 @@
         <ul th:each="med: ${meds}">
             <!--<button class="trigger">Trigger Modal</button>-->
             <li>
-                <div class="prescription-list-edit"><a th:href="@{/medicines/{id}/edit(id=${med.id})}"><img src="/images/edit-icon.png" alt="" /></a></div>
+                <!--<div class="prescription-list-edit"><a th:href="@{/medicines/{id}/edit(id=${med.id})}"><img src="/images/edit-icon.png" alt="" /></a></div>-->
                 <div class="prescription-list-delete"><a th:href="@{/medicines/{id}/delete(id=${med.id})}" ><img src="/images/delete-icon.png" alt="" /></a></div>
                 <span th:id="${med.medicine_name}" class="prescription-list-title" onclick="onClick(this)" th:text="${med.medicine_name}"></span>
             </li>
