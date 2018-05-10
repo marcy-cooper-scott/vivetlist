@@ -14,12 +14,12 @@ import org.joda.time.DateTime;
 @Component
 public class ScheduledTasks {
     private ReminderRepo reminderRepo;
-    private EmailService service;
+    private EmailService emailService;
     private SMSrunner runner;
 
-    ScheduledTasks(ReminderRepo reminderRepo, EmailService service,  SMSrunner runner) {
+    ScheduledTasks(ReminderRepo reminderRepo, EmailService emailService,  SMSrunner runner) {
         this.reminderRepo = reminderRepo;
-        this.service = service;
+        this.emailService = emailService;
         this.runner = runner;
     }
 
@@ -47,8 +47,7 @@ public class ScheduledTasks {
                 if (type.intValue() == 2) {
                     // now, for an email, we will find out if it's the day, then send out the email
                     if (dayOfToday == reminderTime.getDayOfYear()) {
-                        String email = reminder.getUser().getEmail();
-                        service.sendEmail(email);
+                        emailService.sendMail(reminder);
                         reminderRepo.delete(reminder.getId());
                         log.info("Deleted reminder " + id.intValue() + " from DB > email sent");
                     }
@@ -61,8 +60,7 @@ public class ScheduledTasks {
                     }
                 } else if (type.intValue() == 3) {
                     if (dayOfToday == reminderTime.getDayOfYear() && hourOfDay == reminderTime.getHourOfDay() && minuteOfHour == reminderTime.getMinuteOfHour()) {
-                        String email = reminder.getUser().getEmail();
-                        service.sendEmail(email);
+                        emailService.sendMail(reminder);
                         sendSMS(reminder);
                         reminderRepo.delete(reminder.getId());
                         log.info("Deleted reminder " + id.intValue() + " from DB > email & sms sent");
