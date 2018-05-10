@@ -25,8 +25,8 @@
                 <option th:text="${med.medicine_name + ' ' + med.refill_date}" th:each="med : ${medicines}" th:field="*{med}" th:value="${med.id}" ></option>
             </select>
             <select name="method" id="method" th:field="*{unit}">
-                <option value="1">Text</option>
-                <option value="2">Email</option>
+                <option value="1">Email</option>
+                <option value="2">Text</option>
                 <option value="3">Both</option>
             </select>
             <input type="submit" />
