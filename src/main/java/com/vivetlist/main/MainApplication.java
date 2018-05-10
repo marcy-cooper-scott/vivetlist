@@ -17,6 +17,7 @@ public class MainApplication extends SpringBootServletInitializer {
 	void started() {
 		TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
 	}
+	
 	public static void main(String[] args) {
 		SpringApplication.run(MainApplication.class, args);
 	}
