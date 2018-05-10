@@ -15,7 +15,7 @@
 - [ ] Edit Medicine
 ##### API Calls
 - [x] Medicine Information Populates From Open FDA API
-- [ ] User receives notification by text/email for medicine refill and/or appointment reminder from Clickatel API
+- [x] User receives notification by text/email for medicine refill and/or appointment reminder from Clickatel API
 ##### View/Add/Edit/Remove Appointments
 - [x] See Individual Appointment on Calendar
 - [x] Add New Appointment
