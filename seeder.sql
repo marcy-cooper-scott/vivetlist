@@ -19,13 +19,13 @@ insert into groups(name, description)
     ('Congenital Heart Disease', 'With congenital heart defects, some part of the heart doesn''t form properly before birth. This group is for adults with CHD or parents of children with CHD.'),
     ('ADHD', 'This group is for those with Attention Deficit Hyperactivity Disorder (ADHD), a highly genetic, brain-based syndrome that has to do with the regulation of a particular set of brain functions and related behaviors.');
 
-insert into medicines(medicine_name, refill_date, user_id)
-    VALUES ('insulin', '2018-06-02 10:00:00', 1),
-      ('insulin', '2018-08-01 12:00:00', 2),
-      ('codeine', '2018-07-10 09:00:00', 3),
-      ('avonex', '2018-05-25 15:00:00', 4),
-      ('atenolol', '2018-06-30 10:00:00', 5),
-      ('adderall', '2018-11-18 17:00:00', 6);
+insert into medicines(medicine_name, refill_date, user_id, notes)
+    VALUES ('insulin', '2018-06-02 10:00:00', 1, 'Take 2'),
+      ('insulin', '2018-08-01 12:00:00', 2, 'Take 2'),
+      ('codeine', '2018-07-10 09:00:00', 3, 'Take 2'),
+      ('avonex', '2018-05-25 15:00:00', 4, 'Take 2'),
+      ('atenolol', '2018-06-30 10:00:00', 5, 'Take 2'),
+      ('adderall', '2018-11-18 17:00:00', 6, 'Take 2');
 
 insert into posts(title, body, group_id, user_id)
     values('Diabetic for 5 years', 'Hi, I was diagnosed 5 years ago. It''s nice to be able to connect with others who have the disease.', 1, 1),
