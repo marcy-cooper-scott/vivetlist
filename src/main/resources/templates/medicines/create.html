@@ -9,14 +9,19 @@
     </div>
     <div class="form-wrap">
         <form th:action="@{/medicines/create}" th:method="post" th:object="${medicine}">
-            <label for="medicine_name">Name of Medication</label>
-            <input id="medicine_name" placeholder="Enter medication name" type="text" th:field="*{medicine_name}" />
-            <label for="notes">Personal Notes</label>
-            <input id="notes" placeholder="Enter personal notes" th:field="*{notes}" />
-            <label for="refill_date">Medication Refill Date</label>
-            <input id="refill_date" placeholder="Enter medication refill date" type="date " th:field="*{refill_date}" />
+            <label for="medicine-name">Name of Medication</label>
+            <input id="medicine-name" placeholder="Enter medication name" type="text" name="medicine_name" th:field="*{medicine_name}" />
+            <p th:if="${#fields.hasErrors('medicine_name')}" th:errors="*{medicine_name}" />
+            <label for="refill-date">Medication Refill Date</label>
+            <input id="refill-date" placeholder="Enter medication refill date" type="text" name="refill_date" th:field="*{refill_date}" />
+            <p th:if="${#fields.hasErrors('refill_date')}" th:errors="*{refill_date}" />
 
-            <button>Create Post</button>
+            <label for="notes">Personal Notes</label>
+            <input id="notes" placeholder="Enter personal notes" name="notes" th:field="*{notes}" />
+            <p th:if="${#fields.hasErrors('notes')}" th:errors="*{notes}" />
+
+
+            <button>Add Medicine</button>
 
         </form>
     </div>

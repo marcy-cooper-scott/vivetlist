@@ -151,6 +151,77 @@ input {
     background: linear-gradient(#1660ad, #144675, #1660ad);
     cursor: pointer;
 }
+.form-wrap-picker {
+    grid-column: 4/10;
+    margin-top: 3em;
+    margin-bottom: 3em;
+    animation: fadein-up 1s ease-out .2s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+    position: relative;
+}
+.form-wrap-picker input {
+    border-radius: .5em;
+    padding: .5em;
+    width: 100%;
+    margin-bottom: 2em;
+    box-sizing: border-box
+}
+.form-wrap-picker label {
+    color: #8cc63f;
+    font-weight: 700;
+    font-size: 1.5em;
+    width: 100%;
+}
+.form-wrap-picker button {
+    font-family: 'Asap', sans-serif;
+    font-weight: 700;
+    background-color: #144575;
+    color: #8cc63f;
+    border-radius: .5em;
+    font-size: 1.5em;
+    padding: .25em .5em;
+    width: 100%;
+    float: left;
+    background: linear-gradient(#1660ad, #144675, #1660ad);
+    cursor: pointer;
+}
+.form-wrap-picker h6 {
+    font-size: 1.5em;
+    font-weight: 700;
+    text-align: center;
+    padding-top: 2em;
+    padding-bottom: .5em;
+    margin: 0;
+    color: #125fad;
+}
+.glyphicon-chevron-up {
+    background: transparent url("../images/up-arrow.png") !important;
+}
+.glyphicon-chevron-up img{
+    width: 100%;
+}
+.glyphicon-chevron-down {
+    background: transparent url("../images/down-arrow.png") !important;
+}
+.glyphicon-chevron-down img{
+    width: 100%;
+}
+/*.bootstrap-datetimepicker-widget table td span:hover {*/
+/*!*background-color: none !important;*!*/
+    /*background-image: url("../images/down-arrow.png");*/
+/*}*/
+.timepicker {
+    height: 14em;
+    margin-top: 1em;
+    margin-bottom: 2em;
+    border-bottom: #0a3151 solid .05em;
+    border-top: #0a3151 solid .05em;
+}
+.timepicker-hour, .timepicker-minute, .separator {
+    font-size: 3em !important;
+    color: #125fad;
+}
 .search-wrap {
     grid-column: 3/7;
     margin-top: 3em;
@@ -989,6 +1060,9 @@ small {
     .epmty-space {
         height: 20px;
     }
+    .form-wrap-picker {
+        grid-column: 3/11;
+    }
 
 }
 @media only screen and (max-width: 600px) {
@@ -1031,6 +1105,9 @@ small {
     }
     .about-title h2{
         font-size: 2em;
+    }
+    .form-wrap-picker {
+        grid-column: 2/12;
     }
 }
 /* ################# MOBILE MENU ################# */
