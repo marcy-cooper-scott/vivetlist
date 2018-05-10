@@ -121,7 +121,7 @@ input {
     grid-column: 4/10;
     margin-top: 3em;
     margin-bottom: 3em;
-    animation: fadein-up 1s ease-out .2s;
+    animation: fadein-up .5s ease-out .2s;
     opacity: 0;
     animation-fill-mode: forwards;
 }
@@ -155,7 +155,7 @@ input {
     grid-column: 4/10;
     margin-top: 3em;
     margin-bottom: 3em;
-    animation: fadein-up 1s ease-out .2s;
+    animation: fadein-up .5s ease-out .2s;
     opacity: 0;
     animation-fill-mode: forwards;
     position: relative;
@@ -226,7 +226,7 @@ input {
     grid-column: 3/7;
     margin-top: 3em;
     margin-bottom: 3em;
-    animation: fadein-up 1s ease-out .2s;
+    animation: fadein-up .5s ease-out .2s;
     opacity: 0;
     animation-fill-mode: forwards;
 }
@@ -234,7 +234,7 @@ input {
     grid-column: 9/11;
     margin-top: 3em;
     margin-bottom: 3em;
-    animation: fadein-up 1s ease-out .2s;
+    animation: fadein-up .5s ease-out .2s;
     opacity: 0;
     animation-fill-mode: forwards;
 }
@@ -296,7 +296,7 @@ small {
     margin-top: 7em;
     margin-bottom: 7em;
     border-radius: 1em;
-    animation: fadein-right 1s ease-out .2s;
+    animation: fadein-right .5s ease-out .2s;
     opacity: 0;
     animation-fill-mode: forwards;
 }
@@ -369,7 +369,7 @@ small {
     border-radius: 1em;
     overflow: hidden;
     float: left;
-    animation: fadein-up 1s ease-out .2s;
+    animation: fadein-up .5s ease-out .2s;
     opacity: 0;
     animation-fill-mode: forwards;
 }
@@ -380,7 +380,7 @@ small {
     color: #8cc63f;
     float: left;
     margin-top: 2em;
-    animation: fadein-up 1s ease-out .2s;
+    animation: fadein-up .5s ease-out .2s;
     opacity: 0;
     animation-fill-mode: forwards;
 }
@@ -414,7 +414,7 @@ small {
     padding-top: .5em;
     padding-bottom: .5em;
     width: 60%;
-    animation: fadein-up-button 1s ease-out .2s;
+    animation: fadein-up-button .5s ease-out .2s;
     opacity: 0;
     animation-fill-mode: forwards;
 }
@@ -564,7 +564,7 @@ small {
     overflow: hidden;
     box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
     animation-name:modalopen;
-    animation-duration:1s;
+    animation-duration:.5s;
 }
 
 .modal-header h2, .modal-footer h3{
@@ -709,7 +709,7 @@ small {
 .module-left img {
     width: 100%;
     margin-bottom: .25em;
-    animation: fadein-up 1s ease-out .2s;
+    animation: fadein-up .5s ease-out .2s;
     opacity: 0;
     animation-fill-mode: forwards;
 }
@@ -720,7 +720,7 @@ small {
 .module-center img {
     width: 100%;
     margin-bottom: .25em;
-    animation: fadein-up 1s ease-out .2s;
+    animation: fadein-up .5s ease-out .2s;
     opacity: 0;
     animation-fill-mode: forwards;
 }
@@ -731,7 +731,7 @@ small {
 .module-right img {
     width: 100%;
     margin-bottom: .25em;
-    animation: fadein-up 1s ease-out .2s;
+    animation: fadein-up .5s ease-out .2s;
     opacity: 0;
     animation-fill-mode: forwards;
 }
@@ -807,7 +807,7 @@ small {
     100% { opacity: 1; }
     from { opacity: 0; }
     to   { opacity: 1; }
-    from { transform: translatex(100%); }
+    from { transform: translatex(40%); }
     to   { transform: translatex(0); }
 }
 @keyframes fadein-up {
