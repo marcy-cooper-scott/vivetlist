@@ -9,12 +9,12 @@
 ##### Landing Page
 - [x] Landing Page 
 ##### View/Add/Edit/Remove Medicine
-- [ ] See Individual Medicine 
+- [x] See Individual Medicine 
 - [x] Add New Medicine
 - [ ] Remove Medicine
 - [ ] Edit Medicine
 ##### API Calls
-- [ ] Medicine Information Populates From Open FDA API
+- [x] Medicine Information Populates From Open FDA API
 - [ ] User receives notification by text/email for medicine refill and/or appointment reminder from Clickatel API
 ##### View/Add/Edit/Remove Appointments
 - [x] See Individual Appointment on Calendar
@@ -35,5 +35,7 @@
 
 ##### If We Have Time:
 - [x] Comments on Posts
+
+##### In the Future:
 - [ ] User to User Messaging
 
