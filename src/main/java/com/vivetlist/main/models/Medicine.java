@@ -24,7 +24,7 @@ public class Medicine {
     private String medicine_name;
 
     @Column
-    @NotEmpty(message = "You must enter a date")
+//    @NotEmpty(message = "You must enter a date")
     private Date refill_date;
 
     @Column(length = 500)

@@ -8,7 +8,7 @@
     <div class="page-title-wrap">
         <div class="page-title"><h1>New Medication</h1></div>
     </div>
-    <div class="form-wrap">
+    <div class="form-wrap-picker">
         <form th:action="@{/medicines/create}" th:method="post" th:object="${medicine}">
             <label for="medicine-name">Name of Medication</label>
             <input id="medicine-name" placeholder="Enter medication name" type="text" name="medicine_name" th:field="*{medicine_name}" />
@@ -26,7 +26,9 @@
             <p th:if="${#fields.hasErrors('notes')}" th:errors="*{notes}" />
 
 
-            <button>Add Medicine</button>
+            <button id="med_only" type="submit" name="choice" th:value="med_only">Add Prescription </button>
+            <h6>- or -</h6>
+            <button id="create_reminder" type="submit" name="choice" th:value="reminder">Create Prescription With a Reminder</button>
 
         </form>
     </div>
