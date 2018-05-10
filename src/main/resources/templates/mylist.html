@@ -63,7 +63,7 @@
     /*<![CDATA[*/
     $(document).ready(function(){
         function renderCalendar() {
-            $('#calendar').fullCalendar({timezone:'local'});
+            $('#calendar').fullCalendar({timezone:'UTC'});
             var appointments = []; // clear all the events
             var request = $.ajax({'url': '/appointments.json'}); // make a request from the controller to fetch events in JSON format
             request.done(function (appts) {	// when done, we will move through each element in the array in order to grab the appointment object
