@@ -53,6 +53,7 @@ public class UserController {
             origUser.setEmail(user.getEmail());
             origUser.setPhone_number(user.getPhone_number());
             origUser.setTime_zone(user.getTime_zone());
+            userDao.save(origUser);
             return "redirect:/mylist";
 
     }
