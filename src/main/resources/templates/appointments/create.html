@@ -10,14 +10,10 @@
         </div>
         <div class="form-wrap-picker">
             <form th:object="${appointment}" th:method="post" th:action="@{/appointments/create}">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
+
                 <label for="time">Appointment Date &amp; Time</label>
                 <input id="time" placeholder="Enter date and time of appointment" type="hidden" th:field="*{date_time}" />
-                        </div>
-                    </div>
-                </div>
+
                 <label for="doctor">Name of Doctor</label>
                 <input id="doctor" placeholder="Enter doctor's name" th:field="*{doctor_name}" />
                 <label for="location">Location of Appointment</label>

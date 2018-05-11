@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/header :: header(${error})"></head>
+<body>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css" />
+<header th:replace="partials/nav :: nav"></header>
+<container>
+    <div class="page-title-wrap">
+        <div class="page-title"><h1>4-- error</h1></div>
+    </div>
+<div class="error-page-wrap">
+
+    <th:block th:switch="${error}">
+        <div th:case="'Not Found'">
+            <h2>Page not found!!</h2>
+            <p>Holy Crackers! Something went wrong!</p>
+        </div>
+        <div th:case="'Forbidden'">
+            <h2>You don't have permission to view this page.</h2>
+            <p>Holy Crackers! You need to login!</p>
+        </div>
+    </th:block>
+</div>
+    <div class="error-page-pic">
+        <img src="/images/crackers.jpg" alt="" />
+    </div>
+    <div class="epmty-space"></div>
+</container>
+
+<footer th:replace="partials/footer :: footer"></footer>
+
+</body>
+</html>

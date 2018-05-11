@@ -4,25 +4,31 @@
 <body>
     <header th:replace="partials/nav :: nav"></header>
 
-    <h1>Edit Post</h1>
 
-    <main>
+    <container>
+        <div class="page-title-wrap">
+            <div class="page-title"><h1>Edit Post</h1></div>
+        </div>
+    <div class="form-wrap">
         <form th:action="@{'/group/' + ${group.id} + '/posts/' + ${post.id} + '/edit'}" th:method="post" th:object="${post}">
-            Title:
+            <label>Title</label>
             <input th:field="*{title}" />
             <br />
-            Body:
+            <label>Body</label>
             <input th:field="*{body}" />
             <br />
             <input type="hidden" th:field="*{id}" />
-            <input type="submit" />
+            <button type="submit">Update Post</button>
         </form>
-
+    </div>
+        <div class="form-wrap">
         <form th:action="@{/group/{gid}/posts/delete(gid=${group.id})}" th:method="post" th:object="${post}">
+            <button>Delete Post</button>
             <input type="hidden" th:field="*{id}" />
-            <button>Delete</button>
         </form>
-    </main>
+        </div>
+        <div class="empty-space"></div>
+    </container>
     <footer th:replace="partials/footer :: footer"></footer>
 </body>
 </html>

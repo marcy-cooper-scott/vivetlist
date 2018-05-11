@@ -22,7 +22,7 @@ a:active {
 a:visited {
     text-decoration: none;
 }
-header, container, footer {
+header, container, footer, .container{
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: auto;
@@ -37,6 +37,9 @@ header{
     z-index: 1000;
 }
 container {
+    grid-gap: 1em;
+}
+.container {
     grid-gap: 1em;
 }
 footer {
@@ -132,6 +135,14 @@ input {
      margin-bottom: 2em;
      box-sizing: border-box
  }
+
+.textarea {
+    border-radius: .5em;
+    padding: .5em;
+    width: 100%;
+    margin-bottom: 2em;
+    box-sizing: border-box
+}
 .form-feilds {
     border-radius: .5em;
     border: 0;
@@ -524,11 +535,11 @@ small {
     background-color: #8cc63f;
 }
 .social {
-    width: 2.5em;
-    height: 2.5em;
+    width: 3.5em;
+    height: 3.5em;
     float: left;
     margin-left: .2em;
-    margin-top: -.5em;
+    margin-top: -.2em;
     box-sizing: border-box;
     background-color: #fff;
     cursor: pointer;
@@ -712,10 +723,29 @@ small {
     border-radius: .5em;
     font-size: 1em;
     padding: .25em .5em;
-    width: 60%;
+    width: 25%;
     margin: 1em .5em 0 .5em;
     background: linear-gradient(#1660ad, #144675, #1660ad);
     cursor: pointer;
+}
+/* ################# Error Pages ################# */
+.error-page-wrap {
+    grid-column: 3/11;
+}
+.error-page-wrap h2{
+    font-size: 4em;
+    color: #125fad;
+    text-align: center;
+
+}
+.error-page-wrap p {
+text-align: center;
+}
+.error-page-pic {
+    grid-column: 3/11;
+}
+.error-page-pic img {
+    width: 100%;
 }
 /* ################# Single post ################# */
 .single-post-wrap {
@@ -779,7 +809,7 @@ small {
     font-size: 1em;
     padding: .25em .5em;
     width: 25%;
-    margin: 0 .5em 0 .5em;
+    margin: 0 .5em 2em .5em;
     background: linear-gradient(#1660ad, #144675, #1660ad);
     cursor: pointer;
 }
