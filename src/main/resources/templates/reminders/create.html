@@ -11,17 +11,24 @@
     <div class="form-wrap">
         <form th:action="@{/reminders/create}" th:method="post" th:object="${reminder}">
             <label for="time">Reminder Date &amp; Time</label>
-            <input id="time" placeholder="Enter date and time of notification" type="text" th:field="*{scheduled_time}" />
-            <label for="appointment">For appointment:</label>
+            <input id="time" placeholder="Enter date and time of notification" type="hidden" th:field="*{scheduled_time}" />
+
+            <!--<input id='show-appt' name='show-appt' type='radio' /> Appointment<br />-->
+
+
+            <div id="appt-feild">
+            <label for="appointment">For appointment</label>
             <select id="appointment" name="appointment" th:field="*{appt}">
                 <th:block>
-                    <option th:value="null"></option>
+                    <option th:value="null">Select Appointment</option>
                     <option th:text="${appt.date_time + ' ' + appt.doctor_name}" th:each="appt : ${appointments}" th:value="${appt.id}" ></option>
                 </th:block>
             </select>
-            <label for="medicine">For medicine:</label>
+            </div>
+
+            <label for="medicine">For medicine</label>
             <select name="medicine" id="medicine" th:field="*{med}">
-                <option th:value="null"></option>
+                <option th:value="null">Select Medication</option>
                 <option th:text="${med.medicine_name + ' ' + med.refill_date}" th:each="med : ${medicines}" th:field="*{med}" th:value="${med.id}" ></option>
             </select>
             <select name="method" id="method" th:field="*{unit}">
@@ -49,11 +56,11 @@
 </script>
 <script>
     $(document).ready(function() {
-        $(":checkbox").click(function() {
-            if ($(this).is(":checked"))
-                $(".reminderForm").show();
+        $('input[type="radio"]').click(function() {
+            if ($(this).attr("id") == 'show-appt')
+                $("#appt-feild").show();
             else
-                $(".reminderForm").hide();
+                $("#appt-feild").hide();
         });
     })
 </script>
