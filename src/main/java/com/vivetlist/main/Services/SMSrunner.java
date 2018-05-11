@@ -1,7 +1,5 @@
 package com.vivetlist.main.Services;
 
-import com.twilio.http.TwilioRestClient;
-
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
@@ -18,14 +16,20 @@ public class SMSrunner {
 
     public void runner(Reminder reminder) {
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
-
+        String body;
+        if (reminder.getMed() == null) {
+            body = "Hey! This is VivetList reminding you of an appointment with " +
+                    reminder.getAppt().getDoctor_name() + " located at " +
+                    reminder.getAppt().getLocation() + " at " +
+                    reminder.getAppt().getDate_time();
+        } else {
+            body = "Hey! This is Vivetlist reminding you to get a refill of your " +
+                    reminder.getMed().getMedicine_name();
+        }
         Message message = Message
                 .creator(new PhoneNumber("+1" + reminder.getUser().getPhone_number()), // to
                         new PhoneNumber("+13133670029"), // from
-                        "Hey! This is VivetList reminding you of an appointment with" +
-                    reminder.getAppt().getDoctor_name() + " located at " +
-                    reminder.getAppt().getLocation() + " at " +
-                    reminder.getAppt().getDate_time())
+                        body)
                 .create();
         System.out.println(message.getSid());
     }
