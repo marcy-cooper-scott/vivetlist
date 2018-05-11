@@ -282,6 +282,10 @@ input {
     grid-column: 1/13;
     height: 200px;
 }
+.empty-space {
+    grid-column: 1/13;
+    height: 200px;
+}
 small {
     font-size: .4em;
 }
