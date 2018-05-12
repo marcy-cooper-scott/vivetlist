@@ -2,9 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/header :: header('VivetList')"></head>
 <body>
+<article>
     <header th:replace="partials/nav :: nav"></header>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css" />
-    <container>
+    <main>
         <div class="page-title-wrap">
             <div class="page-title"><h1>Edit Appointment</h1></div>
         </div>
@@ -29,9 +30,9 @@
         </div>
 
 
-        <div class="epmty-space"></div>
-    </container>
+    </main>
     <footer th:replace="partials/footer :: footer"></footer>
+</article>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>

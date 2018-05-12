@@ -2,9 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/header :: header('Create Reminder')"></head>
 <body>
+<article>
 <header th:replace="partials/nav :: nav"></header>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css" />
-<container>
+<main>
     <div class="page-title-wrap">
         <div class="page-title"><h1>Create Reminder</h1></div>
     </div>
@@ -13,11 +14,23 @@
             <label for="time">Reminder Date &amp; Time</label>
             <input id="time" placeholder="Enter date and time of notification" type="hidden" th:field="*{scheduled_time}" />
 
-            <!--<input id='show-appt' name='show-appt' type='radio' /> Appointment<br />-->
+            <div class="radio-wrap">
+                <label class="radio-container">For appointment
+                    <input type="radio" name="radio" onclick="show1()" />
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            <div class="radio-wrap">
+                <label class="radio-container">For medicine
+                    <input type="radio" name="radio" onclick="show2()" />
+                    <span class="checkmark"></span>
+                </label>
+            </div>
 
 
-            <div id="appt-feild">
-            <label for="appointment">For appointment</label>
+
+            <div id="appt-field">
+            <label for="appointment">Appointment</label>
             <select id="appointment" name="appointment" th:field="*{appt}">
                 <th:block>
                     <option th:value="null">Select Appointment</option>
@@ -26,23 +39,27 @@
             </select>
             </div>
 
-            <label for="medicine">For medicine</label>
+            <div id="med-field">
+            <label for="medicine">Medicine</label>
             <select name="medicine" id="medicine" th:field="*{med}">
                 <option th:value="null">Select Medication</option>
                 <option th:text="${med.medicine_name + ' ' + med.refill_date}" th:each="med : ${medicines}" th:field="*{med}" th:value="${med.id}" ></option>
             </select>
+            </div>
+
+            <label for="medicine">Type of Notification</label>
             <select name="method" id="method" th:field="*{unit}">
                 <option value="1">Email</option>
                 <option value="2">Text</option>
                 <option value="3">Both</option>
             </select>
-            <input type="submit" />
+            <button type="submit">Submit</button>
         </form>
     </div>
-    <div class="epmty-space"></div>
-</container>
+</main>
 
 <footer th:replace="partials/footer :: footer"></footer>
+</article>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
@@ -54,15 +71,25 @@
         });
     });
 </script>
+<!--<script>-->
+    <!--$(document).ready(function() {-->
+        <!--$('input[type="radio"]').click(function() {-->
+            <!--if ($(this).attr("id") == 'show-appt')-->
+                <!--$("#appt-feild").show();-->
+            <!--else-->
+                <!--$("#appt-feild").hide();-->
+        <!--});-->
+    <!--})-->
+<!--</script>-->
 <script>
-    $(document).ready(function() {
-        $('input[type="radio"]').click(function() {
-            if ($(this).attr("id") == 'show-appt')
-                $("#appt-feild").show();
-            else
-                $("#appt-feild").hide();
-        });
-    })
+    function show1(){
+        document.getElementById('appt-field').style.display ='block';
+        document.getElementById('med-field').style.display ='none';
+    }
+    function show2(){
+        document.getElementById('med-field').style.display ='block';
+        document.getElementById('appt-field').style.display ='none';
+    }
 </script>
 </body>
 </html>

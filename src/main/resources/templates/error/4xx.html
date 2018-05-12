@@ -2,9 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/header :: header(${error})"></head>
 <body>
+<article>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css" />
 <header th:replace="partials/nav :: nav"></header>
-<container>
+<main>
     <div class="page-title-wrap">
         <div class="page-title"><h1>4-- error</h1></div>
     </div>
@@ -24,10 +25,9 @@
     <div class="error-page-pic">
         <img src="/images/crackers.jpg" alt="" />
     </div>
-    <div class="epmty-space"></div>
-</container>
+</main>
 
 <footer th:replace="partials/footer :: footer"></footer>
-
+</article>
 </body>
 </html>

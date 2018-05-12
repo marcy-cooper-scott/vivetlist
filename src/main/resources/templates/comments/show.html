@@ -2,9 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:replace="partials/header :: header('VivetList')"></head>
 <body>
+<article>
 <header th:replace="partials/nav :: nav"></header>
 
-<container>
+<main>
 <div class="page-title-wrap">
     <div class="page-title"><h1>Comment</h1></div>
 </div>
@@ -21,7 +22,8 @@
 
     <div class="epmty-space"></div>
     <div class="epmty-space"></div>
-</container>
+</main>
 <footer th:replace="partials/footer :: footer"></footer>
+</article>
 </body>
 </html>
