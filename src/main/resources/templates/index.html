@@ -2,10 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/header :: header('VivetList')"></head>
 <body>
-
+<article>
 <header th:replace="partials/nav :: nav"></header>
 
-<container>
+<main>
     <div class="banner-wrap">
         <div class="banner-signup">
             <h2>Connect &amp;<br />Take Control</h2>
@@ -27,8 +27,9 @@
         <p>Find support groups dedicated to specific health related problems and connect with other users.</p>
     </div>
 
-</container>
+</main>
 
 <footer th:replace="partials/footer :: footer"></footer>
+</article>
 </body>
 </html>

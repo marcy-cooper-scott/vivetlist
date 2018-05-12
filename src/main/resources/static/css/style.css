@@ -1,8 +1,11 @@
 @charset "utf-8";
 /* CSS Document */
 
-body {
+html, body {
+    width: 100%;
+    height: 100%;
     margin: 0;
+    padding: 0;
     font-family: 'Asap', sans-serif;
     font-size: 16px;
 }
@@ -22,10 +25,16 @@ a:active {
 a:visited {
     text-decoration: none;
 }
-header, container, footer, .container{
+header, container, footer, .container, main{
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: auto;
+    overflow: hidden;
+}
+article {
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: 1fr auto;
 }
 header{
     grid-template-areas:
@@ -39,12 +48,20 @@ header{
 container {
     grid-gap: 1em;
 }
+main {
+    grid-gap: 1em;
+}
 .container {
     grid-gap: 1em;
 }
 footer {
     background-color: #144575;
     border-top: #0d3151 solid .1em;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+* {
+    box-sizing: border-box;
 }
 nav ul {
     float: right;
@@ -104,7 +121,7 @@ nav .hamburger{
     background-color: #125fad;
     width: 80%;
     height: 5em;
-    margin-top: -2em;
+    margin-top: -2.47em;
 }
 .page-title h1 {
     color: #8cc63f;
@@ -122,18 +139,20 @@ input {
 }
 .form-wrap {
     grid-column: 4/10;
-    margin-top: 3em;
+    margin-top: 0;
     margin-bottom: 3em;
     animation: fadein-up .5s ease-out .2s;
     opacity: 0;
     animation-fill-mode: forwards;
+    position: relative;
 }
 .form-wrap input {
      border-radius: .5em;
      padding: .5em;
      width: 100%;
      margin-bottom: 2em;
-     box-sizing: border-box
+     box-sizing: border-box;
+    font-size: 1em;
  }
 
 .textarea {
@@ -141,7 +160,8 @@ input {
     padding: .5em;
     width: 100%;
     margin-bottom: 2em;
-    box-sizing: border-box
+    box-sizing: border-box;
+    font-size: 1em;
 }
 .form-feilds {
     border-radius: .5em;
@@ -157,7 +177,9 @@ input {
     height: 2em;
     width: 100%;
     margin-bottom: 2em;
-    box-sizing: border-box
+    box-sizing: border-box;
+    font-size: 1em;
+    color: #666;
 }
 .form-wrap label {
     color: #8cc63f;
@@ -192,7 +214,17 @@ input {
     padding: .5em;
     width: 100%;
     margin-bottom: 2em;
-    box-sizing: border-box
+    box-sizing: border-box;
+}
+.form-wrap-picker select {
+    border-radius: .5em;
+    padding: .5em;
+    height: 2em;
+    width: 100%;
+    margin-bottom: 2em;
+    box-sizing: border-box;
+    font-size: 1em;
+    color: #666;
 }
 .form-wrap-picker label {
     color: #8cc63f;
@@ -222,6 +254,15 @@ input {
     margin: 0;
     color: #125fad;
 }
+.form-wrap h6 {
+    font-size: 1.5em;
+    font-weight: 700;
+    text-align: center;
+    padding-top: 2em;
+    padding-bottom: .5em;
+    margin: 0;
+    color: #125fad;
+}
 .glyphicon-chevron-up {
     background: transparent url("../images/up-arrow.png") !important;
 }
@@ -234,10 +275,6 @@ input {
 .glyphicon-chevron-down img{
     width: 100%;
 }
-/*.bootstrap-datetimepicker-widget table td span:hover {*/
-/*!*background-color: none !important;*!*/
-    /*background-image: url("../images/down-arrow.png");*/
-/*}*/
 .timepicker {
     height: 14em;
     margin-top: 1em;
@@ -307,6 +344,68 @@ small {
     text-align: center;
     font-size: 1em;
     padding: .5em 0;
+}
+
+#appt-field {
+    display: none;
+    margin-top: 1em;
+
+}
+#med-field {
+    display: none;
+    margin-top: 1em;
+}
+.radio-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.radio-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+.radio-container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+.radio-container input:checked ~ .checkmark {
+    background-color: #125fad;
+}
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.radio-container input:checked ~ .checkmark:after {
+    display: block;
+}
+.radio-container .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+.radio-wrap {
+    width: 100%;
+    position: relative;
 }
 /* ################# Banner Elements ################# */
 .banner-wrap {
@@ -468,14 +567,21 @@ small {
     font-weight: 700;
     list-style: none;
     padding: 0 0 .5em 0;
-    margin: 0;
+    margin: 0 0 1em 0;
     color: #125fad;
-    height: 1.5em;
+    height: 3.5em;
+    border-bottom: #125fad solid .08em;
 }
 .prescription-list-title {
     line-height: 1.6em;
     margin-left: .25em;
+    font-size: 1em;
+}
+.prescription-list-refill {
+    line-height: 1.6em;
+    margin-left: .25em;
     font-size: .7em;
+    color: #8cc63f;
 }
 .prescription-list-title:hover {
     color: #8cc63f;
@@ -484,11 +590,12 @@ small {
 .prescription-list-edit, .prescription-list-delete {
     color: #fff;
     border-radius: .5em;
+    margin-top: .3em;
     margin-right: .15em;
     padding: .5em .25em;
     font-size: .55em;
-    width: 1.2em;
-    height: 1.2em;
+    width: 2em;
+    height: 2em;
     cursor: pointer;
     float: left;
 }
@@ -709,8 +816,8 @@ small {
 }
 .single-group h2 {
     color: #125fad;
-    font-size: 1.5em;
-    margin: .25em .5em 0 .5em;
+    font-size: 2em;
+    margin: .25em 0 0 0;
     padding-bottom: .3em;
     border-bottom: #8cc63f solid .1em;
 }
@@ -786,23 +893,22 @@ text-align: center;
 }
 .comment-wrap {
     grid-column: 3/11;
-    padding-left: 3%;
 }
 .comment {
     width: 100%;
     margin-bottom: 2.5em;
 }
-.comment h2 {
+.comment-wrap h2 {
     color: #125fad;
     font-size: 1.5em;
-    margin: .25em .5em 0 .5em;
+    margin: .25em 0 0 0;
     padding-bottom: .3em;
     border-bottom: #8cc63f solid .1em;
 }
 .comment p {
     color: #0d3151;
     font-size: 1em;
-    margin: 1em .5em 0 .5em;
+    margin: 1em 0 0 0;
 }
 .comment-wrap button {
     font-family: 'Asap', sans-serif;
@@ -813,7 +919,7 @@ text-align: center;
     font-size: 1em;
     padding: .25em .5em;
     width: 25%;
-    margin: 0 .5em 2em .5em;
+    margin: 1.5em 0 1.5em 0;
     background: linear-gradient(#1660ad, #144675, #1660ad);
     cursor: pointer;
 }
@@ -982,7 +1088,7 @@ text-align: center;
     }
     .prescription-list-title {
         margin-left: .2em;
-        font-size: 1.2vw;
+        font-size: 1em;
         line-height: .01em;
     }
 
@@ -1023,7 +1129,7 @@ text-align: center;
     .prescription-list-title {
         line-height: 1.6em;
         margin-left: .25em;
-        font-size: .7em;
+        font-size: 1em;
     }
     .calendar-wrap {
         grid-column: 1/13;
@@ -1192,7 +1298,7 @@ text-align: center;
         width: 12em;
     }
     .prescription-list-title {
-        font-size: .6em;
+        font-size: 1em;
     }
     #calendar h2 {
         font-size: 1.3em;
@@ -1202,7 +1308,7 @@ text-align: center;
     }
     .page-title {
         height: 5em;
-        margin-top: -1.4em;
+        margin-top: -1.68em;
     }
     .page-title h1 {
         font-size: 2em;

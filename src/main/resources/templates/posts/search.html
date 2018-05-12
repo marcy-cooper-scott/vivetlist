@@ -2,10 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/header :: header('Groups')"></head>
 <body>
-
+<article>
 <header th:replace="partials/nav :: nav"></header>
 
-<container>
+<main>
     <div class="page-title-wrap">
         <div class="page-title"><h1 th:text="${group.name}"></h1></div>
     </div>
@@ -15,14 +15,15 @@
             <h2><span th:text="${post.title}"></span></h2>
             <p><span th:text="${post.body}"></span></p>
             <a th:href="@{/group/{gid}/posts/{pid}(gid=${group.id}, pid=${post.id})}">
-                <button>View Group</button>
+                <button>View Post</button>
             </a>
 
         </div>
 
     </div>
-</container>
+</main>
 
 <footer th:replace="partials/footer :: footer"></footer>
+</article>
 </body>
 </html>

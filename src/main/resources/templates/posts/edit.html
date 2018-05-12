@@ -2,10 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/header :: header('VivetList')"></head>
 <body>
+<article>
     <header th:replace="partials/nav :: nav"></header>
 
 
-    <container>
+    <main>
         <div class="page-title-wrap">
             <div class="page-title"><h1>Edit Post</h1></div>
         </div>
@@ -21,14 +22,16 @@
             <button type="submit">Update Post</button>
         </form>
     </div>
+
         <div class="form-wrap">
+            <h6>- or -</h6>
         <form th:action="@{/group/{gid}/posts/delete(gid=${group.id})}" th:method="post" th:object="${post}">
             <button>Delete Post</button>
             <input type="hidden" th:field="*{id}" />
         </form>
         </div>
-        <div class="empty-space"></div>
-    </container>
+    </main>
     <footer th:replace="partials/footer :: footer"></footer>
+</article>
 </body>
 </html>

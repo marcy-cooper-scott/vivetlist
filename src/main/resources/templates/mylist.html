@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/header :: header('VivetList')"></head>
 <body>
+<article>
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css' />
 <header th:replace="partials/nav :: nav"></header>
 <div id="modal" class="modal">
@@ -18,7 +19,7 @@
     </div>
 </div>
 
-<container>
+<main>
     <div class="mylist-banner-wrap">
         <div class="mylist-banner-user">
             <!--<div class="mylist-user-pic"><img src="/images/default-user.jpg" alt="" /></div>-->
@@ -39,24 +40,24 @@
     <div class="prescription-list-wrap">
         <h2>My Prescriptions <small>(Click to view Info)</small></h2>
         <ul th:each="med: ${meds}">
-            <!--<button class="trigger">Trigger Modal</button>-->
             <li>
-                <!--<div class="prescription-list-edit"><a th:href="@{/medicines/{id}/edit(id=${med.id})}"><img src="/images/edit-icon.png" alt="" /></a></div>-->
+
                 <div class="prescription-list-delete"><a th:href="@{/medicines/{id}/delete(id=${med.id})}" ><img src="/images/delete-icon.png" alt="" /></a></div>
                 <span th:id="${med.medicine_name}" class="prescription-list-title" onclick="onClick(this)" th:text="${med.medicine_name}"></span>
+                <div class="prescription-list-refill"><strong>Refill Date: </strong><span th:id="${med.refill_date}" th:text="${med.refill_date}"></span></div>
             </li>
         </ul>
 
     </div>
-    <!--<a th:href="/reminders/{id}/edit(id=${reminder.id})}"><button>Edit Reminder</button></a>-->
     <div class="calendar-wrap">
         <h2>My Appointments</h2>
         <div id="calendar"></div>
     </div>
 
-</container>
+</main>
 
 <footer th:replace="partials/footer :: footer"></footer>
+</article>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
