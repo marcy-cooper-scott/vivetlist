@@ -29,7 +29,6 @@ header, container, footer, .container, main{
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: auto;
-    overflow: hidden;
 }
 article {
     min-height: 100%;
@@ -50,6 +49,7 @@ container {
 }
 main {
     grid-gap: 1em;
+    overflow: hidden;
 }
 .container {
     grid-gap: 1em;
