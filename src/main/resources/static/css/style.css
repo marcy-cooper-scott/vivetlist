@@ -607,6 +607,9 @@ small {
 .prescription-list-edit img, .prescription-list-delete img{
     width: 100%;
 }
+.hide-time .timepicker{
+    display: none;
+}
 /* ################# About Page Elements ################# */
 .about {
     grid-column: 3/11;

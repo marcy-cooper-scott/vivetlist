@@ -14,10 +14,10 @@
             <label for="medicine-name">Name of Medication</label>
             <input id="medicine-name" placeholder="Enter medication name" type="text" name="medicine_name" th:field="*{medicine_name}" />
             <p th:if="${#fields.hasErrors('medicine_name')}" th:errors="*{medicine_name}" />
-
-            <label for="time">Medication Refill Date</label>
-            <input id="time" placeholder="Enter date and time of appointment" type="hidden" th:field="*{refill_date}" />
-
+            <div class="hide-time">
+                <label for="time">Medication Refill Date</label>
+                <input id="time" placeholder="Enter date and time of appointment" type="hidden" th:field="*{refill_date}" />
+            </div>
             <!--<label for="refill-date">Medication Refill Date</label>-->
             <!--<input id="refill-date" placeholder="Enter medication refill date" type="text" name="refill_date" th:field="*{refill_date}" />-->
             <p th:if="${#fields.hasErrors('refill_date')}" th:errors="*{refill_date}" />
@@ -50,5 +50,6 @@
         });
     });
 </script>
+
 </body>
 </html>
