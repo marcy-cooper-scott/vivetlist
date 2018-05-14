@@ -569,7 +569,6 @@ small {
     padding: 0 0 .5em 0;
     margin: 0 0 1em 0;
     color: #125fad;
-    height: 3.5em;
     border-bottom: #125fad solid .08em;
 }
 .prescription-list-title {
@@ -582,6 +581,12 @@ small {
     margin-left: .25em;
     font-size: .7em;
     color: #8cc63f;
+}
+.prescription-list-notes {
+    line-height: 1.6em;
+    margin-left: .25em;
+    font-size: .7em;
+    color: #125fad;
 }
 .prescription-list-title:hover {
     color: #8cc63f;
