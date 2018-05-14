@@ -10,6 +10,7 @@ import java.io.IOException;
 public class EmailService {
 
     public SendGrid sendGrid;
+    private FriendlyTimeService service = new FriendlyTimeService();
 
     public EmailService(SendGrid sendGrid) {
         this.sendGrid = sendGrid;
@@ -19,7 +20,11 @@ public class EmailService {
         String body;
         if (reminder.getMed() == null) {
             body = "Here is your reminder for your appointment with " + reminder.getAppt().getDoctor_name() +
-                    " located at " + reminder.getAppt().getLocation() + " which will be at " + reminder.getAppt().getDate_time() + "!";
+                    " located at " + reminder.getAppt().getLocation() + " which will be at " +
+                    service.convertApptTime(reminder.getAppt().getDate_time()) + "!";
+        } else if (reminder.getMed().getRefill_date() == null) {
+            body = "Here is your reminder to refill your " + reminder.getMed().getMedicine_name() +
+                    service.convertRefillDate(reminder.getMed().getRefill_date()) + "!";
         } else {
             body = "Here is your reminder to refill your " + reminder.getMed().getMedicine_name() + "!";
         }

@@ -13,6 +13,7 @@ public class SMSrunner {
             "ACdd2933cab5f6f226ec794eee5aecc405";
     public static final String AUTH_TOKEN =
             "c2bf051b30c27abe85fa20f4b8324fde";
+    private FriendlyTimeService service = new FriendlyTimeService();
 
     public void runner(Reminder reminder) {
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
@@ -20,11 +21,15 @@ public class SMSrunner {
         if (reminder.getMed() == null) {
             body = "Hey! This is VivetList reminding you of an appointment with " +
                     reminder.getAppt().getDoctor_name() + " located at " +
-                    reminder.getAppt().getLocation() + " at " +
-                    reminder.getAppt().getDate_time();
+                    reminder.getAppt().getLocation() + " on " +
+                    service.convertApptTime(reminder.getAppt().getDate_time());
+        } else if (reminder.getMed().getRefill_date() == null) {
+            body = "Hey! This is Vivetlist reminding you to get a refill of your " +
+                    reminder.getMed().getMedicine_name() + "!";
         } else {
             body = "Hey! This is Vivetlist reminding you to get a refill of your " +
-                    reminder.getMed().getMedicine_name();
+                    reminder.getMed().getMedicine_name() +
+                    " on " + service.convertRefillDate(reminder.getMed().getRefill_date());
         }
         Message message = Message
                 .creator(new PhoneNumber("+1" + reminder.getUser().getPhone_number()), // to

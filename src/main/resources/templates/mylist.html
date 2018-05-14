@@ -44,7 +44,7 @@
 
                 <div class="prescription-list-delete"><a th:href="@{/medicines/{id}/delete(id=${med.id})}" ><img src="/images/delete-icon.png" alt="" /></a></div>
                 <span th:id="${med.medicine_name}" class="prescription-list-title" onclick="onClick(this)" th:text="${med.medicine_name}"></span>
-                <div class="prescription-list-refill"><strong>Refill Date: </strong><span th:id="${med.refill_date}" th:text="${med.refill_date}"></span></div>
+                <div class="prescription-list-refill"><strong>Refill Date: </strong><span th:id="${med.refill_date}" th:text="${service.convertRefillDate(med.refill_date)}"></span></div>
             </li>
         </ul>
 
