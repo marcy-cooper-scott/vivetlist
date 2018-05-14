@@ -1,5 +1,6 @@
 package com.vivetlist.main.controller;
 
+import com.vivetlist.main.Services.FriendlyTimeService;
 import com.vivetlist.main.models.Appointment;
 import com.vivetlist.main.models.Medicine;
 import com.vivetlist.main.models.User;
@@ -18,11 +19,12 @@ import java.util.List;
 @Controller
 public class MylistController {
 
-    UserRepo userRepo;
     MedicineRepo repo;
+    FriendlyTimeService service;
 
-    MylistController(MedicineRepo repo){
+    MylistController(MedicineRepo repo, FriendlyTimeService service){
         this.repo = repo;
+        this.service = service;
     }
 
     @GetMapping("/mylist")
@@ -30,6 +32,7 @@ public class MylistController {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", user);
         model.addAttribute("meds", repo.findAllByUserId(user.getId()));
+        model.addAttribute("service", service);
         return "mylist";
     }
 

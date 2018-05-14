@@ -8,11 +8,11 @@ import java.util.Date;
 @Service
 public class FriendlyTimeService {
     public String convertApptTime(Date date) {
-        return new SimpleDateFormat("EEE, d MMM yyyy 'at' hh:mma")
+        return new SimpleDateFormat("EEE, MMM d yyyy 'at' hh:mma")
     .format(date);
     }
 
     public String convertRefillDate(Date date) {
-        return new SimpleDateFormat("EEE, d MMM yyyy").format(date);
+        return new SimpleDateFormat("EEE, MMM d yyyy").format(date);
     }
 }
