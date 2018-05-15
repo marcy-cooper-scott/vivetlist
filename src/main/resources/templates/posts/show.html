@@ -15,7 +15,7 @@
                 <div class="single-group">
                     <h2><span th:text="${post.title}"></span></h2>
                     <p><span th:text="${post.body}"></span></p>
-                    <p><span th:text="${'Author: ' + post.user.username}"></span> </p>
+                    <p><span class="comment-name" th:text="${'Author: ' + post.user.username}"></span> </p>
             <div sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id == post.user.id}">
                 <a th:href="@{/group/{gid}/posts/{pid}/edit(gid=${group.id}, pid=${post.id})}">
                     <button>Edit</button>
