@@ -845,7 +845,44 @@ small {
     background: linear-gradient(#1660ad, #144675, #1660ad);
     cursor: pointer;
 }
-/* ################# Single Group ################# */
+#medicine_info {
+    width: 100%;
+}
+.modal-link-wrap {
+    width: 100%;
+}
+.modal-link {
+    float: left;
+}
+#medicine_info a {
+    color: #125fad !important;
+    margin-left: 1em !important;
+    text-decoration: underline !important;
+}
+#medicine_info a:link {
+    color: #125fad !important;
+}
+#medicine_info a:active {
+    color: #125fad !important;
+}
+#medicine_info a:visited {
+    color: #125fad !important;
+}
+#medicine_info a:hover {
+    color: #8cc63f !important;
+}
+.modal-line {
+    height: .05em;
+    background-color: #8cc63f;
+    display: none;
+    clear: both;
+    margin-bottom: 1em;
+    width: 500px;
+}
+.clear {
+    clear: both;
+}
+    /* ################# Single Group ################# */
 .single-group-wrap {
     grid-column: 3/11;
 }
