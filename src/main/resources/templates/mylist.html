@@ -12,7 +12,7 @@
             <h2 id="med-modal-header">Modal Header</h2>
         </div>
         <div class="modal-body">
-            <span id="medicine_info"></span>
+            <div id="medicine_info"></div>
         </div>
         <div class="modal-footer">
         </div>
@@ -90,6 +90,7 @@
     });
     var openfda = function(search) { // brings back two things: meta and results
         var medinfo = $('#medicine_info');
+        var html = '';
         medinfo.empty(); // clear results
         var request = $.ajax({
             'url': 'https://api.fda.gov/drug/label.json?api_key=jhZsAyS9joDLO09BgKoNHnJS2GgKZxc3BEbQRiwZ&search=' +
@@ -100,12 +101,15 @@
             console.table(data);
             var keys = Object.keys(data);
             var values = Object.values(data);
+            html = '<div class="modal-link-wrap">';
             for (var i = 0; i < keys.length; i++) {
-                medinfo.append('<a href="#' + keys[i] + '">' + keys[i] + '</a>');
+                html += '<div class="modal-link"> <a href="#' + keys[i] + '">' + keys[i] + '</a></div>';
             }
+            html += '</div><div class="modal-line"></div><div class="clear"></div> ';
             for (i = 0; i < keys.length; i++) {
-                medinfo.append('<a name="' + keys[i] + '"><p>' + values[i] + '</p>');
+                html += '<a name="' + keys[i] + '"></a><p>' + values[i] + '</p>';
             }
+            medinfo.append(html);
         });
     };
     function onClick(element) {
