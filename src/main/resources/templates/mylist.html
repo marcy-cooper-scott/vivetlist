@@ -98,9 +98,13 @@
         request.done(function (results) { // results is an object
             var data = results.results[0]; // gather those results, prepare for filter and map
             console.table(data);
+            var keys = Object.keys(data);
             var values = Object.values(data);
-            for (var i = 0; i < values.length; i++) {
-                medinfo.append('<a name="' + values[i] + '"><p>' + values[i] + '</p>');
+            for (var i = 0; i < keys.length; i++) {
+                medinfo.append('<a href="#' + keys[i] + '">' + keys[i] + '</a>');
+            }
+            for (i = 0; i < keys.length; i++) {
+                medinfo.append('<a name="' + keys[i] + '"><p>' + values[i] + '</p>');
             }
         });
     };
