@@ -103,12 +103,49 @@
             var values = Object.values(data);
             html = '<div class="modal-link-wrap">';
             for (var i = 0; i < keys.length; i++) {
-                html += '<div class="modal-link"> <a href="#' + keys[i] + '">' + keys[i] + '</a></div>';
+                if (
+                    // order follows: purpose or description of the med
+                    (keys[i] === "purpose") ||
+                    (keys[i] === "description") ||
+                    // warnings
+                    (keys[i] === "warnings") ||
+                    (keys[i] === "warnings_and_cautions") ||
+                    // adverse reactions
+                    (keys[i] === "adverse_reactions") ||
+                    // do not use if...
+                    (keys[i] === "do_not_use") ||
+                    // pregnancy info
+                    (keys[i] === "pregnancy_or_breast_feeding") ||
+                    // if questions, give pharm info
+                    (keys[i] === "questions")
+                ){
+                    html += '<div class="modal-link"> <a href="#' + keys[i] + '">' + keys[i].toUpperCase() + '</a></div>';
+                }
             }
-            html += '</div><div class="modal-line"></div><div class="clear"></div> ';
+            html += '<div class="modal-link-wrap">';
+            html += '</div><div class="modal-line"></div><div class="clear"></div>';
             for (i = 0; i < keys.length; i++) {
-                html += '<a name="' + keys[i] + '"></a><p>' + values[i] + '</p>';
+                if (
+                    // order follows: purpose or description of the med
+                    (keys[i] === "purpose") ||
+                    (keys[i] === "description") ||
+                    // warnings
+                    (keys[i] === "warnings") ||
+                    (keys[i] === "warnings_and_cautions") ||
+                    // adverse reactions
+                    (keys[i] === "adverse_reactions") ||
+                    // do not use if...
+                    (keys[i] === "do_not_use") ||
+                    // pregnancy info
+                    (keys[i] === "pregnancy_or_breast_feeding") ||
+
+                    // if questions, give pharm info
+                    (keys[i] === "questions")
+                ){
+                    html += '<a name="' + keys[i] + '"></a><p>' + values[i] + '</p>';
+                }
             }
+            html += "Medication information provided by openFDA. openFDA is a beta research project and not for clinical use. While we make every effort to ensure that data is accurate, you should assume all results are unvalidated.";
             medinfo.append(html);
         });
     };
