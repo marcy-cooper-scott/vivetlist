@@ -851,25 +851,69 @@ small {
 .modal-link-wrap {
     width: 100%;
 }
+.modal-link-wrap p{
+    font-family: 'Asap', sans-serif !important;
+    font-size: 1em !important;
+    color: #0d3151 !important;
+    margin: 2em 0 2em 0;
+}
 .modal-link {
     float: left;
 }
 #medicine_info a {
-    color: #125fad !important;
-    margin-left: 1em !important;
-    text-decoration: underline !important;
+
 }
 #medicine_info a:link {
-    color: #125fad !important;
+    margin: 0 .5em 0 .5em !important;
+    text-decoration: none !important;
+    font-family: 'Asap', sans-serif !important;
+    font-weight: 700 !important;
+    background-color: #144575 !important;
+    color: #8cc63f !important;
+    border-radius: .5em !important;
+    font-size: 1em !important;
+    padding: .25em 1em !important;
+    background: linear-gradient(#1660ad, #144675, #1660ad);
+    cursor: pointer !important;
 }
 #medicine_info a:active {
-    color: #125fad !important;
+    margin: 0 .5em 0 .5em !important;
+    text-decoration: none !important;
+    font-family: 'Asap', sans-serif !important;
+    font-weight: 700 !important;
+    background-color: #144575 !important;
+    color: #8cc63f !important;
+    border-radius: .5em !important;
+    font-size: 1em !important;
+    padding: .25em 1em !important;
+    background: linear-gradient(#1660ad, #144675, #1660ad);
+    cursor: pointer !important;
 }
 #medicine_info a:visited {
-    color: #125fad !important;
+    margin: 0 .5em 0 .5em !important;
+    text-decoration: none !important;
+    font-family: 'Asap', sans-serif !important;
+    font-weight: 700 !important;
+    background-color: #144575 !important;
+    color: #8cc63f !important;
+    border-radius: .5em !important;
+    font-size: 1em !important;
+    padding: .25em 1em !important;
+    background: linear-gradient(#1660ad, #144675, #1660ad);
+    cursor: pointer !important;
 }
 #medicine_info a:hover {
-    color: #8cc63f !important;
+    margin: 0 .5em 0 .5em !important;
+    text-decoration: none !important;
+    font-family: 'Asap', sans-serif !important;
+    font-weight: 700 !important;
+    background-color: #144575 !important;
+    color: #5e9a42 !important;
+    border-radius: .5em !important;
+    font-size: 1em !important;
+    padding: .25em 1em !important;
+    background: linear-gradient(#1660ad, #144675, #1660ad);
+    cursor: pointer !important;
 }
 .modal-line {
     height: .05em;
