@@ -2,11 +2,12 @@ package com.vivetlist.main.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
 
 import javax.persistence.*;
+import java.time.Instant;
+import java.time.ZoneId;
 import java.util.Date;
+import java.util.TimeZone;
 
 @Entity
 @Table(name = "reminders")
@@ -18,7 +19,7 @@ public class Reminder {
     private long id;
 
     @Column(nullable = false)
-    private Date scheduled_time;
+    private Instant scheduled_time;
 
     @OneToOne
     @JsonManagedReference
@@ -36,17 +37,17 @@ public class Reminder {
     @JsonManagedReference
     private Notification_Type unit;
 
-    public Reminder(long id, Date scheduled_time, User user, Appointment appt, Medicine med, Notification_Type unit){
+    public Reminder(long id, Instant scheduled_time, User user, Appointment appt, Medicine med, Notification_Type unit){
         this.id = id;
-        this.scheduled_time = convertDate(scheduled_time, user);
+        this.scheduled_time = scheduled_time;
         this.user = user;
         this.appt = appt;
         this.med = med;
         this.unit = unit;
     }
 
-    public Reminder(Date scheduled_time, User user, Appointment appt, Medicine med, Notification_Type unit){
-        this.scheduled_time = convertDate(scheduled_time, user);
+    public Reminder(Instant scheduled_time, User user, Appointment appt, Medicine med, Notification_Type unit){
+        this.scheduled_time = scheduled_time;
         this.user = user;
         this.appt = appt;
         this.med = med;
@@ -64,11 +65,11 @@ public class Reminder {
         this.id = id;
     }
 
-    public Date getScheduled_time() {
+    public Instant getScheduled_time() {
         return scheduled_time;
     }
 
-    public void setScheduled_time(Date scheduled_time) {
+    public void setScheduled_time(Instant scheduled_time) {
         this.scheduled_time = scheduled_time;
     }
 
@@ -102,10 +103,5 @@ public class Reminder {
 
     public void setUnit(Notification_Type unit) {
         this.unit = unit;
-    }
-
-    private Date convertDate(Date date, User user) {
-        DateTime joda = new DateTime(date);
-        return joda.minusHours(user.getTime_zone().intValue()).toDate(); // get timezone  offset here, fixes the issue
     }
 }

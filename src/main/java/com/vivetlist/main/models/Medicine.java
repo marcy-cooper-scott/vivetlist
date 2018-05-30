@@ -6,6 +6,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -25,7 +27,7 @@ public class Medicine {
 
     @Column
 //    @NotEmpty(message = "You must enter a date")
-    private Date refill_date;
+    private Instant refill_date;
 
     @Column(length = 500)
     @NotBlank(message = "You must enter a note")
@@ -35,7 +37,7 @@ public class Medicine {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Medicine(long id, String medicine_name, Date refill_date, String notes, User user){
+    public Medicine(long id, String medicine_name, Instant refill_date, String notes, User user){
         this.id = id;
         this.medicine_name = medicine_name;
         this.refill_date = refill_date;
@@ -43,7 +45,7 @@ public class Medicine {
         this.user = user;
     }
 
-    public Medicine(String medicine_name, Date refill_date, String notes, User user){
+    public Medicine(String medicine_name, Instant refill_date, String notes, User user){
         this.medicine_name = medicine_name;
         this.refill_date = refill_date;
         this.notes = notes;
@@ -68,11 +70,11 @@ public class Medicine {
         this.medicine_name = medicine_name;
     }
 
-    public Date getRefill_date() {
+    public Instant getRefill_date() {
         return refill_date;
     }
 
-    public void setRefill_date(Date refill_date) {
+    public void setRefill_date(Instant refill_date) {
         this.refill_date = refill_date;
     }
 

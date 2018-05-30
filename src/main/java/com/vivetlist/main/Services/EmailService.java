@@ -21,10 +21,10 @@ public class EmailService {
         if (reminder.getMed() == null) {
             body = "Here is your reminder for your appointment with " + reminder.getAppt().getDoctor_name() +
                     " located at " + reminder.getAppt().getLocation() + " which will be at " +
-                    service.convertApptTime(reminder.getAppt().getDate_time()) + "!";
+                    service.convertApptTime(reminder.getAppt().getDate_time(), reminder.getUser()) + "!";
         } else if (reminder.getMed().getRefill_date() == null) {
             body = "Here is your reminder to refill your " + reminder.getMed().getMedicine_name() +
-                    service.convertRefillDate(reminder.getMed().getRefill_date()) + "!";
+                    service.convertRefillDate(reminder.getMed().getRefill_date(), reminder.getUser()) + "!";
         } else {
             body = "Here is your reminder to refill your " + reminder.getMed().getMedicine_name() + "!";
         }

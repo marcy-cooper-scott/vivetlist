@@ -70,14 +70,32 @@
     /*<![CDATA[*/
     $(document).ready(function(){
         function renderCalendar() {
-            $('#calendar').fullCalendar({timezone:'UTC'});
+            // we can grab a user, then set the calendar to reflect their timezone
+            var user =/*[[${user}]]*/ 'user';
+            var timezone = user.time_zone;
+            // setting up the calendar using that timezone
+            $('#calendar').fullCalendar({timezone:timezone});
             var appointments = []; // clear all the events
             var request = $.ajax({'url': '/appointments.json'}); // make a request from the controller to fetch events in JSON format
             request.done(function (appts) {	// when done, we will move through each element in the array in order to grab the appointment object
                 appts.forEach(function (appt) {
+                    // because we are now using java-time, we need to convert the appointment
+                    var dayOfMonth = appt.start.dayOfMonth;
+                    var month = appt.start.monthValue;
+                    var year = appt.start.year;
+                    var hour = appt.start.hour;
+                    var min = appt.start.minute;
+                    // create a moment object JUST FOR APPTS
+                    var apptDate = moment({
+                        y: year,
+                        M: month - 1,
+                        d: dayOfMonth,
+                        h: hour,
+                        m: min
+                    });
                     var obj = {
                         title: appt.name,
-                        start: appt.start,
+                        start: apptDate,
                         description: appt.location,
                         allDay: false
                     };

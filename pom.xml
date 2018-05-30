@@ -52,12 +52,6 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
-		<dependency>
-			<groupId>joda-time</groupId>
-			<artifactId>joda-time</artifactId>
-			<version>2.9.7</version>
-		</dependency>
-
 		<!-- Jackson json data bind -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.jaxrs</groupId>
@@ -100,6 +94,18 @@
 			<artifactId>sendgrid-java</artifactId>
 			<version>4.2.1</version>
 		</dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-java8</artifactId>
+            <version>5.1.0.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-java8time</artifactId>
+            <version>2.1.0.RELEASE</version>
+        </dependency>
 
 
 	</dependencies>

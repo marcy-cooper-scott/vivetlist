@@ -3,6 +3,9 @@ package com.vivetlist.main.models;
 import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 
@@ -28,14 +31,14 @@ public class Appointment {
 //    @JsonFormat(
 //            shape = JsonFormat.Shape.STRING,
 //            pattern = "dd-MM-yyyy")
-    private Date date_time;
+    private Instant date_time;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     @JsonManagedReference
     private User user;
 
-    public Appointment(long id, String doctor_name, String location, Date date_time, User user){
+    public Appointment(long id, String doctor_name, String location, Instant date_time, User user){
         this.id = id;
         this.doctor_name = doctor_name;
         this.location = location;
@@ -43,7 +46,7 @@ public class Appointment {
         this.user = user;
     }
 
-    public Appointment(String doctor_name, String location, Date date_time, User user){
+    public Appointment(String doctor_name, String location, Instant date_time, User user){
         this.doctor_name = doctor_name;
         this.location = location;
         this.date_time = date_time;
@@ -85,11 +88,11 @@ public class Appointment {
         this.user = user;
     }
 
-    public Date getDate_time() {
+    public Instant getDate_time() {
         return date_time;
     }
 
-    public void setDate_time(Date date_time) {
+    public void setDate_time(Instant date_time) {
         this.date_time = date_time;
     }
 }

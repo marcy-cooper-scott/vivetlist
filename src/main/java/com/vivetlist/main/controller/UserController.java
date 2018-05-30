@@ -1,5 +1,6 @@
 package com.vivetlist.main.controller;
 
+import com.vivetlist.main.Services.FriendlyTimeService;
 import com.vivetlist.main.models.User;
 import com.vivetlist.main.repos.UserRepo;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -10,20 +11,24 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.ZoneId;
 
 
 @Controller
 public class UserController {
     private UserRepo userDao;
     private PasswordEncoder passwordEncoder;
+    private FriendlyTimeService friendlyTimeService;
 
-    public UserController(UserRepo userDao, PasswordEncoder passwordEncoder){
+    public UserController(UserRepo userDao, PasswordEncoder passwordEncoder, FriendlyTimeService friendlyTimeService){
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
+        this.friendlyTimeService = friendlyTimeService;
     }
 
     @GetMapping("/sign-up")
     public String signUp(Model model) {
+        model.addAttribute("zones", friendlyTimeService.listTimeZones());
         model.addAttribute("user", new User());
         return "sign-up";
     }

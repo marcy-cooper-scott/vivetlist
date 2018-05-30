@@ -22,14 +22,14 @@ public class SMSrunner {
             body = "Hey! This is VivetList reminding you of an appointment with " +
                     reminder.getAppt().getDoctor_name() + " located at " +
                     reminder.getAppt().getLocation() + " on " +
-                    service.convertApptTime(reminder.getAppt().getDate_time());
+                    service.convertApptTime(reminder.getAppt().getDate_time(), reminder.getUser());
         } else if (reminder.getMed().getRefill_date() == null) {
             body = "Hey! This is Vivetlist reminding you to get a refill of your " +
                     reminder.getMed().getMedicine_name() + "!";
         } else {
             body = "Hey! This is Vivetlist reminding you to get a refill of your " +
                     reminder.getMed().getMedicine_name() +
-                    " on " + service.convertRefillDate(reminder.getMed().getRefill_date());
+                    " on " + service.convertRefillDate(reminder.getMed().getRefill_date(), reminder.getUser());
         }
         Message message = Message
                 .creator(new PhoneNumber("+1" + reminder.getUser().getPhone_number()), // to

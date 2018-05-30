@@ -44,7 +44,7 @@ public class User {
     private String phone_number;
 
     @Column(length = 100, nullable = false)
-    private Long time_zone; // changed to a long in order to only have to use numbers in our application
+    private String time_zone; // we will store the timezone as a String for later use
 
     @Column
     @Type(type = "org.hibernate.type.NumericBooleanType")
@@ -68,7 +68,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Comment> comments;
 
-    public User(long id, String username, String password, String email, String phone_number, Long time_zone, boolean isAdmin, List<Appointment>appointments, List<Medicine>medicines, List<Group> groups, List<Post> posts, List<Comment> comments){
+    public User(long id, String username, String password, String email, String phone_number, String time_zone, boolean isAdmin, List<Appointment>appointments, List<Medicine>medicines, List<Group> groups, List<Post> posts, List<Comment> comments){
         this.id = id;
         this.username = username;
         this.password = password;
@@ -83,7 +83,7 @@ public class User {
         this.comments = comments;
     }
 
-    public User(String username, String password, String email, String phone_number, Long time_zone, boolean isAdmin, List<Appointment>appointments, List<Medicine>medicines, List<Group> groups, List<Post> posts, List<Comment> comments){
+    public User(String username, String password, String email, String phone_number, String time_zone, boolean isAdmin, List<Appointment>appointments, List<Medicine>medicines, List<Group> groups, List<Post> posts, List<Comment> comments){
         this.username = username;
         this.password = password;
         this.email = email;
@@ -147,11 +147,11 @@ public class User {
         this.phone_number = phone_number;
     }
 
-    public Long getTime_zone() {
+    public String getTime_zone() {
         return time_zone;
     }
 
-    public void setTime_zone(Long time_zone) {
+    public void setTime_zone(String time_zone) {
         this.time_zone = time_zone;
     }
 

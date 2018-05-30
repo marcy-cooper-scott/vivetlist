@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -38,11 +40,12 @@ public class AppointmentController {
     }
 
     @PostMapping("/appointments/create")
-    public String insertAppt(@ModelAttribute Appointment appt, HttpServletRequest request, Model model){
+    public String insertAppt(HttpServletRequest request, Model model){
         User loggedInUser = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        appt.setUser(loggedInUser);
-        apptRepo.save(appt);
+        String date_time = request.getParameter("date_time");
         // now, let's see what the value of which submit it was
+        System.out.println(date_time);
+        System.out.println("Not making an appointment yet!!!");
         String choice = request.getParameter("choice");
         if (choice.contains("reminder")) {
             return "redirect:/reminders/create";

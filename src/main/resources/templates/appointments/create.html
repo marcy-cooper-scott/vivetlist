@@ -13,7 +13,7 @@
             <form th:object="${appointment}" th:method="post" th:action="@{/appointments/create}">
 
                 <label for="time">Appointment Date &amp; Time</label>
-                <input id="time" placeholder="Enter date and time of appointment" type="hidden" th:field="*{date_time}" />
+                <input id="time" placeholder="Enter date and time of appointment" th:field="*{date_time}" />
 
                 <label for="doctor">Name of Doctor</label>
                 <input id="doctor" placeholder="Enter doctor's name" th:field="*{doctor_name}" />
@@ -34,9 +34,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
     <script>
         $(function () {
-            $('#time').datetimepicker({
+            var time = $('#time');
+            time.datetimepicker({
                 inline: true,
                 sideBySide: true
+            });
+            $('form').submit(function() {
+                var originalTime = time.val();
+                var newTime = moment(originalTime);
+                time.val(newTime);
             });
         });
     </script>

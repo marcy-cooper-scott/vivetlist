@@ -2,14 +2,13 @@ package com.vivetlist.main.controller;
 
 import com.vivetlist.main.models.*;
 import com.vivetlist.main.repos.*;
-import org.joda.time.DateTime;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.*;
 import javax.servlet.http.HttpServletRequest;
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -51,17 +50,8 @@ public class ReminderController {
     public String setReminder(@ModelAttribute Reminder reminder){
         User loggedInUser = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         reminder.setUser(loggedInUser);
-        reminder.setScheduled_time(convertDate(reminder));
         repo.save(reminder);
         return "redirect:/mylist";
-    }
-
-    private Date convertDate(Reminder reminder) { // grab a user, get their timezone, send that back to the db in order
-        DateTime joda = new DateTime(reminder.getScheduled_time());
-        Long userId = reminder.getUser().getId();
-        int diff = uRepo.findById(userId).getTime_zone().intValue();
-        joda = joda.minusHours(diff);
-        return joda.toDate();
     }
 
     @PostMapping("/reminders/delete")

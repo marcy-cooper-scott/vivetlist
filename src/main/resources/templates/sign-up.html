@@ -30,12 +30,9 @@
             <label for="time-zone">Your Time Zone</label>
             <select class="form-feilds" id="time-zone" th:field="*{time_zone}" >
                 <option value="" selected="selected">select your timezone</option>
-                <option value="-10">(GMT -10:00) Hawaii</option>
-                <option value="-9">(GMT -9:00) Alaska</option>
-                <option value="-8">(GMT -8:00) Pacific Time (US &amp; Canada)</option>
-                <option value="-7">(GMT -7:00) Mountain Time (US &amp; Canada)</option>
-                <option value="-6">(GMT -6:00) Central Time (US &amp; Canada), Mexico City</option>
-                <option value="-5">(GMT -5:00) Eastern Time (US &amp; Canada), Bogota, Lima</option>
+                <div th:each="zone : ${zones}">
+                    <option th:value="${zone}" th:text="${zone}">value</option>
+                </div>
             </select>
             <button type="submit">Sign Up</button>
         </form>
