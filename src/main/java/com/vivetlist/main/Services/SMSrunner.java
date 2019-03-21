@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 public class SMSrunner {
     // Find your Account Sid and Auth Token at twilio.com/console
     public static final String ACCOUNT_SID =
-            "ACdd2933cab5f6f226ec794eee5aecc405";
+            "xxx";
     public static final String AUTH_TOKEN =
-            "c2bf051b30c27abe85fa20f4b8324fde";
+            "xxx";
     private FriendlyTimeService service = new FriendlyTimeService();
 
     public void runner(Reminder reminder) {
